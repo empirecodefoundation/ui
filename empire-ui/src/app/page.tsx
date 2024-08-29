@@ -17,8 +17,10 @@ export default function Component() {
           In the presence of a screen reader it should announce its current
           state to the user.
         </p>
-        {/* <AISummarizerButton /> */}
-        <AIGrammarCheckButton />
+        <div className="flex space-x-6 p-10">
+          <AISummarizerButton />
+          <AIGrammarCheckButton />
+        </div>
       </main>
     </div>
   );
