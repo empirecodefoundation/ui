@@ -96,49 +96,52 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
   };
 
   return (
-    <Tooltip.Provider>
-      <Tooltip.Root>
-        <Tooltip.Trigger asChild>
-          <motion.button
-            onClick={handleClick}
+    <div className={cn("relative", className)}>
+      <Tooltip.Provider>
+        <Tooltip.Root>
+          <Tooltip.Trigger asChild>
+            <motion.button
+              onClick={handleClick}
+              whileTap={{ scale: 1 }}
+              whileHover={{ scale: 1.1 }}
+              className={cn(
+                "p-3 bg-primary text-primary-foreground rounded-full shadow-lg",
+                buttonClassName
+              )}
+              disabled={isSummarizing}
+            >
+              <Zap
+                className={cn("h-6 w-6", isSummarizing ? "animate-pulse" : "")}
+              />
+              <span className="sr-only">Check selected text</span>
+            </motion.button>
+          </Tooltip.Trigger>
+          <Tooltip.Content
             className={cn(
-              "fixed bottom-4 right-4 p-3 bg-primary text-primary-foreground rounded-full shadow-lg",
-              buttonClassName
+              "bg-secondary text-secondary-foreground px-3 py-1 rounded shadow-md text-sm",
+              tooltipClassName
             )}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            disabled={isSummarizing}
+            sideOffset={5}
+            {...props}
           >
-            <Zap
-              className={cn("h-6 w-6", isSummarizing ? "animate-pulse" : "")}
-            />
-            <span className="sr-only">Summarize selected text</span>
-          </motion.button>
-        </Tooltip.Trigger>
-        <Tooltip.Content
-          className={cn(
-            "bg-secondary text-secondary-foreground px-3 py-1 rounded shadow-md text-sm",
-            tooltipClassName
-          )}
-          sideOffset={5}
-          {...props}
-        >
-          Summarize selected text
-        </Tooltip.Content>
-      </Tooltip.Root>
+            Check selected text
+          </Tooltip.Content>
+        </Tooltip.Root>
+      </Tooltip.Provider>
       {summary && (
         <div
           ref={summaryRef}
           className={cn(
-            "fixed bottom-20 right-4 w-64 p-4 bg-background border border-border rounded-md shadow-lg",
+            "absolute top-full mt-4 w-64 max-h-80 p-4 bg-background border border-border rounded-md shadow-lg overflow-y-auto",
+            "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-black scrollbar-track-gray-100",
             summaryClassName
           )}
         >
-          <h3 className="text-lg font-semibold mb-2">Summary:</h3>
+          <h3 className="text-lg font-semibold mb-2">Correction:</h3>
           <p className="text-sm">{summary}</p>
         </div>
       )}
-    </Tooltip.Provider>
+    </div>
   );
 };
 

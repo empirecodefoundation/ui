@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Notebook, Zap } from "lucide-react";
+import { SquarePen } from "lucide-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { cn } from "@/lib/utils";
 
@@ -95,41 +95,44 @@ const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
   };
 
   return (
-    <Tooltip.Provider>
-      <Tooltip.Root>
-        <Tooltip.Trigger asChild>
-          <motion.button
-            onClick={handleClick}
+    <div className={cn("relative", className)}>
+      <Tooltip.Provider>
+        <Tooltip.Root>
+          <Tooltip.Trigger asChild>
+            <motion.button
+              onClick={handleClick}
+              whileTap={{ scale: 1 }}
+              whileHover={{ scale: 1.1 }}
+              className={cn(
+                "p-3 bg-primary text-primary-foreground rounded-full shadow-lg",
+                buttonClassName
+              )}
+              disabled={isChecking}
+            >
+              <SquarePen
+                className={cn("h-6 w-6", isChecking ? "animate-pulse" : "")}
+              />
+              <span className="sr-only">Check selected text</span>
+            </motion.button>
+          </Tooltip.Trigger>
+          <Tooltip.Content
             className={cn(
-              "fixed bottom-4 right-4 p-3 bg-primary text-primary-foreground rounded-full shadow-lg",
-              buttonClassName
+              "bg-secondary text-secondary-foreground px-3 py-1 rounded shadow-md text-sm",
+              tooltipClassName
             )}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            disabled={isChecking}
+            sideOffset={5}
+            {...props}
           >
-            <Notebook
-              className={cn("h-6 w-6", isChecking ? "animate-pulse" : "")}
-            />
-            <span className="sr-only">Check selected text</span>
-          </motion.button>
-        </Tooltip.Trigger>
-        <Tooltip.Content
-          className={cn(
-            "bg-secondary text-secondary-foreground px-3 py-1 rounded shadow-md text-sm",
-            tooltipClassName
-          )}
-          sideOffset={5}
-          {...props}
-        >
-          Check selected text
-        </Tooltip.Content>
-      </Tooltip.Root>
+            Check selected text
+          </Tooltip.Content>
+        </Tooltip.Root>
+      </Tooltip.Provider>
       {correction && (
         <div
           ref={correctionRef}
           className={cn(
-            "fixed bottom-20 right-4 w-64 max-h-64 p-4 bg-background border border-border rounded-md shadow-lg overflow-y-auto",
+            "absolute top-full mt-4 w-64 max-h-80 p-4 bg-background border border-border rounded-md shadow-lg overflow-y-auto",
+            "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-black scrollbar-track-gray-100",
             correctionClassName
           )}
         >
@@ -137,7 +140,7 @@ const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
           <p className="text-sm">{correction}</p>
         </div>
       )}
-    </Tooltip.Provider>
+    </div>
   );
 };
 
