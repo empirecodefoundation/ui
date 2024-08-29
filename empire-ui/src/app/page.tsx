@@ -1,3 +1,4 @@
+import { AIGrammarCheckButton } from "@/components/buttons/AIGrammarCheckButton";
 import { AISummarizerButton } from "@/components/buttons/AISummarizerButton";
 
 export default function Component() {
@@ -16,7 +17,8 @@ export default function Component() {
           In the presence of a screen reader it should announce its current
           state to the user.
         </p>
-        <AISummarizerButton />
+        {/* <AISummarizerButton /> */}
+        <AIGrammarCheckButton />
       </main>
     </div>
   );
