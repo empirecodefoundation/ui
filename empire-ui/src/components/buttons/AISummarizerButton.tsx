@@ -105,7 +105,7 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
               whileTap={{ scale: 1 }}
               whileHover={{ scale: 1.1 }}
               className={cn(
-                "p-3 bg-primary text-primary-foreground rounded-full shadow-lg",
+                "p-3 bg-white text-zinc-800 border-2 border-black rounded-full transition-colors duration-200 hover:bg-zinc-100 hover:text-zinc-700",
                 buttonClassName
               )}
               disabled={isSummarizing}
@@ -113,18 +113,19 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
               <Zap
                 className={cn("h-6 w-6", isSummarizing ? "animate-pulse" : "")}
               />
-              <span className="sr-only">Check selected text</span>
+              <span className="sr-only">Summarize selected text</span>
             </motion.button>
           </Tooltip.Trigger>
           <Tooltip.Content
             className={cn(
-              "bg-secondary text-secondary-foreground px-3 py-1 rounded shadow-md text-sm",
+              "bg-white text-zinc-800 border border-zinc-300 px-4 py-2 rounded-lg shadow-lg text-sm font-medium",
+              "transition-opacity duration-200 ease-in-out",
               tooltipClassName
             )}
-            sideOffset={5}
+            sideOffset={8}
             {...props}
           >
-            Check selected text
+            Summarize selected text
           </Tooltip.Content>
         </Tooltip.Root>
       </Tooltip.Provider>
@@ -132,13 +133,13 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
         <div
           ref={summaryRef}
           className={cn(
-            "absolute top-full mt-4 w-64 max-h-80 p-4 bg-background border border-border rounded-md shadow-lg overflow-y-auto",
-            "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-black scrollbar-track-gray-100",
+            "absolute top-full mt-4 w-72 max-h-80 p-4 bg-white border border-zinc-300 rounded-lg shadow-md overflow-y-auto",
+            "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-zinc-400 scrollbar-track-gray-100",
             summaryClassName
           )}
         >
-          <h3 className="text-lg font-semibold mb-2">Correction:</h3>
-          <p className="text-sm">{summary}</p>
+          <h3 className="text-lg font-semibold mb-3 text-zinc-900">Summary:</h3>
+          <p className="text-sm text-zinc-700 leading-relaxed">{summary}</p>
         </div>
       )}
     </div>
