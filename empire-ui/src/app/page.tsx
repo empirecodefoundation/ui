@@ -1,11 +1,9 @@
-import { AIImageCaptionButton } from "@/components/buttons/AIImageCaptionButton";
+import { ChatboxDemo1 } from "@/components/templates/ChatboxDemo1";
 
 export default function Component() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <main className="container mx-auto p-4">
-        <AIImageCaptionButton />
-      </main>
-    </div>
+    <>
+      <ChatboxDemo1 />
+    </>
   );
 }
