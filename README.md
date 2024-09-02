@@ -2,8 +2,6 @@
 
 Welcome to **Empire UI**, a powerful and flexible UI component library designed specifically for AI applications and websites built with Next.js. Our components come AI-ready, leveraging the latest Vercel AI SDK and other cutting-edge technologies, so you can build sophisticated, AI-powered interfaces right out of the box.
 
-![Empire UI Banner](path-to-your-banner-image)
-
 ---
 
 ## 📖 Table of Contents
