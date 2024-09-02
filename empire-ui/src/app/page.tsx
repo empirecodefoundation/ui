@@ -1,9 +1,9 @@
-import { ChatboxTemplate } from "@/components/ChatboxTemplate";
+import { ChatboxDemo1 } from "@/components/templates/ChatboxDemo1";
 
 export default function Component() {
   return (
     <>
-      <ChatboxTemplate />
+      <ChatboxDemo1 />
     </>
   );
 }

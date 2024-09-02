@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import { ChevronDownIcon, Bot } from "lucide-react";
 import { useState } from "react";
-import { AIChatbox } from "./AIChatbox";
+import { AIChatbox } from "../AIChatbox";
 
-export const ChatboxTemplate = () => {
+export const ChatboxDemo1 = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleChatbox = () => {

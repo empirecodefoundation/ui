@@ -42,7 +42,7 @@ export const AIChatbox: React.FC<AIChatboxProps> = ({ className, isOpen }) => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 10 }}
           transition={{ duration: 0.3 }}
-          className={cn("max-w-md", className)}
+          className={cn("max-w-sm", className)}
         >
           <Card className="bg-white shadow-2xl rounded-lg overflow-hidden">
             <CardHeader className="bg-black text-white p-4">
