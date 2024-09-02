@@ -104,7 +104,7 @@ const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
               whileTap={{ scale: 1 }}
               whileHover={{ scale: 1.1 }}
               className={cn(
-                "p-3 bg-primary text-primary-foreground rounded-full shadow-lg",
+                "p-3 bg-white text-zinc-800 border-2 border-black rounded-full transition-colors duration-200 hover:bg-zinc-100 hover:text-zinc-700",
                 buttonClassName
               )}
               disabled={isChecking}
@@ -117,10 +117,11 @@ const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
           </Tooltip.Trigger>
           <Tooltip.Content
             className={cn(
-              "bg-secondary text-secondary-foreground px-3 py-1 rounded shadow-md text-sm",
+              "bg-white text-zinc-800 border border-zinc-300 px-4 py-2 rounded-lg shadow-lg text-sm font-medium",
+              "transition-opacity duration-200 ease-in-out",
               tooltipClassName
             )}
-            sideOffset={5}
+            sideOffset={8}
             {...props}
           >
             Check selected text
@@ -131,13 +132,15 @@ const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
         <div
           ref={correctionRef}
           className={cn(
-            "absolute top-full mt-4 w-64 max-h-80 p-4 bg-background border border-border rounded-md shadow-lg overflow-y-auto",
-            "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-black scrollbar-track-gray-100",
+            "absolute top-full mt-4 w-72 max-h-80 p-4 bg-white border border-zinc-300 rounded-lg shadow-md overflow-y-auto",
+            "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-zinc-400 scrollbar-track-gray-100",
             correctionClassName
           )}
         >
-          <h3 className="text-lg font-semibold mb-2">Correction:</h3>
-          <p className="text-sm">{correction}</p>
+          <h3 className="text-lg font-semibold mb-3 text-zinc-900">
+            Correction:
+          </h3>
+          <p className="text-sm text-zinc-700 leading-relaxed">{correction}</p>
         </div>
       )}
     </div>
