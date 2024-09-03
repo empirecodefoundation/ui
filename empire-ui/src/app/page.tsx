@@ -1,9 +1,7 @@
-import { ChatboxDemo1 } from "@/components/templates/ChatboxDemo1";
+"use client";
+
+import { Card1Demo } from "@/components/templates/Card1Demo";
 
 export default function Component() {
-  return (
-    <>
-      <ChatboxDemo1 />
-    </>
-  );
+  return <Card1Demo />;
 }
