@@ -12,8 +12,8 @@
     "test": "jest"
   },
   "repository": {
-  "type": "git",
-  "url": "https://github.com/empirecodefoundation/ui.git"
+    "type": "git",
+    "url": "https://github.com/empirecodefoundation/ui.git"
   },
   "keywords": [
     "ui",
@@ -26,12 +26,32 @@
   "author": "Empire Code Foundation",
   "license": "MIT",
   "dependencies": {
+    "@ai-sdk/openai": "^0.0.54",
+    "@headlessui/react": "^2.1.4",
+    "@nanostores/react": "github:ai/react",
+    "@radix-ui/react-avatar": "^1.1.0",
+    "@radix-ui/react-checkbox": "^1.1.1",
+    "@radix-ui/react-form": "^0.1.0",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-progress": "^1.1.0",
+    "@radix-ui/react-radio-group": "^1.2.0",
+    "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.2",
+    "ai": "^3.3.20",
+    "axios": "^1.7.5",
     "class-variance-authority": "^0.6.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.3.31",
+    "lucide-react": "^0.436.0",
     "next": "14.2.5",
+    "openai": "^4.57.0",
     "react": "^18",
     "react-dom": "^18",
-    "styled-components": "^5.3.11"
+    "styled-components": "^5.3.11",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -40,6 +60,7 @@
     "babel-jest": "^29.0.0",
     "jest": "^29.0.0",
     "postcss": "^8",
+    "tailwind-scrollbar": "^3.1.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
