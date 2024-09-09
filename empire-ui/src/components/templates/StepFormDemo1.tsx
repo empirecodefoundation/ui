@@ -35,12 +35,39 @@ const StepContent = ({
   </Card>
 );
 
+//remove this logic if you dont want the color picker in your form
+const ColorPicker = ({
+  selectedColor,
+  onChange,
+}: {
+  selectedColor: string;
+  onChange: (color: string) => void;
+}) => {
+  const colors = ["#646665", "#525453", "#333634", "#363837", "#000000"];
+
+  return (
+    <div className="flex space-x-2">
+      {colors.map((color) => (
+        <div
+          key={color}
+          className={`w-8 h-8 rounded-full cursor-pointer border-2 ${
+            selectedColor === color ? "border-black" : "border-transparent"
+          }`}
+          style={{ backgroundColor: color }}
+          onClick={() => onChange(color)}
+        ></div>
+      ))}
+    </div>
+  );
+};
+//
+
 export const StepFormDemo1 = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
-    color: "",
+    color: "#000000",
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,8 +75,12 @@ export const StepFormDemo1 = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleColorChange = (color: string) => {
+    setFormData((prev) => ({ ...prev, color }));
+  };
+
   const handleSubmit = () => {
-    alert(`Form submitted:, ${JSON.stringify(formData)}`);
+    alert(`Form submitted: ${JSON.stringify(formData)}`);
   };
 
   const steps = [
@@ -107,20 +138,14 @@ export const StepFormDemo1 = () => {
         <StepContent
           icon={Brush}
           title="Your preferences"
-          description="Please provide your fav color"
+          description="Please select your favorite color"
         >
-          <div className="space-y-4">
-            <div className="flex space-x-4 items-center">
-              <Label htmlFor="color">Color</Label>
-              <Input
-                type="color"
-                id="color"
-                name="color"
-                value={formData.color}
-                onChange={handleInputChange}
-                className="w-16 p-1"
-              />
-            </div>
+          <div className="flex space-x-3 items-center">
+            <Label htmlFor="color">Color</Label>
+            <ColorPicker
+              selectedColor={formData.color}
+              onChange={handleColorChange}
+            />
           </div>
         </StepContent>
       ),
