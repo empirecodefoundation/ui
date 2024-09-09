@@ -28,6 +28,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^0.0.54",
     "@headlessui/react": "^2.1.4",
+    "@hookform/resolvers": "^3.9.0",
     "@nanostores/react": "github:ai/react",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-checkbox": "^1.1.1",
@@ -48,14 +49,18 @@
     "next": "14.2.5",
     "openai": "^4.57.0",
     "react": "^18",
+    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
     "styled-components": "^5.3.11",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
+    "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18",
     "babel-jest": "^29.0.0",
     "jest": "^29.0.0",
