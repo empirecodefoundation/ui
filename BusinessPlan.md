@@ -34,7 +34,7 @@ We are launching a **Digital Residency Program** to engage interns and students,
 
 - **Organization Name:** Empire Code Foundation
 - **Type:** Non-profit Organization
-- **Location:** [Your Location]
+- **Location:** [Whiting Way, Coquitlam, BC, Canada]
 - **Website:** [www.empirecode.org](https://www.empirecode.org)
 - **GitHub Repository:** [Empire UI GitHub](https://github.com/empirecodefoundation/ui)
 
