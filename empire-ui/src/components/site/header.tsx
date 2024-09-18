@@ -18,10 +18,8 @@ export function SiteHeader() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-50 w-full    ",
-          pathname?.includes("/docs")
-            ? "-mb-12 bg-[#FAFAFA]   backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:backdrop-blur-xl dark:bg-[#171517]"
-            : "-mb-14"
+          "sticky top-0 z-50 w-full",
+          "-mb-12 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:backdrop-blur-xl"
         )}
       >
         {/* <header className="sticky top-0 z-50 w-full -mb-12  lg:backdrop-blur-xl backdrop-filter bg-gradientTopRightLightHeaderSm/70  md:bg-gradientTopRightLightHeader  backdrop-blur supports-[backdrop-filter]:bg-background/60 "> */}

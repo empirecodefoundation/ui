@@ -1,13 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { MoreHorizontal, Link2, ArrowRight } from "lucide-react";
 import { LifeBuoy } from "lucide-react";
 import { Icons } from "../site/icons";
 import {
@@ -94,7 +85,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="fixed bottom-0 left-0 right-0 bg-zinc-800 text-white py-2 px-6 text-xs font-bold">
+    <footer className="fixed bottom-0 left-0 right-0 bg-zinc-800 text-white px-6 text-xs font-bold">
       <div className="container mx-auto flex justify-start items-center gap-10">
         <div className=" text-nowrap text-md">© Empire UI 2024</div>
         <div className="flex justify-between w-full items-center">
@@ -203,7 +194,7 @@ export default function Footer() {
               variant="outline"
               className="flex justify-between items-center gap-2"
             >
-              <LifeBuoy className=" h-5 w-5" />
+              <LifeBuoy className=" h-4 w-4"/>
               <span className="text-xs">Support</span>
             </Button>
           </div>
