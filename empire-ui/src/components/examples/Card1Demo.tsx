@@ -1,4 +1,4 @@
-import { Card1 } from "@/components/ui/cards/card1";
+import { Card1 } from "@/components/core/card1";
 
 export const Card1Demo = () => {
   return (
@@ -16,6 +16,7 @@ export const Card1Demo = () => {
         { name: "twitter", href: "" },
       ]}
       additional_information="This section contains additional information about the client, their projects, and any other relevant details."
+      redirectLink={""}
     />
   );
 };

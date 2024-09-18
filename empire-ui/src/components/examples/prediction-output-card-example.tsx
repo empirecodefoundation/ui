@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PredictionOutputCard } from "@/components/ui/cards/prediction-output-card";
+import { PredictionOutputCard } from "@/components/core/prediction-output-card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
