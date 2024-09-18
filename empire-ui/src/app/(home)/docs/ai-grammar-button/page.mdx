@@ -1,0 +1,39 @@
+import { AIGrammarButtonExample } from "@/components/examples/AIGrammarButtonExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Grammar check button"} />
+
+# AI Grammar Check Button
+
+---
+
+A simple AI-powered button that proofreads selected text on the webpage for grammar and spelling errors.
+
+<ComponentCodePreview
+  component={<AIGrammarButtonExample />}
+  filePath="examples/AIGrammarButtonExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  componentFilePath={"core/AIGrammarCheckButton"}
+  routeFilePath={"buttons/AIGrammarCheckButton"}
+  cli={"npx empire@latest add ai-grammar-button"}
+/>
+
+## Props
+
+---
+
+| Prop name             | Type     | Description                            |
+| --------------------- | -------- | -------------------------------------- |
+| `className`           | `string` | The class name of the child component. |
+| `buttonClassName`     | `string` | The class name of the button.          |
+| `tooltipclassName`    | `string` | The class name of the tooltip.         |
+| `correctionClassName` | `string` | The class name of the corrected text.  |
