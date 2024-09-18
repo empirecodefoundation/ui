@@ -2,27 +2,27 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { SquarePen } from "lucide-react";
+import { Zap } from "lucide-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { cn } from "@/lib/utils";
 
-const useAIGrammerChecker = () => {
-  const [isChecking, setIsChecking] = React.useState(false);
-  const [correction, setCorrection] = React.useState<string>("");
-  const correctionRef = React.useRef<HTMLDivElement>(null);
+const useAITranslator = () => {
+  const [isTranslating, setIsTranslating] = React.useState(false);
+  const [translation, setTranslation] = React.useState<string>("");
+  const translationRef = React.useRef<HTMLDivElement>(null);
 
-  const handleSummarize = async (selectedText: string) => {
+  const handleTranslate = async (selectedText: string) => {
     if (!selectedText) {
       return;
     }
 
-    setIsChecking(true);
-    setCorrection("");
+    setIsTranslating(true);
+    setTranslation("");
 
     try {
-      const response = await fetch("/api/buttons/AIGrammarCheckButton", {
+      const response = await fetch("/api/buttons/AITranslatorButton", {
         method: "POST",
-        body: `correct the grammar and style of the following text: ${selectedText}`,
+        body: `Translate the following text: ${selectedText}`,
       });
 
       if (!response.ok) {
@@ -39,26 +39,27 @@ const useAIGrammerChecker = () => {
         };
         if (done) break;
         const chunk = decoder.decode(value);
-        setCorrection((prev) => prev + chunk);
+        setTranslation((prev) => prev + chunk);
       }
     } catch (error) {
-      console.error("Error corerecting text:", error);
+      console.error("Error summarizing text:", error);
+      alert("An error occurred while summarizing the text. Please try again.");
     } finally {
-      setIsChecking(false);
+      setIsTranslating(false);
     }
   };
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
-      correctionRef.current &&
-      !correctionRef.current.contains(event.target as Node)
+      translationRef.current &&
+      !translationRef.current.contains(event.target as Node)
     ) {
-      setCorrection("");
+      setTranslation("");
     }
   };
 
   React.useEffect(() => {
-    if (correction) {
+    if (translation) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -67,31 +68,31 @@ const useAIGrammerChecker = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [correction]);
+  }, [translation]);
 
-  return { isChecking, correction, handleSummarize, correctionRef };
+  return { isTranslating, translation, handleTranslate, translationRef };
 };
 
-interface AIGrammarCheckButtonProps {
+interface AITranslaterButtonProps {
   className?: string;
   buttonClassName?: string;
   tooltipClassName?: string;
-  correctionClassName?: string;
+  translationClassName?: string;
 }
 
-const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
+const AITranslatorButton: React.FC<AITranslaterButtonProps> = ({
   className,
   buttonClassName,
   tooltipClassName,
-  correctionClassName,
+  translationClassName,
   ...props
 }) => {
-  const { isChecking, correction, handleSummarize, correctionRef } =
-    useAIGrammerChecker();
+  const { isTranslating, translation, handleTranslate, translationRef } =
+    useAITranslator();
 
   const handleClick = async () => {
     const selectedText = window.getSelection()?.toString();
-    await handleSummarize(selectedText || "");
+    await handleTranslate(selectedText || "");
   };
 
   return (
@@ -107,44 +108,44 @@ const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
                 "p-3 bg-white text-zinc-800 border-2 border-black rounded-full transition-colors duration-200 hover:bg-zinc-100 hover:text-zinc-700",
                 buttonClassName
               )}
-              disabled={isChecking}
+              disabled={isTranslating}
             >
-              <SquarePen
-                className={cn("h-6 w-6", isChecking ? "animate-pulse" : "")}
+              <Zap
+                className={cn("h-6 w-6", isTranslating ? "animate-pulse" : "")}
               />
-              <span className="sr-only">Check selected text</span>
+              <span className="sr-only">Translate selected text</span>
             </motion.button>
           </Tooltip.Trigger>
           <Tooltip.Content
             className={cn(
-              "bg-white text-zinc-800 border border-zinc-300 px-4 py-2 rounded-lg shadow-lg text-sm font-medium",
+              "bg-zinc-950 text-white px-4 py-2 rounded-xl shadow-lg text-sm",
               "transition-opacity duration-200 ease-in-out",
               tooltipClassName
             )}
             sideOffset={8}
             {...props}
           >
-            Check selected text
+            Translate selected text
           </Tooltip.Content>
         </Tooltip.Root>
       </Tooltip.Provider>
-      {correction && (
+      {translation && (
         <div
-          ref={correctionRef}
+          ref={translationRef}
           className={cn(
-            "absolute top-full mt-4 w-72 max-h-80 p-4 bg-white border border-zinc-300 rounded-lg shadow-md overflow-y-auto",
+            "absolute top-full mt-4 w-[600px] max-h-80 p-4 border border-zinc-800 bg-zinc-950 rounded-[0.5rem] shadow-md overflow-y-auto",
             "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-zinc-400 scrollbar-track-gray-100",
-            correctionClassName
+            translationClassName
           )}
         >
-          <h3 className="text-lg font-semibold mb-3 text-zinc-900">
-            Correction:
+          <h3 className="text-lg font-semibold mb-3 text-zinc-200">
+            Translation:
           </h3>
-          <p className="text-sm text-zinc-700 leading-relaxed">{correction}</p>
+          <p className="text-sm text-zinc-200 leading-relaxed">{translation}</p>
         </div>
       )}
     </div>
   );
 };
 
-export { AIGrammarCheckButton };
+export { AITranslatorButton };

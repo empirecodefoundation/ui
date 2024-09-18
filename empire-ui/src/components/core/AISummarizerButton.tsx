@@ -118,7 +118,7 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
           </Tooltip.Trigger>
           <Tooltip.Content
             className={cn(
-              "bg-white text-zinc-800 border border-zinc-300 px-4 py-2 rounded-lg shadow-lg text-sm font-medium",
+              "bg-zinc-950 text-white px-4 py-2 rounded-xl shadow-lg text-sm",
               "transition-opacity duration-200 ease-in-out",
               tooltipClassName
             )}
@@ -133,13 +133,13 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
         <div
           ref={summaryRef}
           className={cn(
-            "absolute top-full mt-4 w-72 max-h-80 p-4 bg-white border border-zinc-300 rounded-lg shadow-md overflow-y-auto",
+            "absolute top-full mt-4 w-[600px] max-h-80 p-4 border border-zinc-800 bg-zinc-950 rounded-[0.5rem] shadow-md overflow-y-auto",
             "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-zinc-400 scrollbar-track-gray-100",
             summaryClassName
           )}
         >
-          <h3 className="text-lg font-semibold mb-3 text-zinc-900">Summary:</h3>
-          <p className="text-sm text-zinc-700 leading-relaxed">{summary}</p>
+          <h3 className="text-lg font-semibold mb-3 text-zinc-200">Summary:</h3>
+          <p className="text-sm text-zinc-200 leading-relaxed">{summary}</p>
         </div>
       )}
     </div>
