@@ -1,0 +1,35 @@
+import { AISummarizerButtonExample } from "@/components/examples/AISummarizerButtonExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+
+# AI Text Summarizer Button
+
+---
+
+A simple AI-powered Button that summarizes the text you select on the webpage.
+
+<ComponentCodePreview
+  component={<AISummarizerButtonExample />}
+  filePath="examples/AISummarizerButtonExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  componentFilePath={"core/AISummarizerButton"}
+  routeFilePath={"buttons/AISummarizerButton"}
+  cli={"npx empire@latest add ai-summarizer-button"}
+/>
+
+## Props
+
+---
+
+| Prop name          | Type     | Description                            |
+| ------------------ | -------- | -------------------------------------- |
+| `className`        | `string` | The class name of the child component. |
+| `buttonClassName`  | `string` | The class name of the button.          |
+| `tooltipclassName` | `string` | The class name of the tooltip.         |
+| `summaryClassName` | `string` | The class name of the summary.         |

@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     const { textStream } = await streamText({
       model: groq("llama-3.1-70b-versatile"),
       system:
-        "You are an expert in grammar and style. Analyze the given text and provide suggestions for improvements in grammar, spelling, and style. Be concise and clear in your suggestions.",
+        "You are an expert in grammar and style. Provide suggestions for improvements in grammar, spelling, and style. Be short and clear in your suggestions.",
       prompt: prompt,
     });
 

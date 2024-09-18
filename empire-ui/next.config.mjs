@@ -1,8 +1,22 @@
+import remarkGfm from 'remark-gfm';
+import createMDX from '@next/mdx';
+import { remarkCodeHike } from '@code-hike/mdx';
+
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['www.*.com'], // Add the domain here
+        domains: ["pbs.twimg.com"],
     },
+    reactStrictMode: true,
+    pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+    extension: /\.mdx?$/,
+    options: {
+        remarkPlugins: [remarkGfm, [remarkCodeHike, { theme: 'css-variables' }]],
+    },
+});
+
+export default withMDX(nextConfig);
