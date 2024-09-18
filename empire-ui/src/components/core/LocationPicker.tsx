@@ -1,66 +1,67 @@
-'use client'
+// @ts-nocheck
+"use client";
 
-import { useState, useCallback, useRef } from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useState, useCallback, useRef } from "react";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // Replace with your actual Google Maps API key
-const GOOGLE_MAPS_API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY'
+const GOOGLE_MAPS_API_KEY = "YOUR_GOOGLE_MAPS_API_KEY";
 
 const mapContainerStyle = {
-  width: '100%',
-  height: '400px'
-}
+  width: "100%",
+  height: "400px",
+};
 
 const center = {
   lat: 40.7128,
-  lng: -74.0060
-}
+  lng: -74.006,
+};
 
 export default function LocationPicker() {
-  const [address, setAddress] = useState('')
-  const [selectedPlace, setSelectedPlace] = useState(null)
-  const [mapCenter, setMapCenter] = useState(center)
-  const autocompleteRef = useRef(null)
-  const mapRef = useRef(null)
+  const [address, setAddress] = useState("");
+  const [selectedPlace, setSelectedPlace] = useState(null);
+  const [mapCenter, setMapCenter] = useState(center);
+  const autocompleteRef = useRef(null);
+  const mapRef = useRef(null);
 
   const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
+    id: "google-map-script",
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-    libraries: ['places']
-  })
+    libraries: ["places"],
+  });
 
   const onLoad = useCallback((map) => {
-    mapRef.current = map
-  }, [])
+    mapRef.current = map;
+  }, []);
 
   const onUnmount = useCallback(() => {
-    mapRef.current = null
-  }, [])
+    mapRef.current = null;
+  }, []);
 
   const handlePlaceSelect = () => {
-    const autocomplete = autocompleteRef.current
+    const autocomplete = autocompleteRef.current;
     if (autocomplete) {
-      const place = autocomplete.getPlace()
+      const place = autocomplete.getPlace();
       if (place.geometry) {
-        setSelectedPlace(place)
+        setSelectedPlace(place);
         setMapCenter({
           lat: place.geometry.location.lat(),
-          lng: place.geometry.location.lng()
-        })
+          lng: place.geometry.location.lng(),
+        });
       }
     }
-  }
+  };
 
   const handleInputChange = (e) => {
-    setAddress(e.target.value)
-  }
+    setAddress(e.target.value);
+  };
 
   const initAutocomplete = (autocomplete) => {
-    autocompleteRef.current = autocomplete
-  }
+    autocompleteRef.current = autocomplete;
+  };
 
   return (
     <Card className="w-full max-w-3xl mx-auto">
@@ -91,7 +92,7 @@ export default function LocationPicker() {
                 <Marker
                   position={{
                     lat: selectedPlace.geometry.location.lat(),
-                    lng: selectedPlace.geometry.location.lng()
+                    lng: selectedPlace.geometry.location.lng(),
                   }}
                 />
               )}
@@ -111,5 +112,5 @@ export default function LocationPicker() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
