@@ -20,7 +20,7 @@ export function MobileNav() {
       <SheetTrigger asChild>
         <Button
           variant="ghost"
-          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          className="mr-2 px-2 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
           <svg
             strokeWidth="1.5"
@@ -57,10 +57,10 @@ export function MobileNav() {
       <SheetContent side="left" className="pr-0">
         <MobileLink
           href="/"
-          className="flex items-center"
+          className="flex items-center gap-2"
           onOpenChange={setOpen}
         >
-          <Icons.logo className="mr-2 h-4 w-4" />
+          <Icons.logo className="mx-4 h-4 w-4" />
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">

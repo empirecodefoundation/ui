@@ -2,7 +2,6 @@
 import React from "react";
 import ParticleImage, {
   ParticleOptions,
-  Vector,
   forces,
   ParticleForce,
 } from "react-particle-image";
@@ -12,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import Footer from "@/components/common/Footer";
 import LandingCard2 from "@/components/common/landing-card2";
 import JapaneseCharacter from "@/components/common/japanese";
+import Link from "next/link";
 
 const particleOptions: ParticleOptions = {
   filter: ({ x, y, image }) => {
@@ -33,13 +33,14 @@ const motionForce = (x: number, y: number): ParticleForce => {
 const page = () => {
   const { innerWidth, innerHeight } = useWindowSize();
   return (
-    <section className="container">
+    <section className="mx-auto px-4 overflow-x-hidden">
       <div className="h-full">
-        <div className="w-full flex-col justify-center pt-16 pb-5 items-start ">
+        {/* Particle Image Section */}
+        <div className="flex flex-col justify-center items-center py-10">
           <ParticleImage
             src={"/empireUI-logo.png"}
             scale={1}
-            entropy={2}
+            entropy={10}
             width={1500}
             height={460}
             maxParticles={20000}
@@ -49,82 +50,87 @@ const page = () => {
             backgroundColor="#00000"
           />
         </div>
-        <div className="grid justify-center items-center mr-12">
-          <div className="container px-9 sm:px-6 ml-10 lg:px-8 text-left">
-            <p className="text-xl text-zinc-200 mb-10 max-w-2xl text-center">
-              The AI-powered component library that adapts to your design needs.
-              Build beautiful, responsive interfaces in record time.
-            </p>
-          </div>
-          <div className="flex justify-center space-x-4">
-            <Button size="lg" variant="outline">
-              View Components
-            </Button>
-            <Button
-              size="lg"
-              className="bg-white text-zinc-700 font-semibold hover:text-zinc-200"
-            >
-              Get Started
-            </Button>
+
+        {/* Text and buttons section */}
+        <div className="flex flex-col justify-center text-center items-center px-4">
+          <p className="text-lg sm:text-xl text-zinc-200 mb-6 max-w-2xl">
+            The AI-powered component library that adapts to your design needs.
+            Build beautiful, responsive interfaces in record time.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-x-4 sm:space-y-0">
+            <Link href={"/docs/ai-summarizer-button"}>
+              <Button size="lg" variant="outline">
+                View Components
+              </Button>
+            </Link>
+            <Link href={"/docs"}>
+              <Button
+                variant={"outline"}
+                size="lg"
+                className="bg-white text-zinc-700 font-semibold"
+              >
+                Get Started
+              </Button>
+            </Link>
           </div>
         </div>
-        <div className="py-24 flex w-full justify-center items-center gap-14">
-          <div className="flex justify-center items-center gap-3 text-zinc-300 font-bold">
+
+        {/* icon section */}
+        <div className="py-24 flex flex-wrap justify-center items-center gap-10 lg:gap-12">
+          <div className="flex items-center gap-3 text-zinc-300 font-bold">
             <Image
               src="/icons/vercel.png"
-              width={50}
-              height={50}
-              alt="vercel"
-            />{" "}
+              width={40}
+              height={40}
+              alt="Vercel"
+            />
             Vercel
           </div>
-          <div className="flex justify-center items-center  gap-3 text-zinc-300 font-bold">
-            <Image src="/icons/next.png" width={50} height={50} alt="vercel" />{" "}
+          <div className="flex items-center gap-3 text-zinc-300 font-bold">
+            <Image src="/icons/next.png" width={40} height={40} alt="Next.js" />
             NextJS
           </div>
-          <div className="flex justify-center items-center gap-3 text-zinc-300 font-bold">
-            <Image src="/icons/radix.png" width={50} height={50} alt="vercel" />{" "}
+          <div className="flex items-center gap-3 text-zinc-300 font-bold">
+            <Image
+              src="/icons/radix.png"
+              width={40}
+              height={40}
+              alt="Radix UI"
+            />
             Radix UI
           </div>
-          <div className="flex justify-center items-center gap-3 text-zinc-300 font-bold">
+          <div className="flex items-center gap-3 text-zinc-300 font-bold">
             <Image
               src="/icons/framer.png"
-              width={50}
-              height={50}
-              alt="vercel"
-            />{" "}
+              width={40}
+              height={40}
+              alt="Framer"
+            />
             Framer
           </div>
         </div>
       </div>
-      {/* Middle Part  */}
-      {/* <div className="w-full space-y-9 flex justify-center items-center">
-        <div className="" style={{ width: "50%" }}>
-          <ScatterGraphy src="/japnese.png" shape={"square"} size={0.1} />
-        </div>
-      </div> */}
+
       <JapaneseCharacter />
 
       {/* Featured Components  */}
-      <div className="flex-col mt-9  justify-center items-center container px-52 bg-black">
-        <h2 className="text-5xl text-center font-bold mb-4">
+      <div className="flex flex-col mt-9 justify-center items-center px-4 lg:px-52 py-12 bg-black">
+        <h2 className="text-3xl sm:text-5xl font-bold text-center mb-4">
           Featured Components
         </h2>
-        <p className=" text-gray-400 text-center">
+        <p className="text-gray-400 text-center mb-8 max-w-3xl">
           All sorts of cool components created by our community, from simple to
           detailed and complex components.{" "}
           <span className="text-zinc-200 font-bold">
             Your ultimate AI components library.
           </span>
         </p>
-        <div className="grid grid-cols-3  justify-between gap-5 items-start container mt-16 my-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           <LandingCard2 />
           <LandingCard2 />
           <LandingCard2 />
         </div>
       </div>
-
-      <Footer />
     </section>
   );
 };

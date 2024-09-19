@@ -19,8 +19,6 @@ export function SiteHeader() {
   useEffect(() => {
     if (pathname === "/") {
       document.documentElement.classList.add("dark");
-    } else if (pathname?.includes("/docs")) {
-      document.documentElement.classList.remove("dark");
     }
   }, [pathname]);
 
@@ -31,14 +29,14 @@ export function SiteHeader() {
           "sticky top-0 z-50 w-full -mb-12 bg-white dark:bg-zinc-950"
         )}
       >
-        <div className="container flex h-14 max-w-screen-2xl items-center md:pr-56">
+        <div className="flex h-14 items-center px-3 md:px-10">
           <MainNav />
           <MobileNav />
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             <div className="w-full flex-1 md:w-auto md:flex-none">
               <CommandMenu />
             </div>
-            <nav className="flex items-center ">
+            <nav className="flex items-center">
               <Link
                 href={siteConfig.links.github}
                 target="_blank"
@@ -78,11 +76,6 @@ export function SiteHeader() {
           </div>
         </div>
       </header>
-      {/* <div className="animate-slide-up fixed inset-x-1/2 top-0 z-50 md:absolute">
-        <div className=" flex w-full flex-col items-center justify-center">
-          <DistortedGlass></DistortedGlass>
-        </div>
-      </div> */}
     </>
   );
 }

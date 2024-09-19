@@ -2,8 +2,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { GeistMono } from "geist/font/mono";
-import { SiteHeader } from "@/components/site/header";
+import { SiteHeader } from "@/components/common/header";
 import { ThemeProvider } from "@/components/providers";
+import Footer from "@/components/common/Footer";
 
 export const metadata: Metadata = {
   title: "EmpireUI",
@@ -36,6 +37,7 @@ export default function RootLayout({
         >
           <SiteHeader />
           <div className="isolate min-h-screen">{children}</div>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

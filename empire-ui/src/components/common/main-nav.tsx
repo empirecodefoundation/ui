@@ -6,15 +6,15 @@ import { usePathname } from "next/navigation";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { BrainCog } from "lucide-react";
+import { Icons } from "./icons";
 
 export function MainNav() {
   const pathname = usePathname();
 
   return (
-    <div className="ml-52 hidden md:flex ">
+    <div className="mx-auto hidden md:flex ">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-        <BrainCog className="h-6 w-6" />
+        <Icons.logo className="w-7 h-7" />
         <span className="hidden text-lg font-bold sm:inline-block">
           {siteConfig.name}
         </span>
