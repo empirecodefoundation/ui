@@ -74,7 +74,7 @@ function NavItem({ item, pathname }: NavItemProps) {
       <Link
         href={item.href}
         className={cn(
-          "group flex w-full text-md pl-4 items-center font-medium rounded-md border border-transparent px-2 py-2 hover:underline",
+          "group flex w-full text-md pl-4 items-center font-medium border border-transparent px-2 py-2 hover:underline",
           item.disabled && "cursor-not-allowed opacity-60",
           isActive
             ? "text-foreground border-l-2 border-l-white"

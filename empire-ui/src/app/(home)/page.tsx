@@ -49,14 +49,14 @@ const page = () => {
             backgroundColor="#00000"
           />
         </div>
-        <div className="grid justify-center items-center">
-          <div className="container mx-auto px-9 sm:px-6 ml-10 lg:px-8 text-left">
+        <div className="grid justify-center items-center mr-12">
+          <div className="container px-9 sm:px-6 ml-10 lg:px-8 text-left">
             <p className="text-xl text-zinc-200 mb-10 max-w-2xl text-center">
               The AI-powered component library that adapts to your design needs.
               Build beautiful, responsive interfaces in record time.
             </p>
           </div>
-          <div className="flex justify-center  space-x-4">
+          <div className="flex justify-center space-x-4">
             <Button size="lg" variant="outline">
               View Components
             </Button>

@@ -191,10 +191,10 @@ export default function Footer() {
           </div>
           <div className="flex ">
             <Button
-              variant="outline"
+              variant={"ghost"}
               className="flex justify-between items-center gap-2"
             >
-              <LifeBuoy className=" h-4 w-4"/>
+              <LifeBuoy className=" h-4 w-4" />
               <span className="text-xs">Support</span>
             </Button>
           </div>

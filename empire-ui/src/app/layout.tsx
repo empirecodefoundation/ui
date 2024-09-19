@@ -5,7 +5,6 @@ import { GeistMono } from "geist/font/mono";
 import { SiteHeader } from "@/components/site/header";
 import { ThemeProvider } from "@/components/providers";
 
-
 export const metadata: Metadata = {
   title: "EmpireUI",
   description:
@@ -29,7 +28,12 @@ export default function RootLayout({
         />
       ) : null}
       <body className={`${GeistMono.variable} bg-zinc-950 dark:bg-zinc-950`}>
-        <ThemeProvider attribute="class">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
           <SiteHeader />
           <div className="isolate min-h-screen">{children}</div>
         </ThemeProvider>
