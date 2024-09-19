@@ -6,15 +6,15 @@ import { usePathname } from "next/navigation";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { BrainCog } from "lucide-react";
+import { Icons } from "./icons";
 
 export function MainNav() {
   const pathname = usePathname();
 
   return (
-    <div className="ml-52 hidden md:flex ">
+    <div className="mx-auto hidden md:flex ">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-        <BrainCog className="h-6 w-6" />
+        <Icons.logo className="w-7 h-7" />
         <span className="hidden text-lg font-bold sm:inline-block">
           {siteConfig.name}
         </span>
@@ -32,35 +32,16 @@ export function MainNav() {
           Components
         </Link>
         <Link
-          href="/templates"
+          href="/docs/templates"
           className={cn(
             "text-base font-semibold transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/themes")
+            pathname?.startsWith("/docs")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
           Templates
         </Link>
-        {/* <Link
-          href="/blocks"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/blocks")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          Blocks
-        </Link> */}
-        {/* <Link
-          href={siteConfig.links.github}
-          className={cn(
-            "hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block"
-          )}
-        >
-          GitHub
-        </Link> */}
       </nav>
     </div>
   );

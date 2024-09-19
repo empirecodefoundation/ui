@@ -11,7 +11,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="dark"
       enableSystem
       disableTransitionOnChange
     >

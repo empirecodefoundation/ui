@@ -1,6 +1,6 @@
 export const siteConfig = {
-  name: "empireUI",
-  url: "https://localhost:3000",
+  name: "EmpireUI",
+  url: "empireui.org",
   ogImage: "",
   description:
     "Components components that you can copy and paste into react apps. Customizable. Open Source. Typed.",

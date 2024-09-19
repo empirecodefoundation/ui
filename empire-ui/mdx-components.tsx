@@ -24,7 +24,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     th: (props) => (
       <th
-        className="border dark:border-zinc-800 px-4 py-2 text-sm font-bold text-gray-300"
+        className="border dark:border-zinc-800 px-4 py-2 text-sm font-bold text-black dark:text-white"
         {...props}
       />
     ),

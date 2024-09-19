@@ -11,26 +11,32 @@ import { Icons } from "./icons";
 import { MainNav } from "./main-nav";
 import { MobileNav } from "./mobile-nav";
 import ThemeSwitch from "../ui/theme-switch";
+import { useEffect } from "react";
 
 export function SiteHeader() {
   let pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname === "/") {
+      document.documentElement.classList.add("dark");
+    }
+  }, [pathname]);
+
   return (
     <>
       <header
         className={cn(
-          "sticky top-0 z-50 w-full",
-          "-mb-12 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:backdrop-blur-xl"
+          "sticky top-0 z-50 w-full -mb-12 bg-white dark:bg-zinc-950"
         )}
       >
-        {/* <header className="sticky top-0 z-50 w-full -mb-12  lg:backdrop-blur-xl backdrop-filter bg-gradientTopRightLightHeaderSm/70  md:bg-gradientTopRightLightHeader  backdrop-blur supports-[backdrop-filter]:bg-background/60 "> */}
-        <div className="container flex h-14 max-w-screen-2xl items-center md:pr-56">
+        <div className="flex h-14 items-center px-3 md:px-10">
           <MainNav />
           <MobileNav />
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             <div className="w-full flex-1 md:w-auto md:flex-none">
               <CommandMenu />
             </div>
-            <nav className="flex items-center ">
+            <nav className="flex items-center">
               <Link
                 href={siteConfig.links.github}
                 target="_blank"
@@ -70,11 +76,6 @@ export function SiteHeader() {
           </div>
         </div>
       </header>
-      {/* <div className="animate-slide-up fixed inset-x-1/2 top-0 z-50 md:absolute">
-        <div className=" flex w-full flex-col items-center justify-center">
-          <DistortedGlass></DistortedGlass>
-        </div>
-      </div> */}
     </>
   );
 }
