@@ -129,17 +129,19 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
           </Tooltip.Content>
         </Tooltip.Root>
       </Tooltip.Provider>
+
       {summary && (
         <div
           ref={summaryRef}
           className={cn(
-            "absolute top-full mt-4 w-[600px] max-h-80 p-4 border border-zinc-800 bg-zinc-950 rounded-[0.5rem] shadow-md overflow-y-auto",
-            "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-zinc-400 scrollbar-track-gray-100",
+            "mt-4 p-4 rounded-lg shadow-sm border max-w-full",
+            "overflow-x-auto break-words text-sm",
+            "md:text-base",
             summaryClassName
           )}
         >
-          <h3 className="text-lg font-semibold mb-3 text-zinc-200">Summary:</h3>
-          <p className="text-sm text-zinc-200 leading-relaxed">{summary}</p>
+          <h3 className="text-lg font-semibold mb-2">Summary:</h3>
+          <p>{summary}</p>
         </div>
       )}
     </div>

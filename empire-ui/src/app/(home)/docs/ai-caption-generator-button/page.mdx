@@ -1,0 +1,39 @@
+import { AIImageCaptionButtonExample } from "@/components/examples/AIImageCaptionExample"
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Caption generator button"} />
+
+# AI Caption Generator Button
+
+---
+
+A simple AI-powered button to generate social media captions for your images.
+
+<ComponentCodePreview
+  component={<AIImageCaptionButtonExample />}
+  filePath="examples/AIImageCaptionExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  componentFilePath={"core/AIImageCaptionButton"}
+  routeFilePath={"buttons/AIImageCaptionButton"}
+  cli={"npx empire@latest add ai-caption-generator-button"}
+/>
+
+## Props
+
+---
+
+| Prop name             | Type     | Description                            |
+| --------------------- | -------- | -------------------------------------- |
+| `className`           | `string` | The class name of the child component. |
+| `buttonClassName`     | `string` | The class name of the button.          |
+| `tooltipclassName`    | `string` | The class name of the tooltip.         |
+| `correctionClassName` | `string` | The class name of the corrected text.  |
