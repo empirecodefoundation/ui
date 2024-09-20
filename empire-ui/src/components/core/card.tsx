@@ -18,7 +18,7 @@ interface ProfileCardProps {
   additional_information: string;
 }
 
-export const Card1: React.FC<ProfileCardProps> = ({
+export const Card: React.FC<ProfileCardProps> = ({
   name,
   title,
   company,

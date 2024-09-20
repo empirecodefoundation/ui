@@ -1,8 +1,8 @@
-import { Card1 } from "@/components/core/card1";
+import { Card } from "@/components/core/card";
 
 export const Card1Demo = () => {
   return (
-    <Card1
+    <Card
       name={"Chaitanya"}
       title={"Intern"}
       company={"Misty Interactive Solutions"}
