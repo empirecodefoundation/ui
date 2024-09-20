@@ -1,19 +1,16 @@
-import { AIChatboxExample } from "@/components/examples/AIChatboxExample";
+import { AISummarizerButtonExample } from "@/components/examples/AISummarizerButtonExample";
 import ComponentCodePreview from "@/components/component-code-preview";
 import ComponentInstall from "@/components/component-install";
-import { Breadcrumbs } from "@/components/breadcrumbs";
 
-<Breadcrumbs title={"Chatbox"} />
-
-# AI Chatbox
+# AI Text Summarizer Button
 
 ---
 
-A simple AI-powered chatbox that you can just directly copy paste in your code.
+A simple AI-powered Button that summarizes the text you select on the webpage.
 
 <ComponentCodePreview
-  component={<AIChatboxExample />}
-  filePath="examples/AIChatboxExample"
+  component={<AISummarizerButtonExample />}
+  filePath="examples/AISummarizerButtonExample"
 />
 
 ## Installation
@@ -21,10 +18,9 @@ A simple AI-powered chatbox that you can just directly copy paste in your code.
 ---
 
 <ComponentInstall
-  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
-  componentFilePath={"core/AIChatbox"}
-  routeFilePath={"chat"}
-  cli={"npx empire@latest add ai-chatbox"}
+  componentFilePath={"core/AISummarizerButton"}
+  routeFilePath={"buttons/AISummarizerButton"}
+  cli={"npx empire@latest add ai-summarizer-button"}
 />
 
 ## Props

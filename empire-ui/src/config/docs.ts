@@ -1,6 +1,4 @@
 import { MainNavItem, SidebarNavItem } from "@/types/nav";
-import { Item } from "@radix-ui/react-dropdown-menu";
-import { title } from "process";
 
 interface DocsConfig {
   mainNav: MainNavItem[];
@@ -51,23 +49,13 @@ export const docsConfig: DocsConfig = {
               items: [],
             },
             {
+              title: "Translator Button",
+              href: "/docs/ai-translator-button",
+              items: [],
+            },
+            {
               title: "Caption Generator Button",
               href: "/docs/ai-caption-generator-button",
-              items: [],
-            },
-            {
-              title: "Chatbox",
-              href: "/docs/ai-chatbox",
-              items: [],
-            },
-          ],
-        },
-        {
-          title: "Starter components",
-          items: [
-            {
-              title: "Card",
-              href: "/docs/card",
               items: [],
             },
           ],
