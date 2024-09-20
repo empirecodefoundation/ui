@@ -1,0 +1,38 @@
+import { Card1Demo } from "@/components/examples/card1Demo";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Card"} />
+
+# AI Text Summarizer Button
+
+---
+
+A simple AI-powered Button that summarizes the text you select on the webpage.
+
+<ComponentCodePreview
+  component={<Card1Demo />}
+  filePath="examples/Card1Demo"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  componentFilePath={"core/card1"}
+  cli={"npx empire@latest add card"}
+/>
+
+## Props
+
+---
+
+| Prop name          | Type     | Description                            |
+| ------------------ | -------- | -------------------------------------- |
+| `className`        | `string` | The class name of the child component. |
+| `buttonClassName`  | `string` | The class name of the button.          |
+| `tooltipclassName` | `string` | The class name of the tooltip.         |
+| `summaryClassName` | `string` | The class name of the summary.         |

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { MoveDown, MoveRight } from "lucide-react";
@@ -33,9 +35,9 @@ export const Card1: React.FC<ProfileCardProps> = ({
   };
 
   return (
-    <div className="relative shadow-lg rounded-[50px] bg-white p-6 pb-2 flex flex-col sm:flex-row">
+    <div className="relative shadow-lg border rounded-[50px] p-6 pb-2 flex flex-col sm:flex-row">
       <div>
-        <div className="absolute top-0 right-0 bg-slate-100 p-4 rounded-tr-[50px] rounded-bl-[50px]">
+        <div className="absolute top-0 right-0 bg-zinc-100 dark:bg-zinc-800 p-4 rounded-tr-[50px] rounded-bl-[50px]">
           <motion.button
             className="text-gray-400 hover:text-gray-600"
             whileHover={{ scale: 1.1 }}
@@ -65,7 +67,7 @@ export const Card1: React.FC<ProfileCardProps> = ({
         </div>
         <div className="mx-2">
           <h2 className="text-xl font-bold">{name}</h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm">
             {title} at {company}
           </p>
         </div>
@@ -73,7 +75,7 @@ export const Card1: React.FC<ProfileCardProps> = ({
         {/* Static Content */}
         <div className="my-8 mx-2 flex justify-between space-x-9">
           <div>
-            <p className="text-sm text-gray-500 mb-2">Source</p>
+            <p className="text-sm mb-2">Source</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-xs">
               {socials.map((social) => (
                 <Link
@@ -109,19 +111,31 @@ export const Card1: React.FC<ProfileCardProps> = ({
 
       {/* Expandable Section to the Right */}
       <motion.div
-        initial={{ width: 0, opacity: 0 }}
+        initial={{ x: 100, y: 150, width: 0, opacity: 0 }}
         animate={{
           width: isExpanded ? "auto" : 0, // Set your desired width for expanded state
           height: isExpanded ? "auto" : 0,
           opacity: isExpanded ? 1 : 0,
+          x: isExpanded ? 0 : 100,
+          y: isExpanded ? 0 : 150,
         }}
         transition={{ duration: 0.5 }}
-        className="overflow-hidden bg-white rounded-tr-[50px] rounded-br-[50px] flex items-center justify-center"
+        className="overflow-hidden rounded-tr-[50px] rounded-br-[50px] flex items-center justify-center"
       >
-        <div className="w-64 px-6 py-2">
-          <h3 className="text-lg font-semibold">Additional Information</h3>
-          <p className="text-sm text-gray-600">{additional_information}</p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: isExpanded ? 1 : 0,
+          }}
+          transition={{
+            duration: isExpanded ? 1 : 0.05,
+            delay: isExpanded ? 0.5 : 0,
+          }}
+          className="w-64 px-6 py-2"
+        >
+          <h3 className="text-lg font-semibold">Additional Information:</h3>
+          <p className="text-sm">{additional_information}</p>
+        </motion.div>
       </motion.div>
     </div>
   );

@@ -132,15 +132,14 @@ const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
         <div
           ref={correctionRef}
           className={cn(
-            "absolute top-full mt-4 w-[600px] max-h-80 p-4 border border-zinc-800 bg-zinc-950 rounded-[0.5rem] shadow-md overflow-y-auto",
-            "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-zinc-400 scrollbar-track-gray-100",
+            "mt-4 p-4 rounded-lg shadow-sm border max-w-full",
+            "overflow-x-auto break-words text-sm",
+            "md:text-base",
             correctionClassName
           )}
         >
-          <h3 className="text-lg font-semibold mb-3 text-zinc-200">
-            Correction:
-          </h3>
-          <p className="text-sm text-zinc-200 leading-relaxed">{correction}</p>
+          <h3 className="text-lg font-semibold mb-2">Correction:</h3>
+          <p>{correction}</p>
         </div>
       )}
     </div>
