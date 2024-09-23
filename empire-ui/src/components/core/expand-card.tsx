@@ -18,7 +18,7 @@ interface ProfileCardProps {
   additional_information: string;
 }
 
-export const Card: React.FC<ProfileCardProps> = ({
+export const ExapndCard: React.FC<ProfileCardProps> = ({
   name,
   title,
   company,
@@ -26,6 +26,7 @@ export const Card: React.FC<ProfileCardProps> = ({
   rating,
   socials,
   additional_information,
+  children,
 }) => {
   const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -72,7 +73,6 @@ export const Card: React.FC<ProfileCardProps> = ({
           </p>
         </div>
 
-        {/* Static Content */}
         <div className="my-8 mx-2 flex justify-between space-x-9">
           <div>
             <p className="text-sm mb-2">Source</p>

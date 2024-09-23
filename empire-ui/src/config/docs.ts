@@ -66,8 +66,23 @@ export const docsConfig: DocsConfig = {
           title: "Starter components",
           items: [
             {
-              title: "Card",
-              href: "/docs/card",
+              title: "Expand Card",
+              href: "/docs/expand-card",
+              items: [],
+            },
+            {
+              title: "Passcode Card",
+              href: "/docs/passcode-card",
+              items: [],
+            },
+            {
+              title: "Prediction Output Card",
+              href: "/docs/prediction-output-card",
+              items: [],
+            },
+            {
+              title: "Training Summary Card",
+              href: "/docs/training-summary-card",
               items: [],
             },
           ],

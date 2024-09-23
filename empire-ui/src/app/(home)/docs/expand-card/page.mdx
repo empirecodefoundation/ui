@@ -1,19 +1,19 @@
-import { Card1Demo } from "@/components/examples/Card1Demo";
+import { ExpandCardExample } from "@/components/examples/ExpandCardExample";
 import ComponentCodePreview from "@/components/component-code-preview";
 import ComponentInstall from "@/components/component-install";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 <Breadcrumbs title={"Card"} />
 
-# AI Text Summarizer Button
+# Exapnd Card 
 
 ---
 
-A simple AI-powered Button that summarizes the text you select on the webpage.
+Displays an expandable card and with copy paste functionality.
 
 <ComponentCodePreview
-  component={<Card1Demo />}
-  filePath="examples/Card1Demo"
+  component={<ExpandCardExample />}
+  filePath="examples/ExpandCardExample"
 />
 
 ## Installation
@@ -22,8 +22,8 @@ A simple AI-powered Button that summarizes the text you select on the webpage.
 
 <ComponentInstall
   dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
-  componentFilePath={"core/card"}
-  cli={"npx empire@latest add card"}
+  componentFilePath={"core/expand-card"}
+  cli={"npx empire@latest add expand-card"}
 />
 
 ## Props

@@ -114,7 +114,7 @@ const page = () => {
       <JapaneseCharacter />
 
       {/* Featured Components  */}
-      <div className="flex flex-col mt-9 justify-center items-center px-4 lg:px-52 py-12 bg-black">
+      <div className="flex flex-col my-9 justify-center items-center px-4 py-12 bg-black">
         <h2 className="text-3xl sm:text-5xl font-bold text-center mb-4">
           Featured Components
         </h2>
@@ -125,7 +125,8 @@ const page = () => {
             Your ultimate AI components library.
           </span>
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="flex flex-1 flex-wrap justify-center items-center gap-4">
+          <LandingCard2 />
           <LandingCard2 />
           <LandingCard2 />
           <LandingCard2 />

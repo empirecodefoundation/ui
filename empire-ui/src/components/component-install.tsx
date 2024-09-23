@@ -61,7 +61,7 @@ export default function ComponentInstall({
               </div>
 
               <div className="flex flex-col space-y-6 ml-7 border-zinc-800">
-                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 w-fit rounded-xl">{`components/ui/${componentFilePath}.tsx`}</code>
+                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">{`components/ui/${componentFilePath}.tsx`}</code>
 
                 <CodePreview code={ComponentFileContent}>
                   <CodeRenderer code={ComponentFileContent} lang="tsx" />
@@ -78,7 +78,7 @@ export default function ComponentInstall({
               </div>
 
               <div className="flex flex-col space-y-6 ml-7 border-zinc-800">
-                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 w-fit rounded-xl">{`app/api/${routeFilePath}.ts`}</code>
+                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">{`app/api/${routeFilePath}.ts`}</code>
 
                 <CodePreview code={routeFileContent}>
                   <CodeRenderer code={routeFileContent} lang="tsx" />
