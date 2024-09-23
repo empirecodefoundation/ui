@@ -21,7 +21,7 @@ export default function Footer() {
               <Button
                 variant="link"
                 size={"default"}
-                className="text-blue-300 hover:text-gray-300 p-0 text-xs"
+                className="text-orange-500 hover:text-gray-300 p-0 text-xs"
               >
                 Creators
               </Button>
@@ -101,7 +101,7 @@ export default function Footer() {
             <div className="flex">
               <Button
                 variant={"ghost"}
-                className="flex rounded-[3px] px-2 h-7 bg-yellow-300/20 items-center gap-1 hover:bg-yellow-300/25"
+                className="flex rounded-[3px] px-2 h-7 text-white bg-orange-700 items-center gap-1 hover:bg-orange-600"
               >
                 <LifeBuoy className="h-4 w-4" />
                 <span className="text-xs">Support</span>

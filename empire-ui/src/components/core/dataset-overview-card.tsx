@@ -40,7 +40,7 @@ export const DatasetOverviewCard = ({
 
   return (
     <Card
-      className="w-full max-w-lg mx-auto bg-black text-white rounded-2xl shadow-lg overflow-hidden"
+      className="w-full max-w-lg mx-auto rounded-2xl shadow-lg overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -152,10 +152,13 @@ export const DatasetOverviewCard = ({
                 <BarChart data={sampleData}>
                   <CartesianGrid
                     strokeDasharray="3 3"
-                    stroke="rgba(255, 255, 255, 0.4)"
+                    className="stroke-[rgba(0,0,0,0.1)] dark:stroke-[rgba(255,255,255,0.1)]"
                   />
-                  <XAxis dataKey="name" stroke="rgba(255, 255, 255, 0.7)" />
-                  <YAxis stroke="rgba(255, 255, 255, 0.7)" />
+                  <XAxis
+                    dataKey="name"
+                    className="stroke-[rgba(0,0,0,0.7)] dark:stroke-[rgba(255,255,255,0.7)]"
+                  />
+                  <YAxis className="stroke-[rgba(0,0,0,0.7)] dark:stroke-[rgba(255,255,255,0.7)]" />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "rgba(0, 0, 0, 0.8)",
@@ -164,7 +167,7 @@ export const DatasetOverviewCard = ({
                       color: "white",
                     }}
                   />
-                  <Bar dataKey="value" fill="white" />
+                  <Bar dataKey="value" className="fill-black dark:fill-white" />
                 </BarChart>
               </ResponsiveContainer>
             </motion.div>
@@ -173,7 +176,7 @@ export const DatasetOverviewCard = ({
         <CardFooter className="mt-4">
           <Button
             onClick={onViewDataset}
-            className="w-full bg-white text-black font-semibold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:bg-white/90"
+            className="w-full font-semibold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105"
           >
             <Eye className="w-5 h-5 mr-2" />
             View Dataset

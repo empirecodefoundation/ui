@@ -1,11 +1,10 @@
-// @ts-nocheck
 "use client";
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DatasetOverviewCard } from "@/components/core/datset-overview-card";
+import { DatasetOverviewCard } from "@/components/core/dataset-overview-card";
 
 const datasets = [
   {
@@ -53,7 +52,7 @@ const datasets = [
   },
 ];
 
-export const DatasetOverviewCardDemo1 = () => {
+export const DatasetOverviewCardExample = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
@@ -85,25 +84,7 @@ export const DatasetOverviewCardDemo1 = () => {
   }, [currentIndex]);
 
   return (
-    <div className="min-h-screen bg-black text-white p-8 overflow-hidden">
-      {/* Animated Background */}
-      <div className="fixed inset-0 z-0">
-        <motion.div
-          className="absolute inset-0 opacity-30"
-          animate={{
-            backgroundImage: [
-              "radial-gradient(circle, #ffffff 1px, transparent 1px)",
-              "radial-gradient(circle, #ffffff 1.5px, transparent 1.5px)",
-              "radial-gradient(circle, #ffffff 1px, transparent 1px)",
-            ],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          style={{
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
-
+    <div className="min-h-screen p-8 overflow-hidden">
       {/* Content Container */}
       <div className="relative z-10">
         {/* Page Header */}
@@ -114,7 +95,7 @@ export const DatasetOverviewCardDemo1 = () => {
             transition={{ duration: 0.8, type: "spring" }}
             className="inline-block"
           >
-            <h1 className="pb-2 text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-600">
+            <h1 className="pb-2 text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-gray-600">
               AI-Powered Data Insights
             </h1>
           </motion.div>
@@ -122,7 +103,7 @@ export const DatasetOverviewCardDemo1 = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-2xl text-gray-300"
+            className="mt-6 text-2xl"
           >
             Unlock the power of your datasets with advanced analytics
           </motion.p>
@@ -188,7 +169,7 @@ export const DatasetOverviewCardDemo1 = () => {
 
           {/* Navigation Buttons */}
           <motion.div
-            className="absolute top-1/2 left-4"
+            className="absolute top-1/2 left-1"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             whileHover={{ scale: 1.1 }}
@@ -198,13 +179,13 @@ export const DatasetOverviewCardDemo1 = () => {
               onClick={prevSlide}
               variant="outline"
               size="icon"
-              className="rounded-full bg-white/10 text-white hover:bg-white/20 transition-all duration-300"
+              className="rounded-full transition-all duration-300"
             >
               <ChevronLeft className="h-6 w-6" />
             </Button>
           </motion.div>
           <motion.div
-            className="absolute top-1/2 right-4"
+            className="absolute top-1/2 right-1"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             whileHover={{ scale: 1.1 }}
@@ -214,22 +195,12 @@ export const DatasetOverviewCardDemo1 = () => {
               onClick={nextSlide}
               variant="outline"
               size="icon"
-              className="rounded-full bg-white/10 text-white hover:bg-white/20 transition-all duration-300"
+              className="rounded-full transition-all duration-300"
             >
               <ChevronRight className="h-6 w-6" />
             </Button>
           </motion.div>
         </main>
-
-        {/* Activity Indicator */}
-        <motion.div
-          className="fixed bottom-8 right-8 bg-white/10 backdrop-blur-lg rounded-full p-4 shadow-lg"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-        >
-          <Activity className="h-6 w-6 animate-pulse" />
-        </motion.div>
       </div>
     </div>
   );

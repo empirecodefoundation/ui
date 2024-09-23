@@ -85,6 +85,11 @@ export const docsConfig: DocsConfig = {
               href: "/docs/training-summary-card",
               items: [],
             },
+            {
+              title: "Dataset Overview Card",
+              href: "/docs/dataset-overview-card",
+              items: [],
+            },
           ],
         },
       ],
