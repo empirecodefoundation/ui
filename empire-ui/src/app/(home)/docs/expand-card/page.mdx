@@ -1,0 +1,38 @@
+import { ExpandCardExample } from "@/components/examples/ExpandCardExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Card"} />
+
+# Exapnd Card 
+
+---
+
+Displays an expandable card and with copy paste functionality.
+
+<ComponentCodePreview
+  component={<ExpandCardExample />}
+  filePath="examples/ExpandCardExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  componentFilePath={"core/expand-card"}
+  cli={"npx empire@latest add expand-card"}
+/>
+
+## Props
+
+---
+
+| Prop name          | Type     | Description                            |
+| ------------------ | -------- | -------------------------------------- |
+| `className`        | `string` | The class name of the child component. |
+| `buttonClassName`  | `string` | The class name of the button.          |
+| `tooltipclassName` | `string` | The class name of the tooltip.         |
+| `summaryClassName` | `string` | The class name of the summary.         |

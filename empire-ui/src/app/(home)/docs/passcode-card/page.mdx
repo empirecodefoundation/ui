@@ -1,0 +1,36 @@
+import { PasscodeCardExample } from "@/components/examples/PasscodeCardExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Card"} />
+
+# Passcode Card
+
+---
+
+Displays a passcode card that vibrates if the input is incorrect.
+
+<ComponentCodePreview
+  component={<PasscodeCardExample />}
+  filePath="examples/PasscodeCardExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  componentFilePath={"core/passcode-card"}
+  cli={"npx empire@latest add passcode-card"}
+/>
+
+## Props
+
+---
+
+| Prop name          | Type     | Description                            |
+| ------------------ | -------- | -------------------------------------- |
+| `length`           | `string` | The length of the passcode.            |
+| `correctPasscode`  | `string` | The correctPasscode.                   |

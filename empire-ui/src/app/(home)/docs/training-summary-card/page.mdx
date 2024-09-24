@@ -1,0 +1,36 @@
+import { TrainingSummaryCardExample } from "@/components/examples/TrainingSummaryCardExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Card"} />
+
+# Training Summary Card
+
+---
+
+Displays a tranining summary card for an AI model uses framer motion.
+
+<ComponentCodePreview
+  component={<TrainingSummaryCardExample />}
+  filePath="examples/TrainingSummaryCardExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  componentFilePath={"core/training-summary-card"}
+  cli={"npx empire@latest add training-summary-card"}
+/>
+
+## Props
+
+---
+
+| Prop name          | Type     | Description                            |
+| ------------------ | -------- | -------------------------------------- |
+| `length`           | `string` | The length of the passcode.            |
+| `correctPasscode`  | `string` | The correctPasscode.                   |
