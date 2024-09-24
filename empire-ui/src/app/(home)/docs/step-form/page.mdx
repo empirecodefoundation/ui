@@ -1,0 +1,36 @@
+import { StepFormExample } from "@/components/examples/StepFormExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Step Form"} />
+
+# Step Form
+
+---
+
+Displays a step form with copy and paste functionality
+
+<ComponentCodePreview
+  component={<StepFormExample />}
+  filePath="examples/StepFormExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  componentFilePath={"core/step-form"}
+  cli={"npx empire@latest add step-form"}
+/>
+
+## Props
+
+---
+
+| Prop name          | Type     | Description                            |
+| ------------------ | -------- | -------------------------------------- |
+| `length`           | `string` | The length of the passcode.            |
+| `correctPasscode`  | `string` | The correctPasscode.                   |
