@@ -1,15 +1,15 @@
-import { AIImageCaptionButtonExample } from "@/components/examples/AIImageCaptionExample"
+import { AIImageCaptionButtonExample } from "@/components/examples/AIImageCaptionExample";
 import ComponentCodePreview from "@/components/component-code-preview";
 import ComponentInstall from "@/components/component-install";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
-<Breadcrumbs title={"Caption generator button"} />
+<Breadcrumbs title={"AI Caption Generator Button"} />
 
 # AI Caption Generator Button
 
 ---
 
-A simple AI-powered button to generate social media captions for your images.
+A simple AI-powered button to generate social media captions for your images. This component leverages AI to automatically generate captions for uploaded images, making content creation faster and more convenient.
 
 <ComponentCodePreview
   component={<AIImageCaptionButtonExample />}
@@ -31,9 +31,11 @@ A simple AI-powered button to generate social media captions for your images.
 
 ---
 
-| Prop name             | Type     | Description                            |
-| --------------------- | -------- | -------------------------------------- |
-| `className`           | `string` | The class name of the child component. |
-| `buttonClassName`     | `string` | The class name of the button.          |
-| `tooltipclassName`    | `string` | The class name of the tooltip.         |
-| `correctionClassName` | `string` | The class name of the corrected text.  |
+| Prop name            | Type       | Description                                      |
+| -------------------- | ---------- | ------------------------------------------------ |
+| `cardClassName`      | `string`   | The class name for the outer card container.     |
+| `buttonClassName`    | `string`   | The class name for the caption button.           |
+| `inputClassName`     | `string`   | The class name for the file input.               |
+| `imageClassName`     | `string`   | The class name for the image element.            |
+| `captionClassName`   | `string`   | The class name for the generated caption.        |
+| `onCaptionGenerated` | `function` | Callback function when the caption is generated. |

@@ -3,13 +3,13 @@ import ComponentCodePreview from "@/components/component-code-preview";
 import ComponentInstall from "@/components/component-install";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
-<Breadcrumbs title={"Card"} />
+<Breadcrumbs title={"Passcode Card"} />
 
 # Passcode Card
 
 ---
 
-Displays a passcode card that vibrates if the input is incorrect.
+The `PasscodeCard` component provides an interactive passcode entry interface where users can input a passcode of customizable length. This component is ideal for scenarios where a secure passcode entry is required, such as for authentication or restricted access features.
 
 <ComponentCodePreview
   component={<PasscodeCardExample />}
@@ -21,7 +21,7 @@ Displays a passcode card that vibrates if the input is incorrect.
 ---
 
 <ComponentInstall
-  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  dependencies={"lucide-react"}
   componentFilePath={"core/passcode-card"}
   cli={"npx empire@latest add passcode-card"}
 />
@@ -30,7 +30,13 @@ Displays a passcode card that vibrates if the input is incorrect.
 
 ---
 
-| Prop name          | Type     | Description                            |
-| ------------------ | -------- | -------------------------------------- |
-| `length`           | `string` | The length of the passcode.            |
-| `correctPasscode`  | `string` | The correctPasscode.                   |
+| Prop name         | Type     | Description                                 |
+| ----------------- | -------- | ------------------------------------------- |
+| `correctPasscode` | `string` | The correct passcode that will be verified. |
+| `length`          | `number` | The number of digits in the passcode input. |
+
+### Interactions
+
+- When a user enters an incorrect passcode, the card shakes to indicate failure, and the input is cleared after a brief delay.
+- On entering the correct passcode, a success message appears.
+- Users can reset the input using the "Reset" button.

@@ -9,7 +9,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 
 ---
 
-Displays a step form with copy and paste functionality
+The `Step form` is a multi-step form component designed to guide users through a series of input fields, each step providing a clear and interactive experience. The form is ideal for collecting information step by step, reducing user overwhelm, and ensuring clarity in each step.
 
 <ComponentCodePreview
   component={<StepFormExample />}
@@ -21,16 +21,7 @@ Displays a step form with copy and paste functionality
 ---
 
 <ComponentInstall
-  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  dependencies={"framer-motion lucide-react"}
   componentFilePath={"core/step-form"}
   cli={"npx empire@latest add step-form"}
 />
-
-## Props
-
----
-
-| Prop name          | Type     | Description                            |
-| ------------------ | -------- | -------------------------------------- |
-| `length`           | `string` | The length of the passcode.            |
-| `correctPasscode`  | `string` | The correctPasscode.                   |

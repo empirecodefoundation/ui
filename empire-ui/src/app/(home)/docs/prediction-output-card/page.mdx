@@ -3,13 +3,13 @@ import ComponentCodePreview from "@/components/component-code-preview";
 import ComponentInstall from "@/components/component-install";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
-<Breadcrumbs title={"Card"} />
+<Breadcrumbs title={"Prediction Output Card"} />
 
 # Prediction Output Card
 
 ---
 
-Displays a prediction output card for an AI model uses framer motion.
+The `PredictionOutputCard` component is designed to display the results of AI predictions with a confidence level and a list of output items. It allows users to navigate through different predictions and export the results.
 
 <ComponentCodePreview
   component={<PredictionOutputCardExample />}
@@ -21,7 +21,7 @@ Displays a prediction output card for an AI model uses framer motion.
 ---
 
 <ComponentInstall
-  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  dependencies={"lucide-react framer-motion"}
   componentFilePath={"core/prediction-output-card"}
   cli={"npx empire@latest add prediction-output-card"}
 />
@@ -30,7 +30,16 @@ Displays a prediction output card for an AI model uses framer motion.
 
 ---
 
-| Prop name          | Type     | Description                            |
-| ------------------ | -------- | -------------------------------------- |
-| `length`           | `string` | The length of the passcode.            |
-| `correctPasscode`  | `string` | The correctPasscode.                   |
+| Prop name         | Type        | Description                                                  |
+| ----------------- | ----------- | ------------------------------------------------------------ |
+| `title`           | `string`    | Title of the card (prediction type).                         |
+| `confidenceLevel` | `number`    | The confidence level of the prediction.                      |
+| `onExport`        | `()=>void`  | Callback function for exporting the prediction.              |
+| `children`        | `ReactNode` | Content to display inside the card, like prediction results. |
+
+### Interactions
+
+- The confidence level is displayed as a progress bar and percentage.
+- Users can switch between different prediction results using navigation buttons.
+- Each card can be exported via the "Export Results" button.
+- Scrollable list of results with confidence badges.
