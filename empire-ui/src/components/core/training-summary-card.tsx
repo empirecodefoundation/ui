@@ -60,12 +60,12 @@ export const TrainingSummaryCard = ({
 
   return (
     <Card
-      className="w-full max-w-md mx-auto overflow-hidden bg-black text-white border-gray-500"
+      className="w-full max-w-md mx-auto overflow-hidden border-gray-500"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <CardHeader className="relative">
-        <div className="absolute top-0 left-0 w-full h-full bg-gray-300/10" />
+        <div className="absolute top-0 left-0 w-full h-full" />
         <CardTitle className="text-2xl font-bold mb-2 flex items-center gap-2">
           <Brain className="w-6 h-6" />
           Training Summary
@@ -101,9 +101,7 @@ export const TrainingSummaryCard = ({
             <span className="text-sm">Time: {timeTaken}</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-md font-semibold text-white">
-              Epoch: {epoch}
-            </span>
+            <span className="text-md font-semibold">Epoch: {epoch}</span>
           </div>
         </div>
       </CardHeader>
@@ -122,10 +120,13 @@ export const TrainingSummaryCard = ({
             >
               <CartesianGrid
                 strokeDasharray="3 3"
-                stroke="rgba(255, 255, 255, 0.1)"
+                className="stroke-[rgba(0,0,0,0.1)] dark:stroke-[rgba(255,255,255,0.1)]"
               />
-              <XAxis dataKey="name" stroke="rgba(255, 255, 255, 0.7)" />
-              <YAxis stroke="rgba(255, 255, 255, 0.7)" />
+              <XAxis
+                dataKey="name"
+                className="stroke-[rgba(0,0,0,0.7)] dark:stroke-[rgba(255,255,255,0.7)]"
+              />
+              <YAxis className="stroke-[rgba(0,0,0,0.7)] dark:stroke-[rgba(255,255,255,0.7)]" />
               <Tooltip
                 contentStyle={{
                   backgroundColor: "rgba(0, 0, 0, 0.8)",
@@ -140,6 +141,7 @@ export const TrainingSummaryCard = ({
                 stroke="white"
                 strokeWidth={2}
                 dot={false}
+                className="dark:stroke-white"
               />
               <Line
                 type="monotone"
@@ -147,6 +149,7 @@ export const TrainingSummaryCard = ({
                 stroke="white"
                 strokeWidth={2}
                 dot={false}
+                className="dark:stroke-white"
               />
             </LineChart>
           </ResponsiveContainer>
@@ -155,7 +158,7 @@ export const TrainingSummaryCard = ({
       <CardFooter>
         <Button
           onClick={onViewFullReport}
-          className="w-full text-white font-semibold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105"
+          className="w-full font-semibold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105"
         >
           <Eye className="w-5 h-5 mr-2" />
           View Full Report

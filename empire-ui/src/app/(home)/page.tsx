@@ -8,9 +8,7 @@ import ParticleImage, {
 import useWindowSize from "@rooks/use-window-size";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import Footer from "@/components/common/Footer";
-import LandingCard2 from "@/components/common/landing-card2";
-import JapaneseCharacter from "@/components/common/japanese";
+import { LandingCard } from "@/components/common/landing-card";
 import Link from "next/link";
 
 const particleOptions: ParticleOptions = {
@@ -76,7 +74,7 @@ const page = () => {
         </div>
 
         {/* icon section */}
-        <div className="py-24 flex flex-wrap justify-center items-center gap-10 lg:gap-12">
+        <div className="pt-20 pb-12 flex flex-wrap justify-center items-center gap-10 lg:gap-12">
           <div className="flex items-center gap-3 text-zinc-300 font-bold">
             <Image
               src="/icons/vercel.png"
@@ -111,24 +109,54 @@ const page = () => {
         </div>
       </div>
 
-      <JapaneseCharacter />
-
       {/* Featured Components  */}
-      <div className="flex flex-col mt-9 justify-center items-center px-4 lg:px-52 py-12 bg-black">
-        <h2 className="text-3xl sm:text-5xl font-bold text-center mb-4">
-          Featured Components
-        </h2>
-        <p className="text-gray-400 text-center mb-8 max-w-3xl">
-          All sorts of cool components created by our community, from simple to
-          detailed and complex components.{" "}
-          <span className="text-zinc-200 font-bold">
-            Your ultimate AI components library.
-          </span>
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-          <LandingCard2 />
-          <LandingCard2 />
-          <LandingCard2 />
+      <div className="flex my-4 justify-center items-center px-4 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-start items-center gap-4">
+          <LandingCard
+            src={"./component.gif"}
+            alt={""}
+            title="AI Text Summarizer Button"
+          />
+          <LandingCard
+            src={"./component.gif"}
+            alt={""}
+            title="AI Text Summarizer Button"
+          />
+          <LandingCard
+            src={"./component.gif"}
+            alt={""}
+            title="AI Text Summarizer Button"
+          />
+          <LandingCard
+            src={"./component.gif"}
+            alt={""}
+            title="AI Text Summarizer Button"
+          />
+          <LandingCard
+            src={"./component.gif"}
+            alt={""}
+            title="AI Text Summarizer Button"
+          />
+          <LandingCard
+            src={"./component.gif"}
+            alt={""}
+            title="AI Text Summarizer Button"
+          />
+          <LandingCard
+            src={"./component.gif"}
+            alt={""}
+            title="AI Text Summarizer Button"
+          />
+          <LandingCard
+            src={"./component.gif"}
+            alt={""}
+            title="AI Text Summarizer Button"
+          />
+          <LandingCard
+            src={"./component.gif"}
+            alt={""}
+            title="AI Text Summarizer Button"
+          />
         </div>
       </div>
     </section>

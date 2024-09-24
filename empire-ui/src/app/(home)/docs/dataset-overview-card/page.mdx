@@ -1,0 +1,27 @@
+import { DatasetOverviewCardExample } from "@/components/examples/DatasetOverviewCardExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Card"} />
+
+# Dataset Overview Card
+
+---
+
+Displays a dataset overview card for a training model
+
+<ComponentCodePreview
+  component={<DatasetOverviewCardExample />}
+  filePath="examples/DatasetOverviewCardExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  componentFilePath={"core/dataset-overview-card"}
+  cli={"npx empire@latest add dataset-overview-card"}
+/>
