@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
-import { Upload, Loader2, RefreshCw } from "lucide-react";
+import { Loader2, RefreshCw, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface AIImageCaptionButtonProps {
@@ -78,13 +78,13 @@ export const AIImageCaptionButton: React.FC<AIImageCaptionButtonProps> = ({
   return (
     <Card className={cn("w-full max-w-lg mx-auto rounded-xl", cardClassName)}>
       <CardHeader className="pb-0">
-        <CardTitle className="text-2xl font-bold flex items-center gap-x-2 justify-between">
+        <CardTitle className="flex items-center gap-x-2 justify-between">
           <Input
             type="file"
             accept="image/*"
             onChange={handleFileChange}
             className={cn(
-              "w-full border border-zinc-800 rounded-3xl p-2 text-sm",
+              "w-full border border-zinc-800 rounded-3xl text-xs",
               inputClassName
             )}
           />
@@ -103,7 +103,7 @@ export const AIImageCaptionButton: React.FC<AIImageCaptionButtonProps> = ({
             ) : caption ? (
               <RefreshCw className="w-5 h-5" />
             ) : (
-              <Upload className="w-5 h-5" />
+              <Sparkles className="w-5 h-5" />
             )}
           </motion.button>
         </CardTitle>

@@ -2,9 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Button } from "@/components/ui/button";
 import { Download, Sparkles } from "lucide-react";
 
 interface PredictionOutputCardProps {
@@ -25,21 +22,27 @@ export const PredictionOutputCard: React.FC<PredictionOutputCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
+      className="w-full max-w-md mx-auto"
     >
-      <Card className="w-full max-w-md mx-auto overflow-hidden">
-        <CardHeader className="bg-gradient-to-r from-primary to-secondary p-6">
-          <CardTitle className="flex items-center justify-between text-primary-foreground">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-gradient-to-r from-secondary to-primary p-6">
+          <h2 className="flex items-center justify-between text-white text-xl font-semibold">
             <span>{title}</span>
             <Sparkles className="w-6 h-6" />
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 bg-card">
+          </h2>
+        </div>
+        <div className="p-6 bg-gray-50 dark:bg-black">
           <div className="mb-6">
-            <h3 className="text-sm font-medium text-muted-foreground mb-2">
+            <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
               Confidence Level
             </h3>
             <div className="flex items-center justify-between mb-2">
-              <Progress value={confidenceLevel} className="w-4/5" />
+              <div className="w-4/5 bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                <div
+                  className="bg-black dark:bg-white h-2.5 rounded-full"
+                  style={{ width: `${confidenceLevel}%` }}
+                ></div>
+              </div>
               <span className="text-sm font-bold">
                 {confidenceLevel.toFixed(2)}%
               </span>
@@ -58,13 +61,16 @@ export const PredictionOutputCard: React.FC<PredictionOutputCardProps> = ({
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.5 }}
           >
-            <Button onClick={onExport} className="w-full" variant="default">
+            <button
+              onClick={onExport}
+              className="w-full bg-black dark:bg-white text-white dark:text-black py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center justify-center transition duration-150 ease-in-out"
+            >
               <Download className="w-4 h-4 mr-2" />
               Export Results
-            </Button>
+            </button>
           </motion.div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </motion.div>
   );
 };
