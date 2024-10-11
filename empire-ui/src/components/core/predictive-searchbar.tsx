@@ -117,7 +117,7 @@ const AiSearchBar = React.forwardRef<HTMLInputElement, InputProps>(
             {suggestions.map((suggestion, index) => (
               <li
                 key={suggestion.id}
-                ref={(el: any) => (suggestionRefs.current[index] = el)}
+                ref={(ele: any) => (suggestionRefs.current[index] = ele)}
                 className={cn(
                   "px-4 py-2 text-sm cursor-pointer transition-colors duration-150 ease-in-out",
                   index === selectedIndex
