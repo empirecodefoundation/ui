@@ -1,19 +1,20 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { cn } from "@/lib/utils";
-import { Search, Loader2 } from 'lucide-react';
+import { Search, Loader2 } from "lucide-react";
 
 interface SearchSuggestion {
   id: string;
   text: string;
 }
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+export interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
   onSearch: (query: string) => void;
 }
 
 const AiSearchBar = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type = "search", onSearch, ...props }, ref) => {
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState("");
     const [suggestions, setSuggestions] = useState<SearchSuggestion[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -21,22 +22,22 @@ const AiSearchBar = React.forwardRef<HTMLInputElement, InputProps>(
 
     const debouncedFetchSuggestions = useCallback(
       debounce(async (input: string) => {
-        if (input.trim() === '') {
+        if (input.trim() === "") {
           setSuggestions([]);
           return;
         }
 
         setIsLoading(true);
         try {
-          const response = await fetch('/api/search-suggestions', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+          const response = await fetch("/api/search-suggestions", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ query: input }),
           });
           const data = await response.json();
           setSuggestions(data);
         } catch (error) {
-          console.error('Error fetching suggestions:', error);
+          console.error("Error fetching suggestions:", error);
         } finally {
           setIsLoading(false);
         }
@@ -54,13 +55,15 @@ const AiSearchBar = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'ArrowDown') {
+      if (e.key === "ArrowDown") {
         e.preventDefault();
-        setSelectedIndex(prev => (prev < suggestions.length - 1 ? prev + 1 : prev));
-      } else if (e.key === 'ArrowUp') {
+        setSelectedIndex((prev) =>
+          prev < suggestions.length - 1 ? prev + 1 : prev
+        );
+      } else if (e.key === "ArrowUp") {
         e.preventDefault();
-        setSelectedIndex(prev => (prev > 0 ? prev - 1 : -1));
-      } else if (e.key === 'Enter') {
+        setSelectedIndex((prev) => (prev > 0 ? prev - 1 : -1));
+      } else if (e.key === "Enter") {
         if (selectedIndex >= 0) {
           setQuery(suggestions[selectedIndex].text);
           onSearch(suggestions[selectedIndex].text);
@@ -80,8 +83,8 @@ const AiSearchBar = React.forwardRef<HTMLInputElement, InputProps>(
     useEffect(() => {
       if (selectedIndex >= 0 && suggestionRefs.current[selectedIndex]) {
         suggestionRefs.current[selectedIndex]?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
+          behavior: "smooth",
+          block: "nearest",
         });
       }
     }, [selectedIndex]);
@@ -114,10 +117,12 @@ const AiSearchBar = React.forwardRef<HTMLInputElement, InputProps>(
             {suggestions.map((suggestion, index) => (
               <li
                 key={suggestion.id}
-                ref={el => (suggestionRefs.current[index] = el)}
+                ref={(el: any) => (suggestionRefs.current[index] = el)}
                 className={cn(
                   "px-4 py-2 text-sm cursor-pointer transition-colors duration-150 ease-in-out",
-                  index === selectedIndex ? "bg-accent text-accent-foreground" : "hover:bg-muted"
+                  index === selectedIndex
+                    ? "bg-accent text-accent-foreground"
+                    : "hover:bg-muted"
                 )}
                 onClick={() => handleSuggestionClick(suggestion)}
               >
@@ -133,7 +138,10 @@ const AiSearchBar = React.forwardRef<HTMLInputElement, InputProps>(
 
 AiSearchBar.displayName = "AiSearchBar";
 
-function debounce<T extends (...args: any[]) => any>(func: T, wait: number): (...args: Parameters<T>) => void {
+function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout | null = null;
   return (...args: Parameters<T>) => {
     if (timeout) clearTimeout(timeout);
