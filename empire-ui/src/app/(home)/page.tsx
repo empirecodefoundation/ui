@@ -4,7 +4,6 @@ import Image from "next/image";
 import { LandingCard } from "@/components/common/landing-card";
 import { Bebas_Neue, Afacad } from "next/font/google";
 import { cn } from "@/lib/utils";
-import StickySection from "@/components/common/sticky-section";
 
 const bebas_neue = Bebas_Neue({
   weight: "400",
