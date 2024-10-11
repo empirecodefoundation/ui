@@ -7,6 +7,7 @@ import {
   InstagramLogoIcon,
 } from "@radix-ui/react-icons";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -75,13 +76,18 @@ export default function Footer() {
               >
                 <DiscordLogoIcon className="h-5 w-5" />
               </Button>
-              <Button
-                variant="link"
-                size={"default"}
-                className="text-white hover:text-gray-300 p-0 text-xs font-bold"
+              <Link
+                href={"https://github.com/empirecodefoundation/ui"}
+                target="_blank"
               >
-                <GitHubLogoIcon className="h-5 w-5" />
-              </Button>
+                <Button
+                  variant="link"
+                  size={"default"}
+                  className="text-white hover:text-gray-300 p-0 text-xs font-bold"
+                >
+                  <GitHubLogoIcon className="h-5 w-5" />
+                </Button>
+              </Link>
               <Button
                 variant="link"
                 size={"default"}
