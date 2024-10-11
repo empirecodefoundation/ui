@@ -2,7 +2,7 @@ type IconProps = React.HTMLAttributes<SVGElement>;
 
 export const Icons = {
   logo: (props: IconProps) => (
-    <img src="/empireUI-logo.ico" alt="logo" className="w-7 h-7" />
+    <img src="/empire-logo.png" alt="logo" className="w-10 h-10" />
   ),
   twitter: (props: IconProps) => (
     <svg
