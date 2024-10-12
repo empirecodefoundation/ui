@@ -41,6 +41,11 @@ export const docsConfig: DocsConfig = {
           title: "AI components",
           items: [
             {
+              title: "Text Paraphraser Button",
+              href: "/docs/ai-paraphraser-button",
+              items: [],
+            },
+            {
               title: "Text Summarizer Button",
               href: "/docs/ai-summarizer-button",
               items: [],

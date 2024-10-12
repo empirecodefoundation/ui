@@ -1,0 +1,39 @@
+import { AIParaphraserButtonExample } from "@/components/examples/AIParaphraserButtonExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Paraphraser button"} />
+
+# AI Paraphraser Button
+
+---
+
+A simple AI-powered button that paraphrases selected text on the webpage while maintaining it's original meaning.
+
+<ComponentCodePreview
+  component={<AIParaphraserButtonExample />}
+  filePath="examples/AIParaphraserButtonExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  componentFilePath={"core/AIParaphraserButton"}
+  routeFilePath={"buttons/AIParaphraserButton"}
+  cli={"npx empire@latest add ai-paraphraser-button"}
+/>
+
+## Props
+
+---
+
+| Prop name             | Type     | Description                            |
+| --------------------- | -------- | -------------------------------------- |
+| `className`           | `string` | The class name of the child component. |
+| `buttonClassName`     | `string` | The class name of the button.          |
+| `tooltipclassName`    | `string` | The class name of the tooltip.         |
+| `correctionClassName` | `string` | The class name of the corrected text.  |
