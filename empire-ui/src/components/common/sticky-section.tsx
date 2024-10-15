@@ -1,79 +1,60 @@
-"use client";
+import { cn } from "@/lib/utils";
+import { Bebas_Neue, Afacad } from "next/font/google";
+import Sticky from "react-sticky-el";
 
-import { useEffect, useRef, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+const bebas_neue = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+});
 
-export default function StickySection() {
-  const [visibleCards, setVisibleCards] = useState<number[]>([]);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+const press_start_2p = Afacad({
+  weight: "400",
+  subsets: ["latin"],
+});
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = cardRefs.current.findIndex(
-            (ref) => ref === entry.target
-          );
-          if (entry.isIntersecting && !visibleCards.includes(index)) {
-            setVisibleCards((prev) => [...prev, index]);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    cardRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
-  }, [visibleCards]);
-
-  const cards = [
-    { title: "Card 1", content: "Content for card 1" },
-    { title: "Card 2", content: "Content for card 2" },
-    { title: "Card 3", content: "Content for card 3" },
-    { title: "Card 4", content: "Content for card 4" },
-  ];
-
+export const StickySection = () => {
   return (
-    <div className="absolute min-h-screen bg-transparent bg-opacity-100">
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div ref={sectionRef} className="relative">
-          <div className="sticky top-0 bg-white p-6 rounded-lg shadow-md z-10">
-            <h2 className="text-2xl font-bold mb-4">Sticky Section</h2>
-            <p className="text-gray-600">
-              This text remains in the same location as you scroll. The cards
-              will animate in from the bottom as you scroll down the page.
-            </p>
-          </div>
-          <div className="mt-8 space-y-96">
-            {cards.map((card, index) => (
-              <div
-                key={index}
-                ref={(el: any) => (cardRefs.current[index] = el)}
-                className={`transition-all duration-500 ease-out ${
-                  index % 2 === 0 ? "text-left" : "text-right"
-                } ${
-                  visibleCards.includes(index)
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-16"
-                }`}
-              >
-                <Card
-                  className={`w-64 ${index % 2 === 0 ? "ml-0" : "ml-auto"}`}
+    <div className="sticky-wrapper absolute inset-0">
+      <Sticky>
+        <div className="sticky-wrapper-element top-0 w-full h-screen">
+          <div className="sticky-text-wrapper w-full h-full relative">
+            <div className="flex justify-center items-center">
+              <div className="flex flex-col gap-x-0 space-y-20 md:space-y-32 absolute items-center justify-center top-32">
+                <div className="flex flex-col gap-x-0 gap-y-[0.5vw] items-center justify-center">
+                  <div
+                    className={cn(
+                      "tracking-[.001em] uppercase font-bold text-lg md:text-xl lg:text-2xl text-[#f3edd8] transform scale-y-[1.4]",
+                      bebas_neue.className
+                    )}
+                  >
+                    //INTO THE AI GEN
+                  </div>
+                  <h2
+                    className={cn(
+                      "tracking-[.001em] uppercase font-bold text-5xl md:text-7xl lg:text-8xl text-[#f3edd8] transform scale-y-[1.4]",
+                      bebas_neue.className
+                    )}
+                  >
+                    AI COMPONENTS
+                  </h2>
+                </div>
+                <div
+                  className={cn(
+                    "tracking-[.001em] uppercase font-bold text-sm md:text-md lg:text-lg text-[#f3edd8] transform scale-y-[1.2]"
+                  )}
                 >
-                  <CardContent className="p-4">
-                    <h3 className="text-lg font-semibold mb-2">{card.title}</h3>
-                    <p className="text-sm text-gray-600">{card.content}</p>
-                  </CardContent>
-                </Card>
+                  <div className="flex flex-col -space-y-2 justify-center items-center">
+                    <p>Supercharge your React apps with AI-driven</p>
+                    <p>components. Build intelligent, customizable,</p>
+                    <p>and responsive interfaces effortlessly—saving</p>
+                    <p>time and boosting performance with minimal code.</p>
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
-      </div>
+      </Sticky>
     </div>
   );
-}
+};
