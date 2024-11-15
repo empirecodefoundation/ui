@@ -32,10 +32,10 @@ export function MainNav() {
           Components
         </Link>
         <Link
-          href="/docs/templates"
+          href="/templates"
           className={cn(
             "text-base font-semibold transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs")
+            pathname?.startsWith("/templates")
               ? "text-foreground"
               : "text-foreground/60"
           )}
