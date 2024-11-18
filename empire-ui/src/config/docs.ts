@@ -1,6 +1,4 @@
 import { MainNavItem, SidebarNavItem } from "@/types/nav";
-import { Item } from "@radix-ui/react-dropdown-menu";
-import { title } from "process";
 
 interface DocsConfig {
   mainNav: MainNavItem[];
@@ -12,10 +10,6 @@ export const docsConfig: DocsConfig = {
     {
       title: "Components",
       href: "/docs",
-    },
-    {
-      title: "Templates",
-      href: "/templates",
     },
   ],
   sidebarNav: [
@@ -93,6 +87,11 @@ export const docsConfig: DocsConfig = {
             {
               title: "Dataset Overview Card",
               href: "/docs/dataset-overview-card",
+              items: [],
+            },
+            {
+              title: "Step Form",
+              href: "/docs/step-form",
               items: [],
             },
           ],

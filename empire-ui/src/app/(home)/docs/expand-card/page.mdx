@@ -3,13 +3,13 @@ import ComponentCodePreview from "@/components/component-code-preview";
 import ComponentInstall from "@/components/component-install";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
-<Breadcrumbs title={"Card"} />
+<Breadcrumbs title={"Expandable Profile Card"} />
 
-# Exapnd Card 
+# Expand Card
 
 ---
 
-Displays an expandable card and with copy paste functionality.
+The Expand Card component is an interactive card designed to showcase profiles with expandable sections for additional information. This card is ideal for displaying user profiles, client information, or team members, allowing you to toggle between a compact and expanded view.
 
 <ComponentCodePreview
   component={<ExpandCardExample />}
@@ -21,7 +21,7 @@ Displays an expandable card and with copy paste functionality.
 ---
 
 <ComponentInstall
-  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  dependencies={"framer-motion lucide-react"}
   componentFilePath={"core/expand-card"}
   cli={"npx empire@latest add expand-card"}
 />
@@ -30,9 +30,13 @@ Displays an expandable card and with copy paste functionality.
 
 ---
 
-| Prop name          | Type     | Description                            |
-| ------------------ | -------- | -------------------------------------- |
-| `className`        | `string` | The class name of the child component. |
-| `buttonClassName`  | `string` | The class name of the button.          |
-| `tooltipclassName` | `string` | The class name of the tooltip.         |
-| `summaryClassName` | `string` | The class name of the summary.         |
+| Prop name                | Type                                    | Description                                                       |
+| ------------------------ | --------------------------------------- | ----------------------------------------------------------------- |
+| `name`                   | `string`                                | Name of the person or client.                                     |
+| `title`                  | `string`                                | Title or position of the person.                                  |
+| `company`                | `string`                                | The company or organization of the person.                        |
+| `imageUrl`               | `string`                                | URL of the profile image.                                         |
+| `rating`                 | `number`                                | Rating out of 5 for the person (displays as dots).                |
+| `socials`                | `Array<{ name: string; href: string }>` | Array of social media profiles or contact methods (name and URL). |
+| `additional_information` | `string`                                | Additional information to display in the expanded section.        |
+| `redirectLink`           | `string`                                | A URL to redirect when interacting with the card (if applicable). |

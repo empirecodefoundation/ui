@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
+import { Ellipsis, Zap } from "lucide-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { cn } from "@/lib/utils";
 
@@ -78,6 +78,7 @@ interface AISummarizerButtonProps {
   buttonClassName?: string;
   tooltipClassName?: string;
   summaryClassName?: string;
+  textSelector?: string;
 }
 
 const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
@@ -85,6 +86,7 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
   buttonClassName,
   tooltipClassName,
   summaryClassName,
+  textSelector,
   ...props
 }) => {
   const { isSummarizing, summary, handleSummarize, summaryRef } =
@@ -92,7 +94,10 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
 
   const handleClick = async () => {
     const selectedText = window.getSelection()?.toString();
-    await handleSummarize(selectedText || "");
+    const textElement = document.querySelector(textSelector as string);
+    await handleSummarize(
+      selectedText ? selectedText : textElement?.textContent!
+    );
   };
 
   return (
@@ -110,9 +115,12 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
               )}
               disabled={isSummarizing}
             >
-              <Zap
-                className={cn("h-6 w-6", isSummarizing ? "animate-pulse" : "")}
-              />
+              {isSummarizing ? (
+                <Ellipsis className="h-6 w-6 animate-ping" />
+              ) : (
+                <Zap stroke="0" className="h-6 w-6 fill-zinc-950" />
+              )}
+
               <span className="sr-only">Summarize selected text</span>
             </motion.button>
           </Tooltip.Trigger>

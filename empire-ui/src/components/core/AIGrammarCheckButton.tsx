@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { SquarePen } from "lucide-react";
+import { BookOpenCheck, Ellipsis, SquarePen } from "lucide-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { cn } from "@/lib/utils";
 
@@ -77,6 +77,7 @@ interface AIGrammarCheckButtonProps {
   buttonClassName?: string;
   tooltipClassName?: string;
   correctionClassName?: string;
+  textSelector?: string;
 }
 
 const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
@@ -84,6 +85,7 @@ const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
   buttonClassName,
   tooltipClassName,
   correctionClassName,
+  textSelector,
   ...props
 }) => {
   const { isChecking, correction, handleSummarize, correctionRef } =
@@ -91,7 +93,10 @@ const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
 
   const handleClick = async () => {
     const selectedText = window.getSelection()?.toString();
-    await handleSummarize(selectedText || "");
+    const textElement = document.querySelector(textSelector as string);
+    await handleSummarize(
+      selectedText ? selectedText : textElement?.textContent!
+    );
   };
 
   return (
@@ -109,9 +114,11 @@ const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
               )}
               disabled={isChecking}
             >
-              <SquarePen
-                className={cn("h-6 w-6", isChecking ? "animate-pulse" : "")}
-              />
+              {isChecking ? (
+                <Ellipsis className="h-6 w-6 animate-ping" />
+              ) : (
+                <BookOpenCheck className="h-6 w-6" />
+              )}
               <span className="sr-only">Check selected text</span>
             </motion.button>
           </Tooltip.Trigger>
