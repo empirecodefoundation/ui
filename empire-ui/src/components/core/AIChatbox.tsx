@@ -23,6 +23,7 @@ interface AIChatboxProps {
 }
 
 export const AIChatbox: React.FC<AIChatboxProps> = ({ className, isOpen }) => {
+  //potential issue to solve: make this component non vercel dependent by updating useChat hook. (Github)
   const { messages, input, handleInputChange, handleSubmit } = useChat();
   const messagesEndRef: any = useRef(null);
 
@@ -48,9 +49,13 @@ export const AIChatbox: React.FC<AIChatboxProps> = ({ className, isOpen }) => {
             <CardHeader className="bg-black text-white p-4">
               <CardTitle className="text-lg flex gap-3 items-center">
                 <Bot size={30} className="text-white" />
-                <div className="flex flex-col gap-0 text-sm">
-                  <p className="">Bot</p>
-                  <p className="text-xs text-muted-foreground">active</p>
+                <div className="flex flex-col gap-1 text-sm">
+                  <p>Noni</p>
+                  <div className="flex items-center gap-x-1">
+                    <p className="bg-zinc-600 text-xs px-1 rounded">AI</p>
+                    <p className="text-xs text-muted-foreground">Active</p>
+                    <div className="rounded-full h-1 w-1 mt-0.5 bg-green-400" />
+                  </div>
                 </div>
               </CardTitle>
             </CardHeader>
@@ -99,7 +104,7 @@ export const AIChatbox: React.FC<AIChatboxProps> = ({ className, isOpen }) => {
               >
                 <Input
                   placeholder="Ask me anything..."
-                  className="flex-grow border-2 border-black rounded-full px-6 py-3 text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+                  className="flex-grow border-2 border-black rounded-full px-6 py-3 text-zinc-700 shadow-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300"
                   value={input}
                   onChange={handleInputChange}
                 />

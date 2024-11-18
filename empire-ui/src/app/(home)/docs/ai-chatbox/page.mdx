@@ -3,13 +3,13 @@ import ComponentCodePreview from "@/components/component-code-preview";
 import ComponentInstall from "@/components/component-install";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
-<Breadcrumbs title={"Chatbox"} />
+<Breadcrumbs title={"AI Chatbox"} />
 
 # AI Chatbox
 
 ---
 
-A simple AI-powered chatbox that you can just directly copy paste in your code.
+A flexible AI-powered chatbox component that can handle user inputs and display responses from an AI. This chatbox is interactive and supports features like smooth scrolling, avatars, and a user-friendly interface.
 
 <ComponentCodePreview
   component={<AIChatboxExample />}
@@ -21,7 +21,7 @@ A simple AI-powered chatbox that you can just directly copy paste in your code.
 ---
 
 <ComponentInstall
-  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip ai/react"}
   componentFilePath={"core/AIChatbox"}
   routeFilePath={"chat"}
   cli={"npx empire@latest add ai-chatbox"}
@@ -31,9 +31,7 @@ A simple AI-powered chatbox that you can just directly copy paste in your code.
 
 ---
 
-| Prop name          | Type     | Description                            |
-| ------------------ | -------- | -------------------------------------- |
-| `className`        | `string` | The class name of the child component. |
-| `buttonClassName`  | `string` | The class name of the button.          |
-| `tooltipclassName` | `string` | The class name of the tooltip.         |
-| `summaryClassName` | `string` | The class name of the summary.         |
+| Prop name   | Type      | Description                                     |
+| ----------- | --------- | ----------------------------------------------- |
+| `className` | `string`  | The class name for the chatbox container.       |
+| `isOpen`    | `boolean` | Controls whether the chatbox is open or closed. |
