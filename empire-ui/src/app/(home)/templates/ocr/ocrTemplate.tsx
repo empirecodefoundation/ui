@@ -318,7 +318,7 @@ ${a.content}
       images.forEach((img, index) => {
         formData.append(`images`, img.file);
       });
-      formData.append('apiKey', apiKey || process.env.NEXT_PUBLIC_TOGETHER_API_KEY || '');
+      formData.append('apiKey', apiKey || process.env.TOGETHER_API_KEY || '');
 
       const response = await fetch('/api/ocr', {
         method: 'POST',
