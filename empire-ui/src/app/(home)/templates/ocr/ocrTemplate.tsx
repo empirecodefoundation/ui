@@ -465,19 +465,19 @@ ${a.content}
           </div>
 
           {/* Main Processing Card */}
-          <Card className="w-[800px] ml-36 h-[280px] bg-[#0A0B0D] border-[#1a1c1e] shadow-lg"> {/* Changed mx-auto to ml-36 */}
+          <Card className="w-[800px] ml-36 h-auto min-h-[280px] bg-[#0A0B0D] border-[#1a1c1e] shadow-lg"> {/* Changed fixed height to h-auto */}
             <CardHeader>
               <CardTitle className="text-xl text-gray-200">Annual Report Analysis</CardTitle>
               <CardDescription className="text-gray-400">
                 Upload multiple pages from an annual report to extract text and generate comprehensive analysis
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-4"> {/* Reduced space-y-6 to space-y-4 */}
               {/* Upload Section */}
               <motion.div
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="border-2 border-dashed border-gray-700 rounded-lg p-6 text-center bg-[#0D0E10] hover:border-purple-500/50 transition-colors duration-300"
+                className="border-2 border-dashed border-gray-700 rounded-lg p-3 text-center bg-[#0D0E10] hover:border-purple-500/50 transition-colors duration-300" // reduced padding to p-3
               >
                 <input
                   type="file"
@@ -503,16 +503,16 @@ ${a.content}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="mt-4"
+                  className="mt-2"
                 >
-                  <p className="text-sm font-medium mb-2">Previews:</p>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  <p className="text-sm font-medium mb-1">Previews:</p> {/* Reduced margin bottom */}
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"> {/* Reduced gap */}
                     {images.map((img, index) => (
                       <div key={index} className="relative group">
                         <img
                           src={img.preview}
                           alt={`Preview ${index + 1}`}
-                          className="h-48 w-full rounded-lg object-cover"
+                          className="h-36 w-full rounded-lg object-cover" // Reduced height from h-48 to h-36
                         />
                         <Button
                           variant="ghost"
@@ -531,8 +531,9 @@ ${a.content}
                     whileTap={{ scale: 0.98 }}
                     onClick={processImages}
                     disabled={loading}
-                    className={`mt-4 px-6 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors ${loading ? 'opacity-50 cursor-not-allowed' : ''
-                      } flex items-center justify-center gap-2 w-full md:w-auto`}
+                    className={`mt-2 px-6 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors ${
+                      loading ? 'opacity-50 cursor-not-allowed' : ''
+                    } flex items-center justify-center gap-2 w-full md:w-auto`} // Reduced top margin
                   >
                     {loading ? (
                       <>
