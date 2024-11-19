@@ -390,7 +390,7 @@ ${a.content}
   };
 
   const toggleSidebar = () => {
-    setSidebarOpen((prev) => !prev);
+    setIsSidebarOpen((prev) => !prev);
   };
 
   return (
