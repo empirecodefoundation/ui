@@ -2,7 +2,7 @@ export default function TemplatesPage() {
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-black">
       <div className="text-center">
-        <div className="text-5xl font-bold mb-4 text-white">
+        <div className="text-2xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
           🚧 Under Construction 🚧
         </div>
         <p className="text-lg text-gray-400">
@@ -20,5 +20,3 @@ export default function TemplatesPage() {
     </div>
   );
 }
-
-
