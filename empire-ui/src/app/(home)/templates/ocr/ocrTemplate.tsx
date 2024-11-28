@@ -560,7 +560,7 @@ ${a.content}
           <motion.div
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.99 }}
-            className="border-2 border-dashed border-gray-700 rounded-lg p-4 text-center bg-[#0D0E10] hover:border-purple-500/50 transition-colors duration-300"
+            className="border-4 border-dotted border-white/80 rounded-lg p-4 text-center bg-[#0D0E10] hover:border-purple-500/50 transition-colors duration-300"
           >
             <input
               type="file"
