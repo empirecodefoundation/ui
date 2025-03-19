@@ -9,6 +9,9 @@
     "src/components/ui",
     "src/lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
