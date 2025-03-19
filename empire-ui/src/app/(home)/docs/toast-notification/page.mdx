@@ -1,0 +1,38 @@
+import { ToastExample } from "@/components/examples/toast-example";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Toast Notification"} />
+
+# Toast Notification
+
+---
+
+The Toast Notification component is a customizable notification system that displays messages to users. It provides various types of notifications (success, error, warning, info) with optional icons and actions.
+
+<ComponentCodePreview
+  component={<ToastExample />}
+  filePath="examples/toast-example"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion"}
+  componentFilePath={"ui/toast"}
+  cli={"npx empire@latest add toast"}
+/>
+
+## Props
+
+---
+
+| Prop name                | Type                                    | Description                                                       |
+| ------------------------ | --------------------------------------- | ----------------------------------------------------------------- |
+| `title`                  | `string`                                | Title of the notification.                                        |
+| `description`            | `string`                                | Description of the notification.                                  |
+| `variant`                | `string`                                | Updates the colour and theme of notification.                     |
+| `duration`               | `number`                                | Duration of the notification in milliseconds.                     |
