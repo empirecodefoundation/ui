@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     const prompt = await req.text();
 
     const { textStream } = await streamText({
-      model: groq("llama-3.1-70b-versatile"),
+      model: groq("llama3-8b-8192"),
       system:
         "You are an expert in grammar and style. Provide suggestions for improvements in grammar, spelling, and style. Be short and clear in your suggestions.",
       prompt: prompt,
