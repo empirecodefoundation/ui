@@ -1,7 +1,7 @@
 {
   "name": "@empireui/empire-ui",
-  "version": "1.0.5",
-  "description": "CLI for adding Empire UI components to your project",
+  "version": "1.0.0",
+  "description": "CLI for Empire UI components",
   "main": "dist/index.js",
   "bin": {
     "empire-ui": "./dist/index.js"
@@ -12,8 +12,6 @@
   ],
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "ts-node src/index.ts",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -27,6 +25,7 @@
   "author": "Empire UI",
   "license": "MIT",
   "dependencies": {
+    "@empireui/components": "^1.0.0",
     "chalk": "^4.1.2",
     "commander": "^11.0.0",
     "fs-extra": "^10.0.0"
