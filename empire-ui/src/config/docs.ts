@@ -65,6 +65,11 @@ export const docsConfig: DocsConfig = {
           title: "Starter components",
           items: [
             {
+              title: "Empire Toast",
+              href: "/docs/toast-notification",
+              items: [],
+            },
+            {
               title: "Expand Card",
               href: "/docs/expand-card",
               items: [],
