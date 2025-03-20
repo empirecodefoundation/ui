@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import { SiteHeader } from "@/components/common/header";
 import { ThemeProvider } from "@/components/core/providers";
 import Footer from "@/components/common/Footer";
+import { ToastContainer } from "@/components/ui/toast-container";
 
 export const metadata: Metadata = {
   title: "EmpireUI",
@@ -38,6 +39,7 @@ export default function RootLayout({
           <SiteHeader />
           <div className="isolate min-h-screen">{children}</div>
           <Footer />
+          {/* <ToastContainer /> */}
         </ThemeProvider>
       </body>
     </html>

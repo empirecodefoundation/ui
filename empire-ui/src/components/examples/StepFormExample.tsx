@@ -11,6 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { User, Mail, Lock, Brush } from "lucide-react";
+import { useToast } from "@/components/ui/toast";
 
 const StepContent = ({
   icon: Icon,
@@ -69,6 +70,7 @@ export const StepFormExample = () => {
     password: "",
     color: "#000000",
   });
+  const { addToast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -80,7 +82,13 @@ export const StepFormExample = () => {
   };
 
   const handleSubmit = () => {
-    alert(`Form submitted: ${JSON.stringify(formData)}`);
+    addToast({
+      title: "Form Submitted",
+      description: `Your information has been successfully submitted.`,
+      variant: "success",
+      duration: 5000,
+    });
+    console.log(`Form data: ${JSON.stringify(formData)}`);
   };
 
   const steps = [

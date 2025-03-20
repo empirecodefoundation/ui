@@ -5,14 +5,22 @@ import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/components/ui/toast";
 
 const useAITranslator = () => {
   const [isTranslating, setIsTranslating] = React.useState(false);
   const [translation, setTranslation] = React.useState<string>("");
   const translationRef = React.useRef<HTMLDivElement>(null);
+  const { addToast } = useToast();
 
   const handleTranslate = async (selectedText: string) => {
     if (!selectedText) {
+      addToast({
+        title: "Error",
+        description: "No text selected",
+        variant: "error",
+        duration: 5000,
+      });
       return;
     }
 
@@ -42,8 +50,13 @@ const useAITranslator = () => {
         setTranslation((prev) => prev + chunk);
       }
     } catch (error) {
-      console.error("Error summarizing text:", error);
-      alert("An error occurred while summarizing the text. Please try again.");
+      console.error("Error translating text:", error);
+      addToast({
+        title: "Translation Failed",
+        description: "An error occurred while translating the text. Please try again.",
+        variant: "error",
+        duration: 5000,
+      });
     } finally {
       setIsTranslating(false);
     }
