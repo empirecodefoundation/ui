@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { GeistMono } from "geist/font/mono";
 import { SiteHeader } from "@/components/common/header";
-import { ThemeProvider } from "@/components/providers";
+import { ThemeProvider } from "@/components/core/providers";
 import Footer from "@/components/common/Footer";
 
 export const metadata: Metadata = {

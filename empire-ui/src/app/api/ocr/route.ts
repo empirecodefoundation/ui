@@ -5,11 +5,15 @@ import { join } from 'path';
 import os from 'os';
 import Groq from "groq-sdk";
 
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY
-});
-
 async function generateAnalysis(ocrText: string, section: string) {
+  if (!process.env.GROQ_API_KEY) {
+    throw new Error('GROQ_API_KEY environment variable is not set');
+  }
+  
+  const groq = new Groq({
+    apiKey: process.env.GROQ_API_KEY
+  });
+  
   const prompt = `
     Analyze the following annual report text and generate a detailed analysis for the "${section}" section.
     Focus on extracting and analyzing relevant information specific to this section.
