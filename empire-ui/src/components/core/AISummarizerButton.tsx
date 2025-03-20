@@ -5,14 +5,22 @@ import { motion } from "framer-motion";
 import { Ellipsis, Zap } from "lucide-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/components/ui/toast";
 
 const useAISummarizer = () => {
   const [isSummarizing, setIsSummarizing] = React.useState(false);
   const [summary, setSummary] = React.useState<string>("");
   const summaryRef = React.useRef<HTMLDivElement>(null);
+  const { addToast } = useToast();
 
   const handleSummarize = async (selectedText: string) => {
     if (!selectedText) {
+      addToast({
+        title: "Error",
+        description: "No text selected",
+        variant: "error",
+        duration: 5000,
+      });
       return;
     }
 
@@ -43,7 +51,12 @@ const useAISummarizer = () => {
       }
     } catch (error) {
       console.error("Error summarizing text:", error);
-      alert("An error occurred while summarizing the text. Please try again.");
+      addToast({
+        title: "Summarization Failed",
+        description: "An error occurred while summarizing the text. Please try again.",
+        variant: "error",
+        duration: 5000,
+      });
     } finally {
       setIsSummarizing(false);
     }
