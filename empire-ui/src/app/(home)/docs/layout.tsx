@@ -1,6 +1,6 @@
 import { docsConfig } from "@/config/docs";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ThemeProvider } from "@/components/providers";
+import { ThemeProvider } from "@/components/core/providers";
 import { DocsSidebarNav } from "@/components/sidebar-nav";
 
 interface DocsLayoutProps {
