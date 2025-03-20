@@ -1,4 +1,4 @@
-//import this file into your layout.tsx file
+//import this file into your layout.tsx file .
 
 "use client";
 
