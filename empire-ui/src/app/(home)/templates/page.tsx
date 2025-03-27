@@ -8,7 +8,7 @@ export default function TemplatesPage() {
         <p className="text-lg text-gray-400">
           We are working hard to make this page awesome for you!
         </p>
-        <div className="mt-6">
+        <div className="mt-6 flex flex-col md:flex-row gap-4 justify-center">
           <a
             href="templates/ocr"
             className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 focus:ring-4 focus:ring-blue-300"

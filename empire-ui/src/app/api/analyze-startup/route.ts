@@ -1,12 +1,25 @@
 import { NextResponse } from 'next/server';
 import Groq from "groq-sdk";
 
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-});
+// Remove global initialization
+// const groq = new Groq({
+//   apiKey: process.env.GROQ_API_KEY,
+// });
 
 export async function POST(req: Request) {
   try {
+    // Initialize Groq client only when the API is called
+    if (!process.env.GROQ_API_KEY) {
+      return NextResponse.json(
+        { error: 'GROQ_API_KEY environment variable is not set' },
+        { status: 500 }
+      );
+    }
+
+    const groq = new Groq({
+      apiKey: process.env.GROQ_API_KEY,
+    });
+
     const { idea, industry } = await req.json();
 
     const prompt = `You are a startup analysis API that MUST return ONLY valid JSON without any additional text or explanation.
