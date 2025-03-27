@@ -1,6 +1,6 @@
 {
   "name": "@empireui/empire-ui",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "CLI for Empire UI components",
   "main": "dist/index.js",
   "bin": {
