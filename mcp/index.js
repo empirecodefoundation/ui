@@ -11,14 +11,45 @@ const server = new McpServer({
   version: "1.0.0",
 });
 
+// Check if Empire UI is initialized
+server.tool("empireui_check_initialized", {}, async () => {
+  try {
+    // This is a simplified check - in a real implementation you might want to check
+    // for the existence of components.json or other key files
+    const fs = await import("fs/promises");
+    const componentJsonExists = await fs
+      .access("./components.json")
+      .then(() => true)
+      .catch(() => false);
+
+    return {
+      content: [
+        {
+          type: "text",
+          text: componentJsonExists
+            ? "Empire UI is initialized in this project."
+            : "Empire UI is not initialized. Please run 'npx @empireui/empire-ui init' first.",
+        },
+      ],
+      isInitialized: componentJsonExists,
+    };
+  } catch (error) {
+    return {
+      content: [
+        {
+          type: "text",
+          text: `Error checking initialization: ${error.message}`,
+        },
+      ],
+      isInitialized: false,
+    };
+  }
+});
+
 // Button component tool
 server.tool(
   "empireui_button",
   {
-    variant: z
-      .enum(["default", "destructive", "outline", "secondary", "ghost", "link"])
-      .optional(),
-    size: z.enum(["default", "sm", "lg", "icon"]).optional(),
     children: z.string(),
     className: z.string().optional(),
     disabled: z.boolean().optional(),
@@ -29,8 +60,6 @@ server.tool(
       {
         type: "text",
         text: `<Button
-  variant="${params.variant || "default"}"
-  size="${params.size || "default"}"
   ${params.className ? `className="${params.className}"` : ""}
   ${params.disabled ? "disabled" : ""}
   ${params.onClick ? `onClick=${params.onClick}` : ""}
@@ -211,13 +240,12 @@ server.tool(
   {
     title: z.string(),
     description: z.string().optional(),
-    variant: z.enum(["default", "destructive"]).optional(),
   },
   async (params) => ({
     content: [
       {
         type: "text",
-        text: `<Toast variant="${params.variant || "default"}">
+        text: `<Toast>
   <ToastTitle>${params.title}</ToastTitle>
   ${
     params.description
@@ -265,7 +293,7 @@ import { Button } from "@/components/ui/button"
 
 export function ButtonDemo() {
   return (
-    <Button variant="default">Click me</Button>
+    <Button>Click me</Button>
   )
 }
 \`\`\`
@@ -308,24 +336,12 @@ export function DialogDemo() {
 }
 \`\`\`
 
-## More examples are available through the EmpireUI tools.`,
+## Important: Before using these components
+Make sure to initialize Empire UI with: \`npx @empireui/empire-ui init\`
+Then add each component you need with: \`npx @empireui/empire-ui add <component>\``,
     },
   ],
 }));
-
-// Add a dynamic greeting resource
-server.resource(
-  "greeting",
-  new ResourceTemplate("greeting://{name}", { list: undefined }),
-  async (uri, { name }) => ({
-    contents: [
-      {
-        uri: uri.href,
-        text: `Hello, ${name}!`,
-      },
-    ],
-  })
-);
 
 // Start receiving messages on stdin and sending messages on stdout
 const transport = new StdioServerTransport();

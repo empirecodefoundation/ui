@@ -1,6 +1,6 @@
 {
   "name": "@empireui/components",
-  "version": "1.0.02",
+  "version": "1.0.03",
   "description": "Empire UI Components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
