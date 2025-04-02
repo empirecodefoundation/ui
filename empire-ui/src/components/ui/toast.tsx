@@ -207,5 +207,4 @@ export function useToast() {
   return context;
 }
 
-// Export the components
 export { Toast, toastVariants }; 

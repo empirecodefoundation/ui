@@ -1,81 +1,77 @@
 #!/usr/bin/env node
 
+import { Command } from "commander";
+import { getConfig, validateConfig } from "./utils/get-config";
+import { addComponent } from "./utils/add-component";
+import { logger } from "./utils/logger";
 import fs from "fs-extra";
-import path from "path";
-import * as constants from "./utils/constants";
 
-// Function to copy all files in a directory, including subdirectories (like the apiHandler.ts)
-function copyComponentFiles(componentName: string, projectPath: string): void {
-  // Your component folder is outside of the cli folder, so we go up one directory
-  const componentSourcePath = path.join(
-    __dirname,
-    "../../../components", // Adjusted path to reach the components folder
-    componentName
-  );
+const program = new Command();
 
-  const componentDestPath = path.join(projectPath, "components", componentName);
+program
+  .name("empire-ui")
+  .description("CLI for adding Empire UI components to your project")
+  .version("1.0.3");
 
-  if (!fs.existsSync(componentSourcePath)) {
-    console.error(`Component ${componentName} does not exist!`);
-    process.exit(1);
-  }
+program
+  .command("init")
+  .description("Initialize Empire UI in your project")
+  .action(async () => {
+    try {
+      const config = {
+        $schema: "https://ui.shadcn.com/schema.json",
+        style: "default",
+        rsc: true,
+        tsx: true,
+        tailwind: {
+          config: "tailwind.config.js",
+          css: "app/globals.css",
+          baseColor: "slate",
+          cssVariables: true,
+          prefix: "",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+          ui: "@/components/ui",
+          lib: "@/lib",
+          hooks: "@/hooks",
+        },
+      };
 
-  // Create destination directory if it doesn't exist
-  fs.mkdirSync(componentDestPath, { recursive: true });
-
-  // Recursively copy all files from the source to the destination folder
-  fs.copySync(componentSourcePath, componentDestPath);
-
-  console.log(
-    `${componentName} component added to your project in components/${componentName}!`
-  );
-
-  // Check for apiHandler.ts file and copy it if it exists
-  const apiHandlerSourcePath = path.join(componentSourcePath, "apiHandler.ts");
-  const apiHandlerDestPath = path.join(componentDestPath, "apiHandler.ts");
-
-  if (fs.existsSync(apiHandlerSourcePath)) {
-    fs.copyFileSync(apiHandlerSourcePath, apiHandlerDestPath);
-    console.log(`apiHandler.ts added to ${componentName}!`);
-  } else {
-    console.log(`No apiHandler.ts found for ${componentName}`);
-  }
-}
-
-// Function to update the .env file with all AI API keys
-function updateEnvFile(projectPath: string): void {
-  const envFilePath = path.join(projectPath, ".env");
-
-  let envContent = "";
-
-  // Loop through all keys in the API keys list and add them to the env file
-  Object.keys(constants.apiKeysList).forEach((key: string) => {
-    const envLine = `${key}=${constants.apiKeysList[key]}\n`;
-    envContent += envLine;
+      await fs.writeJSON("components.json", config, { spaces: 2 });
+      logger.success("Created components.json");
+    } catch (error) {
+      logger.error(
+        error instanceof Error ? error.message : "An error occurred"
+      );
+      process.exit(1);
+    }
   });
 
-  if (!fs.existsSync(envFilePath)) {
-    fs.writeFileSync(envFilePath, envContent);
-    console.log(".env file created and updated with AI API keys!");
-  } else {
-    fs.appendFileSync(envFilePath, envContent);
-    console.log(".env file updated with AI API keys!");
-  }
-}
+program
+  .command("add")
+  .description("Add a component to your project")
+  .argument("<component>", "name of the component")
+  .option("-o, --overwrite", "Overwrite existing files")
+  .action(async (component, options) => {
+    try {
+      // 1. Validate project has required dependencies
+      const config = await getConfig();
+      await validateConfig(config);
 
-// Main CLI logic
-const args = process.argv.slice(2);
-const componentName = args[0];
+      // 2. Add the component
+      await addComponent({
+        component,
+        config,
+        overwrite: options.overwrite,
+      });
+    } catch (error) {
+      logger.error(
+        error instanceof Error ? error.message : "An error occurred"
+      );
+      process.exit(1);
+    }
+  });
 
-if (!componentName) {
-  console.error("Please specify a component name!");
-  process.exit(1);
-}
-
-const projectPath = process.cwd(); // Current user's project path
-
-// Copy the component files to the user's project
-copyComponentFiles(componentName, projectPath);
-
-// Update the .env file with all AI API keys
-updateEnvFile(projectPath);
+program.parse();

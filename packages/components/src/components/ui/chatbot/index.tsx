@@ -1,5 +1,6 @@
-"use client";
 // @ts-nocheck
+
+"use client";
 
 import { useChat } from "ai/react";
 import { ArrowUp, Bot } from "lucide-react";
