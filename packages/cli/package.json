@@ -22,7 +22,11 @@
     "nextjs",
     "tailwindcss"
   ],
+
   "author": "Empire UI",
+
+  "author": "Empire Code Foundation",
+
   "license": "MIT",
   "dependencies": {
     "@empireui/components": "^1.0.0",
