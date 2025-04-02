@@ -1,6 +1,6 @@
 {
   "name": "@empireui/empire-ui",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "CLI for Empire UI components",
   "main": "dist/index.js",
   "bin": {
@@ -22,11 +22,8 @@
     "nextjs",
     "tailwindcss"
   ],
-
   "author": "Empire UI",
-
   "author": "Empire Code Foundation",
-
   "license": "MIT",
   "dependencies": {
     "@empireui/components": "^1.0.0",
