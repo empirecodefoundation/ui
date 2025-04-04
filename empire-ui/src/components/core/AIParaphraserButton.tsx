@@ -5,14 +5,23 @@ import { motion } from "framer-motion";
 import { MessageSquareText } from "lucide-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/components/ui/toast";
 
 const useAIPhraser = () => {
   const [isPhrasing, setIsPhrasing] = React.useState(false);
   const [phrasedText, setPhrasedText] = React.useState<string>("");
   const phrasedTextRef = React.useRef<HTMLDivElement>(null);
+  const { addToast } = useToast();
 
   const handlePhrase = async (selectedText: string) => {
     if (!selectedText) {
+      addToast({
+        title: "Error",
+        description: "No text selected",
+        variant: "error",
+        duration: 5000,
+      });
+      console.log("Toast triggered: No text selected", { selectedText });
       return;
     }
 
@@ -43,7 +52,12 @@ const useAIPhraser = () => {
       }
     } catch (error) {
       console.error("Error phrasing text:", error);
-      alert("An error occurred while phrasing the text. Please try again.");
+      addToast({
+        title: "Error",
+        description: "An error occurred while phrasing the text. Please try again.",
+        variant: "error",
+        duration: 5000,
+      });
     } finally {
       setIsPhrasing(false);
     }

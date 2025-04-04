@@ -8,6 +8,7 @@ import { Download } from "lucide-react";
 type ComponentInstallProps = {
   cli: string;
   componentFilePath: string;
+  component1FilePath: string;
   routeFilePath?: string;
   dependencies?: string;
   globalCssPath?: string;
@@ -16,6 +17,7 @@ type ComponentInstallProps = {
 
 export default function ComponentInstall({
   componentFilePath,
+  component1FilePath,
   routeFilePath,
   dependencies,
   cli,
@@ -25,6 +27,11 @@ export default function ComponentInstall({
   const ComponentFileContent = extractCodeFromFilePath(
     `src/components/${componentFilePath}.tsx`
   );
+
+  const Component1FileContent = extractCodeFromFilePath(
+    `src/components/${component1FilePath}.tsx`
+  );
+
   let routeFileContent: string = "";
   if (routeFilePath) {
     routeFileContent = extractCodeFromFilePath(
@@ -55,15 +62,17 @@ export default function ComponentInstall({
         <TabsList className="mb-4">
           <TabsTrigger value="cli">CLI</TabsTrigger>
           <TabsTrigger value="component">Component</TabsTrigger>
-          {routeFilePath && <TabsTrigger value="route">API route</TabsTrigger>}
+          {/* {routeFilePath && <TabsTrigger value="route">API route</TabsTrigger>}
           {globalCssPath && <TabsTrigger value="css">CSS</TabsTrigger>}
-          {wrapperFilePath && <TabsTrigger value="wrapper">Wrapper</TabsTrigger>}
+          {wrapperFilePath && <TabsTrigger value="wrapper">Wrapper</TabsTrigger>} */}
         </TabsList>
+        
         <TabsContent value="cli" className="rounded-xl">
           <CodePreview code={cliCommand}>
             <CodeRenderer code={cliCommand} lang="tsx" />
           </CodePreview>
         </TabsContent>
+
         <TabsContent value="component" className="border-0 border-l">
           <div className="flex flex-col space-y-8">
             <div>
@@ -84,7 +93,9 @@ export default function ComponentInstall({
               </div>
 
               <div className="flex flex-col space-y-6 ml-7 border-zinc-800">
-                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">{`components/ui/${componentFilePath}.tsx`}</code>
+                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">
+                  {`components/ui/${componentFilePath}.tsx`}
+                </code>
 
                 <CodePreview code={ComponentFileContent}>
                   <CodeRenderer code={ComponentFileContent} lang="tsx" />
@@ -92,59 +103,82 @@ export default function ComponentInstall({
               </div>
             </div>
           </div>
-        </TabsContent>
-        {routeFilePath && (
-          <TabsContent value="route" className="border-0 border-l">
+
+          {component1FilePath && (
+          <div>
+              <div className="border-l-[6px] border-white pl-6 mb-5 mt-10">
+                <div>Copy the component code into your project.</div>
+              </div>
+
+              <div className="flex flex-col space-y-6 ml-7 border-zinc-800">
+                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">
+                  {`components/ui/${component1FilePath}.tsx`}
+                </code>
+
+                <CodePreview code={Component1FileContent}>
+                  <CodeRenderer code={Component1FileContent} lang="tsx" />
+                </CodePreview>
+              </div>
+            </div>
+          )}
+
+          {routeFilePath && (
             <div>
-              <div className="border-l-[6px] border-white pl-6 mb-5">
+              <div className="border-l-[6px] border-white pl-6 mb-5 mt-10">
                 <div>Copy the API route into your project.</div>
               </div>
 
               <div className="flex flex-col space-y-6 ml-7 border-zinc-800">
-                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">{`app/api/${routeFilePath}.ts`}</code>
+                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">
+                  {`app/api/${routeFilePath}.ts`}
+                </code>
 
                 <CodePreview code={routeFileContent}>
                   <CodeRenderer code={routeFileContent} lang="tsx" />
                 </CodePreview>
               </div>
             </div>
-          </TabsContent>
-        )}
-        {globalCssPath && (
-          <TabsContent value="css" className="border-0 border-l">
+          )}
+
+          {globalCssPath && (
             <div>
-              <div className="border-l-[6px] border-white pl-6 mb-5">
+              <div className="border-l-[6px] border-white pl-6 mb-5 mt-10">
                 <div>Add these CSS styles to your global CSS file.</div>
               </div>
 
               <div className="flex flex-col space-y-6 ml-7 border-zinc-800">
-                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">app/global.css</code>
+                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">
+                  app/global.css
+                </code>
 
                 <CodePreview code={cssContent}>
                   <CodeRenderer code={cssContent} lang="css" />
                 </CodePreview>
               </div>
             </div>
-          </TabsContent>
-        )}
-        {wrapperFilePath && (
-          <TabsContent value="wrapper" className="border-0 border-l">
+          )}
+
+          {wrapperFilePath && (
             <div>
-              <div className="border-l-[6px] border-white pl-6 mb-5">
+              <div className="border-l-[6px] border-white pl-6 mb-5 mt-10">
                 <div>Copy the wrapper component into your project.</div>
-                <div><span className="underline">Wrap your layout.tsx</span> file with it to load the component styles.</div>
+                <div>
+                  <span className="underline">Wrap your layout.tsx</span> file with it to load the component styles.
+                </div>
               </div>
 
               <div className="flex flex-col space-y-6 ml-7 border-zinc-800">
-                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">{`components/${wrapperFilePath}.tsx`}</code>
+                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">
+                  {`components/${wrapperFilePath}.tsx`}
+                </code>
 
                 <CodePreview code={wrapperFileContent}>
                   <CodeRenderer code={wrapperFileContent} lang="tsx" />
                 </CodePreview>
               </div>
             </div>
-          </TabsContent>
-        )}
+          )}
+        </TabsContent>
       </Tabs>
     </div>
   );
