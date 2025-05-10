@@ -52,7 +52,7 @@ export const HeroSection = () => {
       }}
       onClick={toggleSound}
     >
-      {/* <div> sound section </div> */}
+      {/* Sound Toggle Button */}
       <div
         className="flex z-10 justify-center items-center absolute inset-x-0 top-2 bottom-auto cursor-pointer"
         style={{
@@ -96,7 +96,7 @@ export const HeroSection = () => {
           }}
         >
           <div className="static">
-            <div>dummy text</div>
+            <div className="text-[#f3edd8] font-bold">EXPLORE COMPONENTS →</div>
           </div>
         </div>
 
@@ -109,7 +109,7 @@ export const HeroSection = () => {
           }}
         >
           <div className="static">
-            <div>dummy text</div>
+            <div className="text-[#f3edd8] text-sm">BUILT WITH REACT + NEXTJS</div>
           </div>
         </div>
 
@@ -122,7 +122,7 @@ export const HeroSection = () => {
           }}
         >
           <div className="static">
-            <div>dummy text</div>
+            <div className="text-[#f3edd8] text-sm">EMPIRECODEFOUNDATION © 2024</div>
           </div>
         </div>
 
@@ -173,10 +173,9 @@ export const HeroSection = () => {
             </h2>
           </div>
           <div className="wrapper-description z-[1] flex flex-col pt-10 text-center md:text-left text-lg -space-y-2 text-[#f3edd8]">
-            {/* <div className=""> {gif} </div> */}
-            <p>The AI-powered component library</p>
-            <p>that adapts to your design needs.</p>
-            <p>Build beautiful, responsive interfaces.</p>
+            <p>The next generation UI toolkit for AI applications</p>
+            <p>with ready-to-use intelligent components</p>
+            <p>designed for the modern web experience.</p>
           </div>
         </div>
         <div className="wrapper-card-container hidden absolute md:flex md:justify-center md:items-center w-[25vw] lg:w-[17vw] bottom-[25vw] lg:bottom-[15vw] right-[5vw] backdrop-blur-[4px] bg-gradient-to-b from-[#f3edd81a] to-[#f3edd81a] border border-[#f3edd852] rounded-[1px]">
@@ -222,13 +221,13 @@ export const HeroSection = () => {
                   <p>// WELCOME TO EMPIRE UI</p>
                 </div>
                 <div className="text-row flex items-center justify-start">
-                  <p>LET JOURNEYBEGIN = TRUE;</p>
+                  <p>npm install @empireui/components</p>
                 </div>
                 <div className="text-row flex items-center justify-start">
-                  <p>NPX EMPIREUI@LATEST INIT</p>
+                  <p>npx empireui@latest init</p>
                 </div>
                 <div className="text-row flex items-center justify-start">
-                  <p>RETHINK AI DESIGN</p>
+                  <p>// INTELLIGENT DESIGN AWAITS</p>
                 </div>
                 <div className="text-row flex items-center justify-start">
                   <p>{"}"}</p>

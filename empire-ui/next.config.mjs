@@ -7,7 +7,16 @@ import path from 'path';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ["pbs.twimg.com"],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'pbs.twimg.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.prod.website-files.com',
+            },
+        ],
     },
     reactStrictMode: true,
     experimental: {
@@ -24,7 +33,7 @@ const withNextra = nextra({
 const withMDX = createMDX({
     extension: /\.mdx?$/,
     options: {
-        remarkPlugins: [remarkGfm, [remarkCodeHike, { theme: 'css-variables' }]],
+        remarkPlugins: [remarkGfm, [remarkCodeHike, { theme: 'github-dark' }]],
     },
 });
 
