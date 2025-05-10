@@ -1,37 +1,30 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ComponentCodePreview from "@/components/component-code-preview";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { CodeBlock } from "@/components/ui/code-block";
 
 <Breadcrumbs title={"Installation"} />
 
 # Installation
 
----
-
 Empire UI is designed to be easy to install and integrate into your React and Next.js projects. Choose the installation method that works best for your workflow.
 
 ## Package Installation
 
-<Tabs defaultValue="npm">
-  <TabsList>
+<Tabs defaultValue="npm" className="mt-6 mb-10">
+  <TabsList className="mb-4">
     <TabsTrigger value="npm">npm</TabsTrigger>
     <TabsTrigger value="yarn">yarn</TabsTrigger>
     <TabsTrigger value="pnpm">pnpm</TabsTrigger>
   </TabsList>
-  <TabsContent value="npm">
-    ```bash
-    npm install @empireui/components
-    ```
+  <TabsContent value="npm" className="mt-2">
+    <CodeBlock language="bash" code="npm install @empireui/components" showCopyButton />
   </TabsContent>
-  <TabsContent value="yarn">
-    ```bash
-    yarn add @empireui/components
-    ```
+  <TabsContent value="yarn" className="mt-2">
+    <CodeBlock language="bash" code="yarn add @empireui/components" showCopyButton />
   </TabsContent>
-  <TabsContent value="pnpm">
-    ```bash
-    pnpm add @empireui/components
-    ```
+  <TabsContent value="pnpm" className="mt-2">
+    <CodeBlock language="bash" code="pnpm add @empireui/components" showCopyButton />
   </TabsContent>
 </Tabs>
 
@@ -39,9 +32,7 @@ Empire UI is designed to be easy to install and integrate into your React and Ne
 
 For a faster setup, you can use our CLI tool to initialize a new project with Empire UI:
 
-```bash
-npx empireui@latest init
-```
+<CodeBlock language="bash" code="npx empireui@latest init" showCopyButton />
 
 ## Manual Setup
 
@@ -51,8 +42,7 @@ If you're setting up manually, follow these steps:
 2. Set up Tailwind CSS in your project (if not already set up)
 3. Update your `tailwind.config.js` with the following:
 
-```js
-/** @type {import('tailwindcss').Config} */
+<CodeBlock language="js" showCopyButton code={`/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -107,15 +97,13 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
-```
+}`} />
 
 ## Usage Example
 
 After installation, you can import components directly:
 
-```jsx
-// Basic usage
+<CodeBlock language="jsx" showCopyButton code={`// Basic usage
 import { Button, AuroraBackground } from '@empireui/components';
 
 function MyComponent() {
@@ -127,30 +115,23 @@ function MyComponent() {
       </div>
     </AuroraBackground>
   );
-}
-
-export default MyComponent;
-```
+}`} />
 
 ## Environment Variables
 
 Some AI-enabled components require API keys to function properly. Create a `.env.local` file in your project root with the following variables:
 
-```
-# OpenAI API key for AI components
+<CodeBlock language="plaintext" showCopyButton code={`# OpenAI API key for AI components
 OPENAI_API_KEY=your_openai_api_key
 
 # Optional: Groq API key for faster inference
-GROQ_API_KEY=your_groq_api_key
-```
+GROQ_API_KEY=your_groq_api_key`} />
 
 ## Additional Peer Dependencies
 
 Empire UI has the following peer dependencies that you might need to install:
 
-```bash
-npm install framer-motion react-dom tailwindcss tailwindcss-animate
-```
+<CodeBlock language="bash" showCopyButton code="npm install framer-motion react-dom tailwindcss tailwindcss-animate" />
 
 ## Troubleshooting
 

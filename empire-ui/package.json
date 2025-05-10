@@ -82,6 +82,7 @@
     "react-resizable-panels": "^2.1.2",
     "react-scatter-graphy": "^0.4.3",
     "react-sticky-el": "^2.1.1",
+    "react-syntax-highlighter": "^15.6.1",
     "react-tsparticles": "^2.12.2",
     "recharts": "^2.12.7",
     "rehype-autolink-headings": "^7.1.0",

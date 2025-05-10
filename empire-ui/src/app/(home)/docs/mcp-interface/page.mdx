@@ -1,0 +1,394 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ComponentCodePreview from "@/components/component-code-preview";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import { CH } from "@code-hike/mdx/components";
+import Image from 'next/image';
+
+<Breadcrumbs title={"MCP Interface"} />
+
+# MCP Interface
+
+The MCP Interface component provides a complete interface for interacting with Machine Control Protocol (MCP) services and tools. It allows for easy integration of advanced AI capabilities with a beautiful, themed interface.
+
+## What is MCP?
+
+Machine Control Protocol (MCP) is a standardized protocol for AI application communication. It enables seamless interaction between frontend applications and various AI models, allowing AI models to use tools, process data, and return responses in a structured way.
+
+Empire UI's MCP Interface gives you a complete, ready-to-use implementation of this protocol with an elegant UI.
+
+## Key Benefits
+
+- **Seamless AI Integration**: Connect your application with AI models with minimal code
+- **Tool Execution Framework**: Allow AI models to execute code, retrieve data, or call external services
+- **Extensible Architecture**: Easily add custom tools and capabilities
+- **Developer Experience**: Debug mode, response inspection, and detailed logging
+- **Production Ready**: Optimized for both development and production environments
+
+## Features
+
+- **Integrated Chat Interface**: Communicate directly with AI services
+- **Tool Management**: Execute and monitor tool calls
+- **Streaming Responses**: Real-time streaming of AI responses
+- **Customizable Themes**: Match your application's design
+- **Keyboard Shortcuts**: Improve user experience
+- **History Tracking**: Keep track of previous interactions
+- **Tool Execution Visualization**: See which tools the AI is using in real-time
+
+## Usage
+
+<ComponentCodePreview name="MCPInterface" component="MCPInterface" />
+
+## Basic Example
+
+<div className="mt-6 mb-6">
+<CH.Section>
+
+```tsx
+import { MCPInterface } from '@empireui/components';
+
+export default function MCPExample() {
+  return (
+    <div className="h-[600px] border rounded-lg overflow-hidden">
+      <MCPInterface 
+        apiKey={process.env.OPENAI_API_KEY}
+        system="You are a helpful AI assistant that helps users with their tasks."
+        welcomeMessage="Hello! I'm your AI assistant. How can I help you today?"
+      />
+    </div>
+  );
+}
+```
+
+</CH.Section>
+</div>
+
+## Advanced Usage with Custom Tools
+
+The true power of MCP comes from the ability to define custom tools that your AI can use. These tools can perform calculations, fetch data, control external services, or do virtually anything you can code.
+
+<div className="mt-6 mb-6">
+<CH.Section>
+
+```tsx
+import { MCPInterface, type Tool } from '@empireui/components';
+
+// Define custom tools
+const tools: Tool[] = [
+  {
+    name: "calculator",
+    description: "Calculates the result of a mathematical expression",
+    parameters: {
+      type: "object",
+      properties: {
+        expression: {
+          type: "string",
+          description: "The mathematical expression to calculate"
+        }
+      },
+      required: ["expression"]
+    },
+    handler: async ({ expression }) => {
+      try {
+        return { result: eval(expression) };
+      } catch (error) {
+        return { error: "Invalid expression" };
+      }
+    }
+  },
+  {
+    name: "weather",
+    description: "Gets current weather information",
+    parameters: {
+      type: "object",
+      properties: {
+        location: {
+          type: "string",
+          description: "City name or location"
+        }
+      },
+      required: ["location"]
+    },
+    handler: async ({ location }) => {
+      // In a real app, call a weather API here
+      // Mock weather data for demonstration
+      return { 
+        temperature: "72°F", 
+        condition: "Sunny", 
+        location 
+      };
+    }
+  }
+];
+
+export default function AdvancedMCPExample() {
+  return (
+    <div className="h-[700px] border rounded-lg overflow-hidden">
+      <MCPInterface 
+        apiKey={process.env.OPENAI_API_KEY}
+        model="gpt-4o"
+        system="You are an AI assistant with access to tools. Use them appropriately."
+        welcomeMessage="Hello! I can help you with calculations and weather information."
+        theme="dark"
+        tools={tools}
+        showSettings={true}
+        showClearButton={true}
+        maxHistoryLength={20}
+      />
+    </div>
+  );
+}
+```
+
+</CH.Section>
+</div>
+
+## How MCP Works
+
+MCP operates through a defined lifecycle:
+
+1. **User Input**: The user sends a message through the interface
+2. **AI Processing**: The message is sent to the AI model along with system context
+3. **Tool Identification**: The AI determines if it needs to use tools to fulfill the request
+4. **Tool Execution**: If needed, the AI calls tools with appropriate parameters
+5. **Response Generation**: The AI processes tool results and generates a response
+6. **UI Update**: The response is displayed to the user, including any relevant tool output
+
+This process creates a seamless experience where the AI can perform complex actions on behalf of the user.
+
+## Integration with Backend Services
+
+For production applications, it's recommended to proxy API calls through your backend:
+
+<div className="mt-6 mb-6">
+<CH.Section>
+
+```tsx
+import { MCPInterface } from '@empireui/components';
+
+export default function BackendMCPExample() {
+  return (
+    <div className="h-[600px] border rounded-lg overflow-hidden">
+      <MCPInterface 
+        endpoint="/api/mcp"
+        system="You are a helpful AI assistant that helps users with their tasks."
+        welcomeMessage="Hello! I'm your AI assistant. How can I help you today?"
+      />
+    </div>
+  );
+}
+```
+
+</CH.Section>
+</div>
+
+With a backend handler like:
+
+<div className="mt-6 mb-6">
+<CH.Section>
+
+```ts
+// /app/api/mcp/route.ts
+import { OpenAI } from 'openai';
+import { NextResponse } from 'next/server';
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
+
+export async function POST(req: Request) {
+  const body = await req.json();
+  const { messages, tools, model = 'gpt-4o' } = body;
+  
+  try {
+    const response = await openai.chat.completions.create({
+      model,
+      messages,
+      tools,
+      stream: false,
+    });
+    
+    return NextResponse.json(response);
+  } catch (error) {
+    console.error('Error calling OpenAI:', error);
+    return NextResponse.json({ error: 'Failed to process request' }, { status: 500 });
+  }
+}
+```
+
+</CH.Section>
+</div>
+
+## Complete Props Reference
+
+<div className="mt-6 mb-6 overflow-x-auto">
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `apiKey` | `string` | Required | OpenAI/Azure API key for the MCP service |
+| `model` | `string` | `"gpt-4o"` | The model to use for completions |
+| `system` | `string` | `"You are a helpful AI assistant."` | System prompt for the AI |
+| `welcomeMessage` | `string` | `"Hello! How can I help you today?"` | Initial message displayed to the user |
+| `theme` | `"light" \| "dark" \| "system"` | `"system"` | UI theme for the interface |
+| `tools` | `Tool[]` | `[]` | Array of tools the AI can use |
+| `showSettings` | `boolean` | `false` | Whether to show the settings panel |
+| `showClearButton` | `boolean` | `false` | Whether to show the clear chat button |
+| `placeholder` | `string` | `"Send a message..."` | Placeholder text for the input field |
+| `maxHistoryLength` | `number` | `10` | Maximum number of messages to keep in history |
+| `onSend` | `(message: string) => void` | - | Callback when user sends a message |
+| `onResponse` | `(message: string) => void` | - | Callback when AI responds |
+| `onError` | `(error: Error) => void` | - | Callback when an error occurs |
+| `endpoint` | `string` | - | Custom API endpoint for MCP requests |
+| `headers` | `Record<string, string>` | `{}` | Custom headers to include with API requests |
+| `className` | `string` | - | Additional CSS classes for the component |
+| `initialMessages` | `Message[]` | `[]` | Initial conversation messages |
+</div>
+
+## Tool Interface
+
+Tools allow the AI to perform actions. Each tool has the following structure:
+
+```tsx
+type Tool = {
+  name: string;
+  description: string;
+  parameters: {
+    type: string;
+    properties: Record<string, any>;
+    required?: string[];
+  };
+  handler: (args: Record<string, any>) => Promise<any>;
+};
+```
+
+## Custom Styling
+
+You can customize the appearance of the MCP Interface using CSS variables:
+
+```css
+.my-mcp-container {
+  --mcp-primary-color: #6366f1;
+  --mcp-background-color: #0f172a;
+  --mcp-text-color: #f8fafc;
+  --mcp-border-radius: 0.5rem;
+  --mcp-font-family: 'Inter', sans-serif;
+}
+```
+
+## Common Use Cases
+
+### AI Agent for Data Analysis
+
+```tsx
+const dataAnalysisTools = [
+  {
+    name: "queryDatabase",
+    description: "Query the database for information",
+    parameters: {
+      type: "object",
+      properties: {
+        query: {
+          type: "string",
+          description: "SQL query to execute"
+        }
+      },
+      required: ["query"]
+    },
+    handler: async ({ query }) => {
+      // Execute SQL query and return results
+      // This is just an example
+      return { results: "Mock data results" };
+    }
+  },
+  {
+    name: "generateChart",
+    description: "Generate a chart from data",
+    parameters: {
+      type: "object",
+      properties: {
+        chartType: {
+          type: "string",
+          description: "Type of chart to generate"
+        },
+        data: {
+          type: "string",
+          description: "JSON string of data to visualize"
+        }
+      },
+      required: ["chartType", "data"]
+    },
+    handler: async ({ chartType, data }) => {
+      // Generate chart and return image URL
+      return { chartUrl: "https://example.com/chart.png" };
+    }
+  }
+];
+```
+
+### AI Customer Support
+
+```tsx
+const customerSupportTools = [
+  {
+    name: "fetchOrderDetails",
+    description: "Fetch details about a customer order",
+    parameters: {
+      type: "object",
+      properties: {
+        orderId: {
+          type: "string",
+          description: "The order ID to look up"
+        }
+      },
+      required: ["orderId"]
+    },
+    handler: async ({ orderId }) => {
+      // Fetch order details from API
+      return { orderDetails: "Mock order details" };
+    }
+  },
+  {
+    name: "initiateRefund",
+    description: "Initiate a refund for an order",
+    parameters: {
+      type: "object",
+      properties: {
+        orderId: {
+          type: "string",
+          description: "The order ID to refund"
+        },
+        reason: {
+          type: "string",
+          description: "Reason for the refund"
+        }
+      },
+      required: ["orderId", "reason"]
+    },
+    handler: async ({ orderId, reason }) => {
+      // Process refund
+      return { refundId: "ref_123456", status: "processed" };
+    }
+  }
+];
+```
+
+## Accessibility
+
+The MCP Interface component meets WCAG 2.1 AA standards:
+
+- All interactive elements are keyboard accessible
+- Proper ARIA labels are used throughout
+- Color contrast ratios meet AA standards
+- Focus states are clearly visible
+
+## Notes
+
+- An API key is required to use this component
+- Streaming responses require a compatible API endpoint
+- For production use, it's recommended to proxy API requests through your backend
+- Some models may not support all tool types
+- The handler function for tools must return a Promise
+
+## Resources
+
+- [OpenAI Function Calling Documentation](https://platform.openai.com/docs/guides/function-calling)
+- [MCP Specification](https://github.com/openai/openai-node/blob/master/src/resources/chat/completions.ts)
+- [Empire UI GitHub Repository](https://github.com/empirecodefoundation/ui) 
