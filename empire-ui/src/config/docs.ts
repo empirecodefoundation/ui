@@ -11,6 +11,16 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       href: "/docs",
     },
+    {
+      title: "GitHub",
+      href: "https://github.com/empirecodefoundation/ui",
+      external: true,
+    },
+    {
+      title: "NPM",
+      href: "https://www.npmjs.com/package/@empireui/components",
+      external: true,
+    },
   ],
   sidebarNav: [
     {
@@ -25,15 +35,31 @@ export const docsConfig: DocsConfig = {
           title: "Installation",
           href: "/docs/installation",
           items: [],
+          label: "Updated",
+          labelColor: "green",
+        },
+        {
+          title: "Wiki",
+          href: "/docs/wiki",
+          items: [],
+          label: "New",
+          labelColor: "blue",
         },
       ],
     },
     {
-      title: "Components",
+      title: "AI Components",
       items: [
         {
-          title: "AI components",
+          title: "Conversation & Text",
           items: [
+            {
+              title: "AI Chatbox",
+              href: "/docs/ai-chatbox",
+              items: [],
+              label: "Popular",
+              labelColor: "orange",
+            },
             {
               title: "Text Paraphraser Button",
               href: "/docs/ai-paraphraser-button",
@@ -54,35 +80,41 @@ export const docsConfig: DocsConfig = {
               href: "/docs/ai-caption-generator-button",
               items: [],
             },
-            {
-              title: "Chatbox",
-              href: "/docs/ai-chatbox",
-              items: [],
-            },
           ],
         },
         {
-          title: "Starter components",
+          title: "Advanced AI Interfaces",
           items: [
             {
-              title: "Empire Toast",
-              href: "/docs/toast-notification",
+              title: "MCP Interface",
+              href: "/docs/mcp-interface",
               items: [],
+              label: "New",
+              labelColor: "blue",
             },
             {
-              title: "Expand Card",
-              href: "/docs/expand-card",
+              title: "Node Canvas",
+              href: "/docs/node-canvas",
               items: [],
+              label: "New",
+              labelColor: "blue",
             },
-            {
-              title: "Passcode Card",
-              href: "/docs/passcode-card",
-              items: [],
-            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Data Visualization",
+      items: [
+        {
+          title: "Analytics Cards",
+          items: [
             {
               title: "Prediction Output Card",
               href: "/docs/prediction-output-card",
               items: [],
+              label: "Popular",
+              labelColor: "orange",
             },
             {
               title: "Training Summary Card",
@@ -94,13 +126,35 @@ export const docsConfig: DocsConfig = {
               href: "/docs/dataset-overview-card",
               items: [],
             },
+          ],
+        },
+        {
+          title: "Interactive Elements",
+          items: [
             {
-              title: "Step Form",
-              href: "/docs/step-form",
+              title: "Expand Card",
+              href: "/docs/expand-card",
               items: [],
+            },
+            {
+              title: "Passcode Card",
+              href: "/docs/passcode-card",
+              items: [],
+            },
+            {
+              title: "Predictive Searchbar",
+              href: "/docs/predictive-searchbar",
+              items: [],
+              label: "New",
+              labelColor: "blue",
             },
           ],
         },
+      ],
+    },
+    {
+      title: "UI Elements",
+      items: [
         {
           title: "Backgrounds",
           items: [
@@ -108,11 +162,35 @@ export const docsConfig: DocsConfig = {
               title: "Aurora Background",
               href: "/docs/aurora-background",
               items: [],
+              label: "Popular",
+              labelColor: "orange",
             },
-             {
+            {
               title: "Wavy Background",
               href: "/docs/wavy-background",
               items: [],
+            },
+          ]
+        },
+        {
+          title: "Form Elements",
+          items: [
+            {
+              title: "Step Form",
+              href: "/docs/step-form",
+              items: [],
+            },
+            {
+              title: "Toast Notifications",
+              href: "/docs/toast-notification",
+              items: [],
+            },
+            {
+              title: "Button",
+              href: "/docs/button",
+              items: [],
+              label: "Core",
+              labelColor: "purple",
             },
           ]
         }
