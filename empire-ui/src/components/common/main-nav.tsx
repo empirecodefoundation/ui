@@ -42,6 +42,17 @@ export function MainNav() {
         >
           Templates
         </Link>
+        <Link
+          href="/colors"
+          className={cn(
+            "text-base font-semibold transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/colors")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          Colors
+        </Link>
       </nav>
     </div>
   );

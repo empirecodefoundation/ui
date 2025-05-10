@@ -138,7 +138,7 @@ export default function TemplatesPage() {
   });
   
   return (
-    <div className="min-h-screen bg-black py-12 px-4 sm:px-6 lg:px-8 background-stars">
+    <div className="min-h-screen bg-black py-16 px-4 sm:px-6 lg:px-8 background-stars">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <motion.h1 
