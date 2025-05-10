@@ -101,6 +101,21 @@ export const docsConfig: DocsConfig = {
             },
           ],
         },
+        {
+          title: "Backgrounds",
+          items: [
+            {
+              title: "Aurora Background",
+              href: "/docs/aurora-background",
+              items: [],
+            },
+             {
+              title: "Wavy Background",
+              href: "/docs/wavy-background",
+              items: [],
+            },
+          ]
+        }
       ],
     },
   ],
