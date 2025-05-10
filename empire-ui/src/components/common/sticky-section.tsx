@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Bebas_Neue, Afacad } from "next/font/google";
+import { Bebas_Neue, Inter } from "next/font/google";
 import Sticky from "react-sticky-el";
 
 const bebas_neue = Bebas_Neue({
@@ -7,8 +7,8 @@ const bebas_neue = Bebas_Neue({
   subsets: ["latin"],
 });
 
-const press_start_2p = Afacad({
-  weight: "400",
+const press_start_2p = Inter({
+  weight: ["400"],
   subsets: ["latin"],
 });
 

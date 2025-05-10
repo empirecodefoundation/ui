@@ -6,7 +6,8 @@ import { extractCodeFromFilePath } from "@/lib/code";
 
 type ComponentCodePreview = {
   component: React.ReactElement;
-  filePath: string;
+  filePath?: string;
+  name?: string;
   hasReTrigger?: boolean;
   classNameComponentContainer?: string;
 };
@@ -14,10 +15,16 @@ type ComponentCodePreview = {
 export default function ComponentCodePreview({
   component,
   filePath,
+  name,
   hasReTrigger,
   classNameComponentContainer,
 }: ComponentCodePreview) {
-  const fileContent = extractCodeFromFilePath(`src/components/${filePath}.tsx`);
+  // Use name as filePath if filePath is not provided
+  const componentFilePath = filePath || name;
+  // Only try to extract code if we have a valid path
+  const fileContent = componentFilePath 
+    ? extractCodeFromFilePath(`src/components/${componentFilePath}.tsx`)
+    : "// Component code not available";
 
   return (
     <div className="not-prose relative z-0 flex items-center justify-between pb-3">
