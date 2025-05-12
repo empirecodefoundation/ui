@@ -1,8 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ComponentCodePreview from "@/components/component-code-preview";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { CH } from "@code-hike/mdx/components";
-import Image from 'next/image';
+import Image from "next/image";
 
 <Breadcrumbs title={"MCP Interface"} />
 
@@ -44,12 +43,12 @@ Empire UI's MCP Interface gives you a complete, ready-to-use implementation of t
 <CH.Section>
 
 ```tsx
-import { MCPInterface } from '@empireui/components';
+import { MCPInterface } from "@empireui/components";
 
 export default function MCPExample() {
   return (
     <div className="h-[600px] border rounded-lg overflow-hidden">
-      <MCPInterface 
+      <MCPInterface
         apiKey={process.env.OPENAI_API_KEY}
         system="You are a helpful AI assistant that helps users with their tasks."
         welcomeMessage="Hello! I'm your AI assistant. How can I help you today?"
@@ -70,7 +69,7 @@ The true power of MCP comes from the ability to define custom tools that your AI
 <CH.Section>
 
 ```tsx
-import { MCPInterface, type Tool } from '@empireui/components';
+import { MCPInterface, type Tool } from "@empireui/components";
 
 // Define custom tools
 const tools: Tool[] = [
@@ -82,10 +81,10 @@ const tools: Tool[] = [
       properties: {
         expression: {
           type: "string",
-          description: "The mathematical expression to calculate"
-        }
+          description: "The mathematical expression to calculate",
+        },
       },
-      required: ["expression"]
+      required: ["expression"],
     },
     handler: async ({ expression }) => {
       try {
@@ -93,7 +92,7 @@ const tools: Tool[] = [
       } catch (error) {
         return { error: "Invalid expression" };
       }
-    }
+    },
   },
   {
     name: "weather",
@@ -103,27 +102,27 @@ const tools: Tool[] = [
       properties: {
         location: {
           type: "string",
-          description: "City name or location"
-        }
+          description: "City name or location",
+        },
       },
-      required: ["location"]
+      required: ["location"],
     },
     handler: async ({ location }) => {
       // In a real app, call a weather API here
       // Mock weather data for demonstration
-      return { 
-        temperature: "72°F", 
-        condition: "Sunny", 
-        location 
+      return {
+        temperature: "72°F",
+        condition: "Sunny",
+        location,
       };
-    }
-  }
+    },
+  },
 ];
 
 export default function AdvancedMCPExample() {
   return (
     <div className="h-[700px] border rounded-lg overflow-hidden">
-      <MCPInterface 
+      <MCPInterface
         apiKey={process.env.OPENAI_API_KEY}
         model="gpt-4o"
         system="You are an AI assistant with access to tools. Use them appropriately."
@@ -163,12 +162,12 @@ For production applications, it's recommended to proxy API calls through your ba
 <CH.Section>
 
 ```tsx
-import { MCPInterface } from '@empireui/components';
+import { MCPInterface } from "@empireui/components";
 
 export default function BackendMCPExample() {
   return (
     <div className="h-[600px] border rounded-lg overflow-hidden">
-      <MCPInterface 
+      <MCPInterface
         endpoint="/api/mcp"
         system="You are a helpful AI assistant that helps users with their tasks."
         welcomeMessage="Hello! I'm your AI assistant. How can I help you today?"
@@ -188,17 +187,17 @@ With a backend handler like:
 
 ```ts
 // /app/api/mcp/route.ts
-import { OpenAI } from 'openai';
-import { NextResponse } from 'next/server';
+import { OpenAI } from "openai";
+import { NextResponse } from "next/server";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { messages, tools, model = 'gpt-4o' } = body;
-  
+  const { messages, tools, model = "gpt-4o" } = body;
+
   try {
     const response = await openai.chat.completions.create({
       model,
@@ -206,11 +205,14 @@ export async function POST(req: Request) {
       tools,
       stream: false,
     });
-    
+
     return NextResponse.json(response);
   } catch (error) {
-    console.error('Error calling OpenAI:', error);
-    return NextResponse.json({ error: 'Failed to process request' }, { status: 500 });
+    console.error("Error calling OpenAI:", error);
+    return NextResponse.json(
+      { error: "Failed to process request" },
+      { status: 500 }
+    );
   }
 }
 ```
@@ -269,7 +271,7 @@ You can customize the appearance of the MCP Interface using CSS variables:
   --mcp-background-color: #0f172a;
   --mcp-text-color: #f8fafc;
   --mcp-border-radius: 0.5rem;
-  --mcp-font-family: 'Inter', sans-serif;
+  --mcp-font-family: "Inter", sans-serif;
 }
 ```
 
@@ -287,16 +289,16 @@ const dataAnalysisTools = [
       properties: {
         query: {
           type: "string",
-          description: "SQL query to execute"
-        }
+          description: "SQL query to execute",
+        },
       },
-      required: ["query"]
+      required: ["query"],
     },
     handler: async ({ query }) => {
       // Execute SQL query and return results
       // This is just an example
       return { results: "Mock data results" };
-    }
+    },
   },
   {
     name: "generateChart",
@@ -306,20 +308,20 @@ const dataAnalysisTools = [
       properties: {
         chartType: {
           type: "string",
-          description: "Type of chart to generate"
+          description: "Type of chart to generate",
         },
         data: {
           type: "string",
-          description: "JSON string of data to visualize"
-        }
+          description: "JSON string of data to visualize",
+        },
       },
-      required: ["chartType", "data"]
+      required: ["chartType", "data"],
     },
     handler: async ({ chartType, data }) => {
       // Generate chart and return image URL
       return { chartUrl: "https://example.com/chart.png" };
-    }
-  }
+    },
+  },
 ];
 ```
 
@@ -335,15 +337,15 @@ const customerSupportTools = [
       properties: {
         orderId: {
           type: "string",
-          description: "The order ID to look up"
-        }
+          description: "The order ID to look up",
+        },
       },
-      required: ["orderId"]
+      required: ["orderId"],
     },
     handler: async ({ orderId }) => {
       // Fetch order details from API
       return { orderDetails: "Mock order details" };
-    }
+    },
   },
   {
     name: "initiateRefund",
@@ -353,20 +355,20 @@ const customerSupportTools = [
       properties: {
         orderId: {
           type: "string",
-          description: "The order ID to refund"
+          description: "The order ID to refund",
         },
         reason: {
           type: "string",
-          description: "Reason for the refund"
-        }
+          description: "Reason for the refund",
+        },
       },
-      required: ["orderId", "reason"]
+      required: ["orderId", "reason"],
     },
     handler: async ({ orderId, reason }) => {
       // Process refund
       return { refundId: "ref_123456", status: "processed" };
-    }
-  }
+    },
+  },
 ];
 ```
 
@@ -391,4 +393,4 @@ The MCP Interface component meets WCAG 2.1 AA standards:
 
 - [OpenAI Function Calling Documentation](https://platform.openai.com/docs/guides/function-calling)
 - [MCP Specification](https://github.com/openai/openai-node/blob/master/src/resources/chat/completions.ts)
-- [Empire UI GitHub Repository](https://github.com/empirecodefoundation/ui) 
+- [Empire UI GitHub Repository](https://github.com/empirecodefoundation/ui)
