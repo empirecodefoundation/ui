@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Bebas_Neue, Inter } from "next/font/google";
+import { Bebas_Neue, Afacad } from "next/font/google";
 import Sticky from "react-sticky-el";
 
 const bebas_neue = Bebas_Neue({
@@ -7,8 +7,8 @@ const bebas_neue = Bebas_Neue({
   subsets: ["latin"],
 });
 
-const press_start_2p = Inter({
-  weight: ["400"],
+const press_start_2p = Afacad({
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -27,7 +27,7 @@ export const StickySection = () => {
                       bebas_neue.className
                     )}
                   >
-                    //INTELLIGENT INTERFACES
+                    //INTO THE AI GEN
                   </div>
                   <h2
                     className={cn(
@@ -37,9 +37,6 @@ export const StickySection = () => {
                   >
                     AI COMPONENTS
                   </h2>
-                  <div className="mt-2 bg-gradient-to-r from-amber-300 to-orange-500 px-4 py-1 rounded-sm">
-                    <span className="text-black font-bold text-xs md:text-sm">NEW v1.2.0 AVAILABLE</span>
-                  </div>
                 </div>
                 <div
                   className={cn(
@@ -52,14 +49,6 @@ export const StickySection = () => {
                     <p>and responsive interfaces effortlessly—saving</p>
                     <p>time and boosting performance with minimal code.</p>
                   </div>
-                </div>
-                <div className="flex space-x-4">
-                  <a href="/docs" className="bg-[#fd8a46] hover:bg-[#fd7a2e] text-black font-bold py-2 px-6 rounded-sm transition-colors">
-                    View Documentation
-                  </a>
-                  <a href="https://github.com/empirecodefoundation/ui" target="_blank" rel="noopener noreferrer" className="bg-transparent border border-[#f3edd8] text-[#f3edd8] font-bold py-2 px-6 rounded-sm hover:bg-[#f3edd81a] transition-colors">
-                    GitHub
-                  </a>
                 </div>
               </div>
             </div>
