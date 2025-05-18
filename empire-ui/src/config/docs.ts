@@ -11,6 +11,16 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       href: "/docs",
     },
+    {
+      title: "GitHub",
+      href: "https://github.com/empirecodefoundation/ui",
+      external: true,
+    },
+    {
+      title: "NPM",
+      href: "https://www.npmjs.com/package/@empireui/components",
+      external: true,
+    },
   ],
   sidebarNav: [
     {
@@ -25,15 +35,28 @@ export const docsConfig: DocsConfig = {
           title: "Installation",
           href: "/docs/installation",
           items: [],
+          label: "Updated",
+        },
+        {
+          title: "Wiki",
+          href: "/docs/wiki",
+          items: [],
+          label: "New",
         },
       ],
     },
     {
-      title: "Components",
+      title: "AI Components",
       items: [
         {
-          title: "AI components",
+          title: "Conversation & Text",
           items: [
+            {
+              title: "AI Chatbox",
+              href: "/docs/ai-chatbox",
+              items: [],
+              label: "Popular",
+            },
             {
               title: "Text Paraphraser Button",
               href: "/docs/ai-paraphraser-button",
@@ -54,35 +77,21 @@ export const docsConfig: DocsConfig = {
               href: "/docs/ai-caption-generator-button",
               items: [],
             },
-            {
-              title: "Chatbox",
-              href: "/docs/ai-chatbox",
-              items: [],
-            },
           ],
         },
+      ],
+    },
+    {
+      title: "Data Visualization",
+      items: [
         {
-          title: "Starter components",
+          title: "Analytics Cards",
           items: [
-            {
-              title: "Empire Toast",
-              href: "/docs/toast-notification",
-              items: [],
-            },
-            {
-              title: "Expand Card",
-              href: "/docs/expand-card",
-              items: [],
-            },
-            {
-              title: "Passcode Card",
-              href: "/docs/passcode-card",
-              items: [],
-            },
             {
               title: "Prediction Output Card",
               href: "/docs/prediction-output-card",
               items: [],
+              label: "Popular",
             },
             {
               title: "Training Summary Card",
@@ -94,9 +103,39 @@ export const docsConfig: DocsConfig = {
               href: "/docs/dataset-overview-card",
               items: [],
             },
+          ],
+        },
+        {
+          title: "Interactive Elements",
+          items: [
+            {
+              title: "Expand Card",
+              href: "/docs/expand-card",
+              items: [],
+            },
+            {
+              title: "Passcode Card",
+              href: "/docs/passcode-card",
+              items: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "UI Elements",
+      items: [
+        {
+          title: "Form Elements",
+          items: [
             {
               title: "Step Form",
               href: "/docs/step-form",
+              items: [],
+            },
+            {
+              title: "Toast Notifications",
+              href: "/docs/toast-notification",
               items: [],
             },
           ],
