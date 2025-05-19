@@ -24,7 +24,7 @@ yarn add @empireui/empire-ui
 pnpm add @empireui/empire-ui
 ```
 
-## 🚀 Quick Start
+## 🚀 Quick Start Guide
 
 Initialize Empire UI in your project:
 
