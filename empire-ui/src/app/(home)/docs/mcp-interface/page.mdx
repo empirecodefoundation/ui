@@ -1,7 +1,10 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ComponentCodePreview from "@/components/component-code-preview";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+
 import { CH } from "@code-hike/mdx/components";
+
+
 import Image from "next/image";
 
 <Breadcrumbs title={"MCP Interface"} />
@@ -266,13 +269,21 @@ type Tool = {
 
 You can customize the appearance of the MCP Interface using CSS variables:
 
+
 ```
+
+```css
+
 .my-mcp-container {
   --mcp-primary-color: #6366f1;
   --mcp-background-color: #0f172a;
   --mcp-text-color: #f8fafc;
   --mcp-border-radius: 0.5rem;
+
   --mcp-font-family: 'Inter', sans-serif;
+
+  --mcp-font-family: "Inter", sans-serif;
+
 }
 ```
 

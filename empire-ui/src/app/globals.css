@@ -127,7 +127,8 @@ html body[data-scroll-locked] {
 
 /* Star twinkle animation for space toast */
 @keyframes twinkle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.2;
     transform: scale(0.8);
   }

@@ -23,7 +23,7 @@ export default function ComponentPreview({
   return (
     <div
       className={cn(
-        "flex min-h-[350px] w-full items-center justify-center rounded-md",
+        "flex min-h-[350px] relative overflow-hidden w-full items-center justify-center rounded-md",
         className
       )}
     >

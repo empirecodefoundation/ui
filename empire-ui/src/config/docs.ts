@@ -36,12 +36,20 @@ export const docsConfig: DocsConfig = {
           href: "/docs/installation",
           items: [],
           label: "Updated",
+
+=======
+          labelColor: "green",
+
         },
         {
           title: "Wiki",
           href: "/docs/wiki",
           items: [],
           label: "New",
+
+
+          labelColor: "blue",
+
         },
       ],
     },
@@ -56,6 +64,10 @@ export const docsConfig: DocsConfig = {
               href: "/docs/ai-chatbox",
               items: [],
               label: "Popular",
+
+
+              labelColor: "orange",
+
             },
             {
               title: "Text Paraphraser Button",
@@ -77,6 +89,27 @@ export const docsConfig: DocsConfig = {
               href: "/docs/ai-caption-generator-button",
               items: [],
             },
+
+          ],
+        },
+        {
+          title: "Advanced AI Interfaces",
+          items: [
+            {
+              title: "MCP Interface",
+              href: "/docs/mcp-interface",
+              items: [],
+              label: "New",
+              labelColor: "blue",
+            },
+            {
+              title: "Node Canvas",
+              href: "/docs/node-canvas",
+              items: [],
+              label: "New",
+              labelColor: "blue",
+            },
+
           ],
         },
       ],
@@ -90,12 +123,36 @@ export const docsConfig: DocsConfig = {
             {
               title: "Prediction Output Card",
               href: "/docs/prediction-output-card",
+
               items: [],
               label: "Popular",
+              labelColor: "orange",
             },
             {
               title: "Training Summary Card",
               href: "/docs/training-summary-card",
+
+              items: [],
+              label: "Popular",
+            },
+            {
+
+              title: "Training Summary Card",
+              href: "/docs/training-summary-card",
+
+              title: "Dataset Overview Card",
+              href: "/docs/dataset-overview-card",
+              items: [],
+            },
+          ],
+        },
+        {
+          title: "Interactive Elements",
+          items: [
+            {
+              title: "Expand Card",
+              href: "/docs/expand-card",
+
               items: [],
             },
             {
@@ -109,14 +166,38 @@ export const docsConfig: DocsConfig = {
           title: "Interactive Elements",
           items: [
             {
+
               title: "Expand Card",
               href: "/docs/expand-card",
+
+              title: "Predictive Searchbar",
+              href: "/docs/predictive-searchbar",
+
               items: [],
+              label: "New",
+              labelColor: "blue",
             },
+          ],
+        },
+      ],
+    },
+    {
+      title: "UI Elements",
+      items: [
+        {
+          title: "Backgrounds",
+          items: [
             {
+
               title: "Passcode Card",
               href: "/docs/passcode-card",
+
+              title: "Aurora Background",
+              href: "/docs/aurora-background",
+
               items: [],
+              label: "Popular",
+              labelColor: "orange",
             },
           ],
         },
@@ -129,8 +210,23 @@ export const docsConfig: DocsConfig = {
           title: "Form Elements",
           items: [
             {
+
               title: "Step Form",
               href: "/docs/step-form",
+
+              title: "Wavy Background",
+              href: "/docs/wavy-background",
+
+              items: [],
+            },
+          ]
+        },
+        {
+          title: "Form Elements",
+          items: [
+            {
+              title: "Toast Notifications",
+              href: "/docs/toast-notification",
               items: [],
             },
             {
@@ -138,8 +234,15 @@ export const docsConfig: DocsConfig = {
               href: "/docs/toast-notification",
               items: [],
             },
-          ],
-        },
+            {
+              title: "Button",
+              href: "/docs/button",
+              items: [],
+              label: "Core",
+              labelColor: "purple",
+            },
+          ]
+        }
       ],
     },
   ],

@@ -56,6 +56,24 @@ function NavItem({ item, pathname }: NavItemProps) {
   const isActive = pathname === item.href;
   const hasChildren = item.items && item.items.length > 0;
 
+  // Function to get label color class based on labelColor
+  const getLabelColorClass = (color?: string) => {
+    switch (color) {
+      case "blue":
+        return "bg-blue-500 text-white";
+      case "green":
+        return "bg-green-500 text-white";
+      case "orange":
+        return "bg-orange-500 text-white";
+      case "purple":
+        return "bg-purple-500 text-white";
+      case "red":
+        return "bg-red-500 text-white";
+      default:
+        return "bg-[#adfa1d] text-[#000000]";
+    }
+  };
+
   if (hasChildren) {
     return (
       <div>
@@ -85,7 +103,7 @@ function NavItem({ item, pathname }: NavItemProps) {
       >
         {item.title}
         {item.label && (
-          <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+          <span className={cn("ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline", getLabelColorClass(item.labelColor))}>
             {item.label}
           </span>
         )}
@@ -102,7 +120,7 @@ function NavItem({ item, pathname }: NavItemProps) {
     >
       {item.title}
       {item.label && (
-        <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs leading-none text-muted-foreground no-underline group-hover:no-underline">
+        <span className={cn("ml-2 rounded-md px-1.5 py-0.5 text-xs leading-none no-underline group-hover:no-underline", getLabelColorClass(item.labelColor))}>
           {item.label}
         </span>
       )}
