@@ -68,6 +68,13 @@ export const docsConfig: DocsConfig = {
               labelColor: "orange",
             },
             {
+               title: "AI Form Generator",
+              href: "/docs/ai-form-generator",
+              items: [],
+              label: "Popular",
+              labelColor: "orange",
+            },
+            {
               title: "Text Paraphraser Button",
               href: "/docs/ai-paraphraser-button",
               items: [],
