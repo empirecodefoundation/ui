@@ -1,0 +1,41 @@
+import { PromptEditorEx } from "@/components/examples/prompt";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Prompt Edditor"} />
+
+# AI Chatbox
+
+---
+
+A flexible AI-powered chatbox component that can handle user inputs and display responses from an AI. This chatbox is interactive and supports features like smooth scrolling, avatars, and a user-friendly interface.
+
+<ComponentCodePreview
+  component={<PromptEditorEx />}
+  filePath="examples/AIChatboxExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip ai/react"}
+  componentFilePath={"core/prompt-editor"}
+  routeFilePath={"prompt"}
+  cli={"npx empire@latest add propmt-editor"}
+/>
+
+## Props
+
+---
+
+| Prop name         | Type                                                 | Description                                                                  |
+| ----------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `onSave`          | `(template: PromptTemplate) => void`                 | Callback invoked when a prompt template is saved.                            |
+| `onTest`          | `(prompt: string, model: string) => Promise<string>` | Callback invoked to test a prompt with the selected model. Returns a result. |
+| `templates`       | `PromptTemplate[]`                                   | An optional array of prompt templates to display or use.                     |
+| `className`       | `string`                                             | Optional class name for styling the component container.                     |
+| `defaultModel`    | `string`                                             | Optional default model to use in the editor.                                 |
+| `availableModels` | `{ value: string; label: string }[]`                 | Optional list of available models for selection.                             |
