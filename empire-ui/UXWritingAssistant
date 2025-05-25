@@ -1,0 +1,6 @@
+/components
+  /UXWritingAssistant
+    - UXWritingAssistant.tsx
+    - UXWritingAssistant.css (optional)
+    - index.ts
+    - README.md
