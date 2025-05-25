@@ -1,0 +1,62 @@
+import LoadingThoughtBubbleExampleDynamic from "@/components/examples/LoadingThoughtBubbleExampleDynamic";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import CodeRenderer from "@/components/code-renderer";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Loading Thought Bubble"} />
+
+# Loading Thought Bubble
+
+---
+
+A fun, animated "thinking" bubble for AI processing or data loading. Cycles through quirky, AI-themed messages with animated dots to entertain users while they wait.
+
+> **Note:** This component is perfect for showing AI/LLM loading states with personality. No external API required.
+
+## Usage Example
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <LoadingThoughtBubbleExampleDynamic />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeRenderer code={`import LoadingThoughtBubble from "@/components/ai/loading-thought-bubble";
+
+<LoadingThoughtBubble 
+  messages={[
+    "Crunching data...",
+    "Thinking... 🤔",
+    "Generating insights...",
+    "Almost there..."
+  ]} 
+  interval={2500} 
+/>
+`} lang="tsx" />
+  </TabsContent>
+</Tabs>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={""}
+  componentFilePath={"ai/loading-thought-bubble"}
+  routeFilePath={"ai-loading-thought-bubble"}
+  cli={"npx empire@latest add ai-loading-thought-bubble"}
+/>
+
+## Props
+
+---
+
+| Prop name   | Type        | Description                                              |
+|-------------|-------------|----------------------------------------------------------|
+| `messages`  | `string[]`  | Array of messages to cycle through (optional, AI defaults) |
+| `interval`  | `number`    | Time in ms between message changes (default: 3000)      |
+| `className` | `string`    | Optional Tailwind classes for custom styling            |

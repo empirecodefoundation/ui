@@ -90,6 +90,11 @@ export const docsConfig: DocsConfig = {
               href: "/docs/ai-prompt-template-card",
               items: [],
             },
+            {
+              title: "Loading Thought Bubble",
+              href: "/docs/ai-loading-thought-bubble",
+              items: [],
+            },
           ],
         },
         {
