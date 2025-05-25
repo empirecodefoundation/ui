@@ -14,6 +14,7 @@ export * from './components/ui/TrainingSummaryCard';
 export * from './components/ui/MCPInterface';
 export * from './components/ui/NodeCanvas';
 export * from './components/ui/AIDocumentAnalyzer';
+export * from './components/ui/AISmartDataTable';
 
 // Utilities
 export * from './lib/utils';
