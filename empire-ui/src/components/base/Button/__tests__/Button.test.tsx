@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Button } from "../index";
+import { describe, it, expect, vi } from "vitest";
 
 describe("Button", () => {
   it("renders correctly", () => {
@@ -9,7 +10,7 @@ describe("Button", () => {
   });
 
   it("applies variant classes correctly", () => {
-    const { rerender } = render(<Button variant="primary">Click me</Button>);
+    const { rerender } = render(<Button variant="default">Click me</Button>);
     expect(screen.getByRole("button")).toHaveClass("bg-primary");
 
     rerender(<Button variant="secondary">Click me</Button>);
