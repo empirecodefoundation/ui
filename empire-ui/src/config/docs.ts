@@ -85,6 +85,11 @@ export const docsConfig: DocsConfig = {
               href: "/docs/ai-voice-command-button",
               items: [],
             },
+            {
+              title: "Prompt Template Card",
+              href: "/docs/ai-prompt-template-card",
+              items: [],
+            },
           ],
         },
         {

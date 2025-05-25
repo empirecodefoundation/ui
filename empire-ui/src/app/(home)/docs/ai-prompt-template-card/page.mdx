@@ -1,0 +1,62 @@
+import PromptTemplateCardExampleDynamic from "@/components/examples/PromptTemplateCardExampleDynamic";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import CodeRenderer from "@/components/code-renderer";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Prompt Template Card"} />
+
+# Prompt Template Card
+
+---
+
+A clean, editable card UI for storing, editing, and previewing prompt templates used in AI/LLM apps. Supports variables (e.g., `{{input}}`), live preview, and is perfect for prompt engineering workflows.
+
+> **Note:** This component is designed for prompt engineering in LLM-based apps. It does not require any paid API or backend.
+
+## Usage Example
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <PromptTemplateCardExampleDynamic />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeRenderer code={`import PromptTemplateCard from "@/components/ai/prompt-template-card";
+
+<PromptTemplateCard
+  title="Summarizer"
+  description="Summarizes emails using GPT-4"
+  template="You are a helpful assistant. Summarize this email: {{input}}"
+  onChange={updated => console.log('Template changed:', updated)}
+  onTestChange={vals => console.log('Test values:', vals)}
+/>
+`} lang="tsx" />
+  </TabsContent>
+</Tabs>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={""}
+  componentFilePath={"ai/prompt-template-card"}
+  routeFilePath={"ai-prompt-template-card"}
+  cli={"npx empire@latest add ai-prompt-template-card"}
+/>
+
+## Props
+
+---
+
+| Prop name      | Type                                   | Description                                              |
+|---------------|----------------------------------------|----------------------------------------------------------|
+| `title`       | `string`                               | The name of the template                                 |
+| `description` | `string`                               | Optional short explanation                               |
+| `template`    | `string`                               | The prompt with variables (e.g., "Summarize: `{{text}}`")  |
+| `onChange`    | `(updatedTemplate: string) => void`     | Optional callback when the template is edited             |
+| `onTestChange`| `(filledValues: Record<string, string>) => void` | Optional callback when test values change      |
