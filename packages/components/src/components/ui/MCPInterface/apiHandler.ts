@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 /**
  * This handler serves as a bridge between your frontend and the MCP (Model Context Protocol) server.
  * It receives requests from the MCPInterface component and forwards them to the appropriate MCP service.
- * 
+ *
  * In a real implementation, you would configure this to connect to your actual MCP server.
  */
 
@@ -21,34 +21,42 @@ export async function POST(req: NextRequest) {
     if (action === "message" && messages) {
       // In a real implementation, this would connect to your MCP server
       // For demo purposes, we return a mock response
-      
+
       // Extract the last user message
-      const lastUserMessage = messages.filter(m => m.role === "user").pop();
-      
+      const lastUserMessage = messages
+        .filter((m: any) => m.role === "user")
+        .pop();
+
       if (!lastUserMessage) {
-        return NextResponse.json({ error: "No user message found" }, { status: 400 });
+        return NextResponse.json(
+          { error: "No user message found" },
+          { status: 400 }
+        );
       }
 
       // Create a simple response based on the user message
       const userMessageText = lastUserMessage.content.toLowerCase();
-      
+
       // Check if the user is asking for a tool
-      if (userMessageText.includes("tool") || userMessageText.includes("function")) {
+      if (
+        userMessageText.includes("tool") ||
+        userMessageText.includes("function")
+      ) {
         // Demo of a tool call response
         return NextResponse.json({
           toolCall: {
             name: "searchWeb",
             arguments: {
               query: lastUserMessage.content,
-              maxResults: 3
-            }
-          }
+              maxResults: 3,
+            },
+          },
         });
       }
-      
+
       // Regular response
       return NextResponse.json({
-        content: `I received your message: "${lastUserMessage.content}". This is a demo MCP response. In a real implementation, this would connect to your actual MCP server.`
+        content: `I received your message: "${lastUserMessage.content}". This is a demo MCP response. In a real implementation, this would connect to your actual MCP server.`,
       });
     }
 
@@ -61,4 +69,4 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     );
   }
-} 
+}

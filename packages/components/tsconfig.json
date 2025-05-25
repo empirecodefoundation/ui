@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
     "esModuleInterop": true,
-    "noImplicitAny": false,
-    "noResolve": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -19,7 +18,10 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "outDir": "dist"
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist",
+    "sourceMap": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist"]
