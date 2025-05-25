@@ -80,6 +80,28 @@ export const docsConfig: DocsConfig = {
               href: "/docs/ai-caption-generator-button",
               items: [],
             },
+            {
+              title: "Voice Command Button",
+              href: "/docs/ai-voice-command-button",
+              items: [],
+            },
+            {
+              title: "Prompt Template Card",
+              href: "/docs/ai-prompt-template-card",
+              items: [],
+            },
+            {
+              title: "Loading Thought Bubble",
+              href: "/docs/ai-loading-thought-bubble",
+              items: [],
+            },
+            {
+              title: "Prompt History Timeline",
+              href: "/docs/ai-prompt-history-timeline",
+              items: [],
+              label: "New",
+              labelColor: "blue",
+            },
           ],
         },
         {
