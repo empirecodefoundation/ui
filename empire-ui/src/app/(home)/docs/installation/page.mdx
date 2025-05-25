@@ -18,13 +18,25 @@ Empire UI is designed to be easy to install and integrate into your React and Ne
     <TabsTrigger value="pnpm">pnpm</TabsTrigger>
   </TabsList>
   <TabsContent value="npm" className="mt-2">
-    <CodeBlock language="bash" code="npm install @empireui/components" showCopyButton />
+    <CodeBlock
+      language="bash"
+      code="npm install @empireui/components"
+      showCopyButton
+    />
   </TabsContent>
   <TabsContent value="yarn" className="mt-2">
-    <CodeBlock language="bash" code="yarn add @empireui/components" showCopyButton />
+    <CodeBlock
+      language="bash"
+      code="yarn add @empireui/components"
+      showCopyButton
+    />
   </TabsContent>
   <TabsContent value="pnpm" className="mt-2">
-    <CodeBlock language="bash" code="pnpm add @empireui/components" showCopyButton />
+    <CodeBlock
+      language="bash"
+      code="pnpm add @empireui/components"
+      showCopyButton
+    />
   </TabsContent>
 </Tabs>
 
@@ -42,7 +54,10 @@ If you're setting up manually, follow these steps:
 2. Set up Tailwind CSS in your project (if not already set up)
 3. Update your `tailwind.config.js` with the following:
 
-<CodeBlock language="js" showCopyButton code={`/** @type {import('tailwindcss').Config} */
+<CodeBlock
+  language="js"
+  showCopyButton
+  code={`/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -97,7 +112,8 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}`} />
+}`}
+/>
 
 ## Usage Example
 
@@ -107,14 +123,14 @@ After installation, you can import components directly:
 import { Button, AuroraBackground } from '@empireui/components';
 
 function MyComponent() {
-  return (
-    <AuroraBackground>
-      <div className="flex flex-col items-center justify-center min-h-screen p-6">
-        <h1 className="text-4xl font-bold mb-6 text-white">My AI Application</h1>
-        <Button>Get Started</Button>
-      </div>
-    </AuroraBackground>
-  );
+return (
+<AuroraBackground>
+<div className="flex flex-col items-center justify-center min-h-screen p-6">
+<h1 className="text-4xl font-bold mb-6 text-white">My AI Application</h1>
+<Button>Get Started</Button>
+</div>
+</AuroraBackground>
+);
 }`} />
 
 ## Environment Variables
@@ -125,13 +141,22 @@ Some AI-enabled components require API keys to function properly. Create a `.env
 OPENAI_API_KEY=your_openai_api_key
 
 # Optional: Groq API key for faster inference
-GROQ_API_KEY=your_groq_api_key`} />
+
+GROQ_API_KEY=your_groq_api_key
+
+# Add Gemini Key for AI-Door Feature
+
+NEXT_PUBLIC_GEMINI_KEY=your_api_key_here`} />
 
 ## Additional Peer Dependencies
 
 Empire UI has the following peer dependencies that you might need to install:
 
-<CodeBlock language="bash" showCopyButton code="npm install framer-motion react-dom tailwindcss tailwindcss-animate" />
+<CodeBlock
+  language="bash"
+  showCopyButton
+  code="npm install framer-motion react-dom tailwindcss tailwindcss-animate"
+/>
 
 ## Troubleshooting
 
@@ -142,4 +167,4 @@ If you encounter any issues during installation:
 3. Verify that your environment variables are set up correctly.
 4. Clear your cache and node_modules folder if you're updating from a previous version.
 
-For more detailed information, visit our [GitHub repository](https://github.com/empirecodefoundation/ui) or join our [Discord community](https://discord.gg/empireui). 
+For more detailed information, visit our [GitHub repository](https://github.com/empirecodefoundation/ui) or join our [Discord community](https://discord.gg/empireui).

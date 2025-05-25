@@ -79,7 +79,7 @@ export const docsConfig: DocsConfig = {
               title: "Caption Generator Button",
               href: "/docs/ai-caption-generator-button",
               items: [],
-            },
+            }
           ],
         },
         {
@@ -99,6 +99,13 @@ export const docsConfig: DocsConfig = {
               label: "New",
               labelColor: "blue",
             },
+            {
+              title: "Khul Ja Sim Sim door",
+              href: "/docs/ai-door",
+              items: [],
+              label: "New",
+              labelColor: "blue",
+            }
           ],
         },
       ],
