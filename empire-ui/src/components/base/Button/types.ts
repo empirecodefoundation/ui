@@ -1,11 +1,18 @@
-import { type ButtonHTMLAttributes } from "react";
-import { type Variant, type Size } from "@/types";
+import { ButtonHTMLAttributes, ReactNode } from "react";
+
+export type Size = "default" | "sm" | "lg" | "icon";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: Variant;
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
   size?: Size;
   isLoading?: boolean;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
   fullWidth?: boolean;
 }
