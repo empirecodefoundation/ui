@@ -1,0 +1,334 @@
+/* AI Document Analyzer Component Styles */
+
+.ai-document-analyzer {
+  --primary-color: #7c3aed;
+  --primary-hover: #6d28d9;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+  --neutral-color: #6b7280;
+  --background-light: #f9fafb;
+  --border-color: #e5e7eb;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+}
+
+/* Upload area animations */
+.upload-area {
+  transition: all 0.2s ease-in-out;
+}
+
+.upload-area:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.upload-area.drag-active {
+  background-color: rgb(139 92 246 / 0.05);
+  border-color: var(--primary-color);
+  transform: scale(1.02);
+}
+
+.upload-area.file-selected {
+  background-color: rgb(16 185 129 / 0.05);
+  border-color: var(--success-color);
+}
+
+/* File icon animations */
+.file-icon {
+  transition: transform 0.2s ease-in-out;
+}
+
+.file-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Analysis progress animations */
+.analysis-progress {
+  background: linear-gradient(90deg, 
+    rgb(59 130 246 / 0.1) 0%, 
+    rgb(59 130 246 / 0.2) 50%, 
+    rgb(59 130 246 / 0.1) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Results cards */
+.results-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease-in-out;
+}
+
+.results-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Metrics cards */
+.metric-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.metric-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* Sentiment badges */
+.sentiment-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.sentiment-positive {
+  color: rgb(5 150 105);
+  background-color: rgb(16 185 129 / 0.1);
+}
+
+.sentiment-negative {
+  color: rgb(220 38 38);
+  background-color: rgb(239 68 68 / 0.1);
+}
+
+.sentiment-neutral {
+  color: var(--neutral-color);
+  background-color: rgb(107 114 128 / 0.1);
+}
+
+/* Tag styles */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.tag:hover {
+  transform: scale(1.05);
+}
+
+.tag-entity {
+  color: rgb(30 64 175);
+  background-color: rgb(59 130 246 / 0.1);
+}
+
+.tag-topic {
+  color: rgb(5 150 105);
+  background-color: rgb(16 185 129 / 0.1);
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--background-light);
+  transform: translateY(-1px);
+}
+
+/* Loading spinner */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Text area styles */
+.extracted-text {
+  background-color: var(--background-light);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  max-height: 12rem;
+  overflow-y: auto;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.extracted-text::-webkit-scrollbar {
+  width: 6px;
+}
+
+.extracted-text::-webkit-scrollbar-track {
+  background: rgb(243 244 246);
+  border-radius: 3px;
+}
+
+.extracted-text::-webkit-scrollbar-thumb {
+  background: rgb(209 213 219);
+  border-radius: 3px;
+}
+
+.extracted-text::-webkit-scrollbar-thumb:hover {
+  background: rgb(156 163 175);
+}
+
+/* Key points list */
+.key-points-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.key-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.key-point-bullet {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ai-document-analyzer {
+    padding: 1rem;
+  }
+  
+  .metric-card {
+    padding: 0.75rem;
+  }
+  
+  .metric-value {
+    font-size: 1.25rem;
+  }
+  
+  .results-card {
+    padding: 1rem;
+  }
+  
+  .btn-primary {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .ai-document-analyzer {
+    --background-light: #1f2937;
+    --border-color: #374151;
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+  }
+  
+  .results-card {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .metric-card {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .extracted-text {
+    background-color: #111827;
+    color: #e5e7eb;
+  }
+  
+  .btn-secondary {
+    background-color: #1f2937;
+    color: #f9fafb;
+    border-color: #374151;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #374151;
+  }
+}
