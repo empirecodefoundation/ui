@@ -1,0 +1,37 @@
+import { AiDoorExample } from "@/components/examples/AiDoorExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Khul Ja Sim Sim Door"} />
+
+# Khul Ja Sim Sim Door
+
+---
+
+An animated, interactive gate-like component inspired by the concept of magical doors (like in Aladdin). The AI Door challenges users with personalized questions and only opens when the correct answer is provided. Wrong answers generate a new challenge. Useful for creative authentication, onboarding, or gamified access flows.
+
+<ComponentCodePreview
+  component={<AiDoorExample />}
+  filePath="examples/AiDoorExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies="framer-motion lucide-react @google/genai"
+  componentFilePath="core/AIDoor"
+  routeFilePath="door"
+  cli="npx empire@latest add ai-door"
+/>
+
+## Props
+
+---
+
+| Prop name         | Type     | Description                                         |
+| ----------------- | -------- | --------------------------------------------------- |
+| `userName`        | `string` | The user's name shown after successful gate access. |
+| `initialQuestion` | `string` | The first question shown to the user.               |
