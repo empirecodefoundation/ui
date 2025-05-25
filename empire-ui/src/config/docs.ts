@@ -61,6 +61,13 @@ export const docsConfig: DocsConfig = {
               labelColor: "orange",
             },
             {
+              title: "AI Smart Searchbar",
+              href: "/docs/ai-smartsearch",
+              items: [],
+              label: "Popular",
+              labelColor: "orange",
+            },
+            {
               title: "Text Paraphraser Button",
               href: "/docs/ai-paraphraser-button",
               items: [],
@@ -170,7 +177,7 @@ export const docsConfig: DocsConfig = {
               href: "/docs/wavy-background",
               items: [],
             },
-          ]
+          ],
         },
         {
           title: "Form Elements",
@@ -192,8 +199,8 @@ export const docsConfig: DocsConfig = {
               label: "Core",
               labelColor: "purple",
             },
-          ]
-        }
+          ],
+        },
       ],
     },
   ],
