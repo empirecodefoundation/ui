@@ -30,6 +30,15 @@ const config: Config = {
           "0%": { backgroundPosition: "0% 100%" },
           "100%": { backgroundPosition: "0% 0%" },
         },
+        animation: {
+          glow: "glow 2s ease-in-out infinite",
+        },
+        keyframes: {
+          glow: {
+            "0%, 100%": { boxShadow: "0 0 4px #9333ea, 0 0 8px #d946ef" },
+            "50%": { boxShadow: "0 0 8px #9333ea, 0 0 16px #d946ef" },
+          },
+        },
       },
       animation: {
         "caret-blink": "caret-blink 1.25s ease-out infinite",
