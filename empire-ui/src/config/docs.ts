@@ -95,6 +95,13 @@ export const docsConfig: DocsConfig = {
               href: "/docs/ai-loading-thought-bubble",
               items: [],
             },
+            {
+              title: "Prompt History Timeline",
+              href: "/docs/ai-prompt-history-timeline",
+              items: [],
+              label: "New",
+              labelColor: "blue",
+            },
           ],
         },
         {
