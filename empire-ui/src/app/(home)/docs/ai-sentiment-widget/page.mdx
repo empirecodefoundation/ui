@@ -1,0 +1,30 @@
+import { AISentimentWidgetExample } from "@/components/examples/AISentimentWidgetExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Sentiment Analysis Widget"} />
+
+# AI Sentiment Analysis Widget
+
+Real-time text sentiment analysis using Hugging Face's NLP model.
+
+<ComponentCodePreview
+  component={<SentimentWidgetExample />}
+  filePath="examples/SentimentWidgetExample"
+/>
+
+## Installation
+
+<ComponentInstall
+  dependencies={""}
+  componentFilePath={"core/SentimentWidget"}
+  routeFilePath={"analysis/sentiment"}
+  cli={"npx empire@latest add ai-sentiment-widget"}
+/>
+
+## Environment Variables
+
+```env
+NEXT_PUBLIC_HF_API_URL=https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english
+NEXT_PUBLIC_HF_API_TOKEN=your_hugging_face_token
