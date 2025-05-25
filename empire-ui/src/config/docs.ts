@@ -75,6 +75,13 @@ export const docsConfig: DocsConfig = {
               labelColor: "orange",
             },
             {
+               title: "AI Smart Calendar",
+              href: "/docs/ai-calender",
+              items: [],
+              label: "Popular",
+              labelColor: "green",
+            },
+            {
               title: "Text Paraphraser Button",
               href: "/docs/ai-paraphraser-button",
               items: [],
