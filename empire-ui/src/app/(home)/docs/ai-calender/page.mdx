@@ -1,0 +1,118 @@
+import { AICalendar } from "@/components/examples/SmartCalender";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"AI Calendar Scheduler"} />
+
+# AI Calendar Scheduler
+---
+A powerful AI-driven calendar scheduling component that automatically optimizes meeting times using natural language processing. It features intelligent conflict resolution, timezone awareness, and seamless integration with existing calendar systems.
+
+<ComponentCodePreview
+  component={<AICalendar />}
+  filePath="examples/SmartCalender"
+/>
+
+## Features
+---
+- **Natural Language Parsing**: Process requests like "Lunch next Thursday" or "Team call tomorrow at 2pm"
+- **Smart Time Suggestions**: Generate optimal meeting times based on preferences and availability
+- **Conflict Detection**: Automatically identify and resolve scheduling conflicts
+- **Timezone Intelligence**: Handle multiple timezones with automatic detection
+- **Priority Management**: Support for high/medium/low priority meetings
+- **Real-time AI Processing**: Powered by Gemini AI for advanced scheduling intelligence
+
+## Installation
+---
+<ComponentInstall
+  dependencies={"framer-motion lucide-react"}
+  componentFilePath={"core/AICalendar"}
+  routeFilePath={"calendar"}
+  cli={"npx empire@latest add ai-calendar"}
+/>
+
+## Props
+---
+| Prop name           | Type                                    | Description                                           |
+| ------------------- | --------------------------------------- | ----------------------------------------------------- |
+| `attendees`         | `string[]`                              | Array of default attendee email addresses            |
+| `onAISuggest`       | `(times: TimeSlot[]) => void`           | Callback fired when AI suggests meeting times        |
+| `onMeetingScheduled`| `(meeting: Meeting) => void`            | Callback fired when a meeting is successfully scheduled |
+| `className`         | `string`                                | The class name for the calendar container            |
+| `apiKey`            | `string`                                | Gemini AI API key for advanced natural language processing |
+| `model`             | `string`                                | Gemini model to use (default: "gemini-1.5-flash")   |
+
+## Types
+---
+```typescript
+interface TimeSlot {
+  id: string;
+  start: Date;
+  end: Date;
+  confidence: number;
+  conflicts?: string[];
+  timezone?: string;
+}
+
+interface Meeting {
+  id: string;
+  title: string;
+  attendees: string[];
+  duration: number; // in minutes
+  date?: Date;
+  timeSlots?: TimeSlot[];
+  location?: string;
+  description?: string;
+  priority?: 'low' | 'medium' | 'high';
+}
+```
+
+## Usage Examples
+---
+```jsx
+import { AICalendar } from "@/components/core/AICalendar";
+
+// Basic usage
+<AICalendar 
+  attendees={["john@company.com", "jane@company.com"]}
+  onAISuggest={(times) => console.log("Suggested times:", times)}
+  onMeetingScheduled={(meeting) => console.log("Meeting scheduled:", meeting)}
+/>
+
+// With custom API settings
+<AICalendar 
+  attendees={emails}
+  apiKey="your-gemini-api-key"
+  model="gemini-1.5-pro"
+  onAISuggest={(times) => popupTimePicker(times)}
+  onMeetingScheduled={(meeting) => addToCalendar(meeting)}
+/>
+```
+
+## Natural Language Examples
+---
+The AI Calendar understands various natural language patterns:
+
+- **Time-based**: "tomorrow at 2pm", "next Thursday morning", "in 30 minutes"
+- **Duration**: "quick 15-minute standup", "2-hour workshop", "lunch meeting"
+- **Attendees**: "call with john@company.com", "team meeting with everyone"
+- **Priority**: "urgent client call", "flexible catch-up", "important review"
+- **Location**: "conference room A", "zoom call", "coffee shop downtown"
+
+## API Integration
+---
+The component uses Gemini AI for advanced natural language processing. Provide your API key for enhanced parsing capabilities:
+
+```jsx
+<AICalendar 
+  apiKey="AIzaSyDIgil7Utyc91uRuCk99FxpY1yGka-CcNk"
+  model="gemini-1.5-flash"
+/>
+```
+
+Without an API key, the component falls back to local parsing with basic natural language understanding.
+
+## Customization
+---
+The component supports extensive customization through Tailwind CSS classes and can be styled to match your application's design system. All time slots include confidence scores and conflict indicators for informed decision-making.

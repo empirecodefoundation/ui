@@ -61,6 +61,27 @@ export const docsConfig: DocsConfig = {
               labelColor: "orange",
             },
             {
+              title: "AI Smart Searchbar",
+              href: "/docs/ai-smartsearch",
+              items: [],
+              label: "Popular",
+              labelColor: "orange",
+            },
+            {
+               title: "AI Form Generator",
+              href: "/docs/ai-form-generator",
+              items: [],
+              label: "Popular",
+              labelColor: "orange",
+            },
+            {
+               title: "AI Smart Calendar",
+              href: "/docs/ai-calender",
+              items: [],
+              label: "Popular",
+              labelColor: "green",
+            },
+            {
               title: "Text Paraphraser Button",
               href: "/docs/ai-paraphraser-button",
               items: [],
@@ -170,7 +191,7 @@ export const docsConfig: DocsConfig = {
               href: "/docs/wavy-background",
               items: [],
             },
-          ]
+          ],
         },
         {
           title: "Form Elements",
@@ -192,8 +213,8 @@ export const docsConfig: DocsConfig = {
               label: "Core",
               labelColor: "purple",
             },
-          ]
-        }
+          ],
+        },
       ],
     },
   ],

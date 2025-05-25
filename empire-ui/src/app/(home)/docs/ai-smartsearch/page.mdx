@@ -1,0 +1,37 @@
+import { SmartSearch } from "@/components/examples/SmartSearch";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"AI Chatbox"} />
+
+# AI Chatbox
+
+---
+
+A flexible AI-powered chatbox component that can handle user inputs and display responses from an AI. This chatbox is interactive and supports features like smooth scrolling, avatars, and a user-friendly interface.
+
+<ComponentCodePreview
+  component={<SmartSearch />}
+  filePath="examples/SmartSearch"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip ai/react"}
+  componentFilePath={"core/AIChatbox"}
+  routeFilePath={"chat"}
+  cli={"npx empire@latest add ai-chatbox"}
+/>
+
+## Props
+
+---
+
+| Prop name   | Type      | Description                                     |
+| ----------- | --------- | ----------------------------------------------- |
+| `className` | `string`  | The class name for the chatbox container.       |
+| `isOpen`    | `boolean` | Controls whether the chatbox is open or closed. |
