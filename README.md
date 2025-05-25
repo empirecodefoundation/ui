@@ -146,3 +146,152 @@ npm install @empire-ui/core
 yarn add @empire-ui/core
 # or
 pnpm add @empire-ui/core
+
+```
+
+# AuraTheme - Dynamic Theme Generator
+
+AuraTheme is a powerful React component that generates and applies adaptive themes for websites using AI. It leverages Google's Gemini AI to create beautiful, context-aware color schemes and patterns based on user prompts.
+
+## 🌟 Features
+
+### AI-Powered Theme Generation
+- Generate themes using Gemini 2.0 Flash AI
+- Context-aware color palette generation
+- Intelligent pattern suggestions
+- Fallback themes for reliability
+
+### Theme Customization
+- Custom color picker integration
+- Pattern upload support
+- Predefined theme options
+- Real-time theme preview
+
+### User Interface
+- Floating action button design
+- Modal-based theme customization
+- Intuitive color selection
+- Responsive layout
+
+### Theme Application
+- CSS variable-based theming
+- Global theme application
+- Smooth theme transitions
+- Pattern overlay support
+
+## 🛠️ Installation
+
+1. Install the required dependencies:
+```bash
+npm install @google/generative-ai react-color
+```
+
+2. Create a `.env` file in your project root:
+```
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+## 📦 Component Structure
+
+```
+src/
+├── components/
+│   └── ai/
+│       └── AuraTheme/
+│           ├── AuraTheme.tsx      # Main component
+│           └── useAuraTheme.ts    # Custom hook
+├── lib/
+│   └── gemini.ts                  # Gemini AI integration
+└── env.d.ts                       # Type declarations
+```
+
+## 🎨 Usage
+
+```tsx
+import { AuraTheme } from '@/components/ai/AuraTheme/AuraTheme';
+
+function App() {
+  return (
+    <div>
+      <AuraTheme />
+      {/* Your app content */}
+    </div>
+  );
+}
+```
+
+## 🔧 Configuration
+
+### Theme Generation
+The component supports three theme generation modes:
+1. **AI Generation**: Uses Gemini AI to generate themes based on prompts
+2. **Custom Colors**: Manual color selection with color picker
+3. **Predefined Themes**: Quick selection from preset themes
+
+### CSS Variables
+The generated theme is applied using CSS variables:
+```css
+:root {
+  --aura-primary: #color;
+  --aura-secondary: #color;
+  --aura-background: #color;
+  --aura-text: #color;
+  --aura-pattern: pattern-name;
+}
+```
+
+## 🤖 AI Integration
+
+The component uses Gemini 2.0 Flash AI to generate themes. The AI considers:
+- Primary color for attention-grabbing elements
+- Secondary color for complementary elements
+- Background color for subtle contrast
+- Text color for readability
+- Pattern suggestions for visual interest
+
+## 🎯 Features in Detail
+
+### Theme Generation
+- **AI-Powered**: Uses Gemini AI to generate context-aware themes
+- **Custom Colors**: Manual color selection with color picker
+- **Pattern Upload**: Support for custom pattern uploads
+- **Predefined Themes**: Quick selection from preset themes
+
+### User Interface
+- **Floating Button**: Easy access to theme customization
+- **Modal Interface**: Clean, organized theme options
+- **Color Picker**: Intuitive color selection
+- **Pattern Preview**: Visual pattern selection
+
+### Theme Application
+- **Global Theming**: Applies theme to entire application
+- **CSS Variables**: Easy theme customization
+- **Smooth Transitions**: Animated theme changes
+- **Pattern Overlay**: Background pattern support
+
+## 🔒 Security
+
+- API key stored in environment variables
+- Secure API communication
+- No client-side API key exposure
+
+## 🚀 Performance
+
+- Optimized theme generation
+- Efficient CSS variable updates
+- Smooth theme transitions
+- Minimal bundle size
+
+## 📝 License
+
+MIT License - feel free to use in your projects!
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 🙏 Acknowledgments
+
+- Google Gemini AI for theme generation
+- React Color for color picker integration
+- Vite for build tooling
