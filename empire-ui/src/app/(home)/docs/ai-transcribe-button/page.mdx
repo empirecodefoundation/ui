@@ -1,0 +1,144 @@
+import { AITranscribeButtonExample } from "@/components/examples/AITranscribeButtonExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Transcribe button"} />
+
+# AI Transcribe Button
+
+---
+
+A powerful AI-powered button that transcribes audio files into text using Groq's advanced speech recognition models.
+
+<ComponentCodePreview
+  component={<AITranscribeButtonExample />}
+  filePath="examples/AITranscribeButtonExample"
+/>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip groq-sdk"}
+  componentFilePath={"core/AITranscribeButton"}
+  routeFilePath={"buttons/AITranscribeButton"}
+  cli={"npx empire@latest add ai-transcribe-button"}
+/>
+
+## Props
+
+---
+
+| Prop name                 | Type       | Description                                                |
+| ------------------------- | ---------- | ---------------------------------------------------------- |
+| `className`               | `string`   | The class name of the container component.                 |
+| `buttonClassName`         | `string`   | The class name of the button.                              |
+| `tooltipClassName`        | `string`   | The class name of the tooltip.                             |
+| `cardClassName`           | `string`   | The class name of the card component.                      |
+| `transcriptionClassName`  | `string`   | The class name of the transcription container.             |
+| `onTranscriptionComplete` | `function` | Callback function that receives the transcription text.    |
+| `maxFileSizeMB`           | `number`   | Maximum file size in MB (default: 25MB).                   |
+| `supportLongFiles`        | `boolean`  | Enable support for longer audio files (default: false).    |
+| `language`                | `string`   | Language code for transcription (default: "en").           |
+
+## Usage
+
+---
+
+### Basic Usage
+
+```jsx
+import { AITranscribeButton } from "@/components/ui/AITranscribeButton";
+
+export default function AudioTranscriber() {
+  return (
+    <div>
+      <h1>Audio Transcription Tool</h1>
+      <AITranscribeButton />
+    </div>
+  );
+}
+```
+
+### With Custom Styling
+
+```jsx
+import { AITranscribeButton } from "@/components/ui/AITranscribeButton";
+
+export default function CustomStyledTranscriber() {
+  return (
+    <div>
+      <AITranscribeButton 
+        buttonClassName="bg-blue-500 text-white" 
+        cardClassName="bg-slate-100 border-blue-200"
+      />
+    </div>
+  );
+}
+```
+
+### With Callback Function
+
+```jsx
+import { AITranscribeButton } from "@/components/ui/AITranscribeButton";
+import { useState } from "react";
+
+export default function TranscriberWithCallback() {
+  const [transcription, setTranscription] = useState("");
+  
+  const handleTranscriptionComplete = (text) => {
+    setTranscription(text);
+    // Do something with the transcription, like sending it to an API
+    console.log("Transcription completed:", text);
+  };
+  
+  return (
+    <div>
+      <AITranscribeButton onTranscriptionComplete={handleTranscriptionComplete} />
+      {transcription && (
+        <div className="mt-4">
+          <h2>You can use the transcription elsewhere in your app:</h2>
+          <p>{transcription.substring(0, 100)}...</p>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## How It Works
+
+The AI Transcribe Button uses Groq's advanced speech recognition models to convert audio to text. It supports various audio formats including MP3, WAV, M4A, and more.
+
+The component:
+1. Allows users to upload audio files
+2. Sends the file to the server for processing
+3. Displays a loading state during transcription
+4. Shows the transcribed text when complete
+5. Provides options to copy or download the transcription
+
+## API Requirements
+
+This component requires a Groq API key to be set in your environment variables:
+
+```
+GROQ_API_KEY=your-api-key-here
+```
+
+## Supported Audio Formats
+
+- MP3
+- WAV
+- M4A
+- FLAC
+- AAC
+- OGG
+- And more
+
+## Limitations
+
+- Maximum file size: 25MB
+- Maximum audio length: 25 minutes
+- Currently supports English language transcription by default
