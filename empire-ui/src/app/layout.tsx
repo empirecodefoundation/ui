@@ -1,9 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
-import { GeistMono } from "geist/font/mono";
+import { GeistMono, GeistSans } from "@/lib/fonts";
 import { SiteHeader } from "@/components/common/header";
-import { ThemeProvider } from "@/components/providers";
+import { ThemeProvider } from "@/components/core/providers";
 import Footer from "@/components/common/Footer";
 
 export const metadata: Metadata = {
@@ -28,7 +28,9 @@ export default function RootLayout({
           data-website-id="17e8fc96-321d-43a6-94e7-d571c4c66a04"
         />
       ) : null}
-      <body className={`${GeistMono.variable} bg-zinc-950 dark:bg-zinc-950`}>
+      <body
+        className={`${GeistSans.variable} ${GeistMono.variable} bg-zinc-950 dark:bg-zinc-950`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

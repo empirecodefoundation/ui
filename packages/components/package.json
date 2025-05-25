@@ -1,0 +1,55 @@
+{
+  "name": "@empireui/components",
+  "version": "1.2.0",
+  "description": "Empire UI Components - AI-ready React components",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src/components/ui",
+    "src/lib"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.13",
+    "@radix-ui/react-scroll-area": "^1.0.4",
+    "@radix-ui/react-slot": "^1.2.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.284.0",
+    "tailwind-merge": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.24",
+    "@types/react-dom": "^18.2.8",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "framer-motion": "^10.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "tailwindcss": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/empirecodefoundation/ui.git"
+  },
+  "keywords": [
+    "ui",
+    "components",
+    "react",
+    "nextjs",
+    "tailwindcss",
+    "ai"
+  ],
+  "author": "Empire Code Foundation",
+  "license": "MIT"
+}
