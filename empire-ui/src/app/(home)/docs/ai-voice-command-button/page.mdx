@@ -1,0 +1,64 @@
+import VoiceCommandButtonExampleDynamic from "@/components/examples/VoiceCommandButtonExampleDynamic";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import CodeRenderer from "@/components/code-renderer";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Voice Command Button"} />
+
+# Voice Command Button
+
+---
+
+A mic-enabled button that listens to voice commands and triggers pre-defined UI actions — powered entirely by the browser-native Web Speech API. No external API key required.
+
+> **Note:** The Voice Command Button uses the [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API), which is supported in most modern browsers (Chrome, Edge). It does not require any external API key.
+
+## Usage Example
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <VoiceCommandButtonExampleDynamic />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeRenderer code={`import VoiceCommandButton from "@/components/ai/voice-command-button";
+
+<VoiceCommandButton
+  label="Speak"
+  commands={{
+    "scroll down": () => window.scrollBy(0, 500),
+    "scroll up": () => window.scrollBy(0, -500),
+    "dark mode": () => document.body.classList.add("dark"),
+    "light mode": () => document.body.classList.remove("dark"),
+  }}
+  onCommandRecognized={(cmd) => console.log("Recognized:", cmd)}
+/>
+`} lang="tsx" />
+  </TabsContent>
+</Tabs>
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={""}
+  componentFilePath={"ai/voice-command-button"}
+  routeFilePath={"ai-voice-command-button"}
+  cli={"npx empire@latest add ai-voice-command-button"}
+/>
+
+## Props
+
+---
+
+| Prop name             | Type                                 | Description                                              |
+|----------------------|--------------------------------------|----------------------------------------------------------|
+| `commands`           | `Record<string, () => void>`          | Mapping of keywords/phrases to callback functions         |
+| `onCommandRecognized`| `(command: string) => void`           | Optional callback when a command is matched               |
+| `onError`            | `(error: string) => void`             | Optional callback on error                                |
+| `label`              | `string`                              | Optional label under the button                           |
