@@ -17,6 +17,29 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            code: {
+              color: "#ffffff",
+            },
+            tr: {
+              "&:hover": {
+                backgroundColor: "#676565 !important",
+              },
+            },
+          },
+        },
+        dark: {
+          css: {
+            tr: {
+              "&:hover": {
+                backgroundColor: "#1f2937 !important",
+              },
+            },
+          },
+        },
+      },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
