@@ -1,0 +1,31 @@
+import { AuroraBackgroundExample } from "@/components/examples/AuroraBackgroundExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Background"} />
+
+# Aurora Background
+
+---
+
+
+The **Aurora Background** is a visually stunning component that creates a dynamic and colorful aurora-like effect. It is perfect for enhancing the aesthetic appeal of your application, providing a vibrant and engaging background that captivates users.
+
+<ComponentCodePreview
+  component={  <div className="absolute top-0 left-0 w-full h-full">
+          <AuroraBackgroundExample colorStops={["#00D8FF", "#7BFF67", "#00D8FF"]} speed={0.5} />
+        </div>}
+  filePath="examples/AuroraBackgroundExample"
+/>
+
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"lucide-react framer-motion ogl"}
+  componentFilePath={"core/aurora-background"}
+  cli={"npx empire@latest add aurora-background"}
+/>

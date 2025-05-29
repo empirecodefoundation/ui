@@ -2,12 +2,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import CodePreview from "./code-preview";
 import CodeRenderer from "./code-renderer";
 import { extractCodeFromFilePath } from "@/lib/code";
+import { Button } from "./ui/button";
+import { Download } from "lucide-react";
 
 type ComponentInstallProps = {
   cli: string;
   componentFilePath: string;
   routeFilePath?: string;
   dependencies?: string;
+  globalCssPath?: string;
+  wrapperFilePath?: string;
 };
 
 export default function ComponentInstall({
@@ -15,6 +19,8 @@ export default function ComponentInstall({
   routeFilePath,
   dependencies,
   cli,
+  globalCssPath,
+  wrapperFilePath,
 }: ComponentInstallProps) {
   const ComponentFileContent = extractCodeFromFilePath(
     `src/components/${componentFilePath}.tsx`
@@ -25,6 +31,21 @@ export default function ComponentInstall({
       `src/app/api/${routeFilePath}/route.ts`
     );
   }
+
+  let cssContent: string = "";
+  if (globalCssPath) {
+    cssContent = extractCodeFromFilePath(
+      `src/components/${globalCssPath}`
+    );
+  }
+
+  let wrapperFileContent: string = "";
+  if (wrapperFilePath) {
+    wrapperFileContent = extractCodeFromFilePath(
+      `src/components/${wrapperFilePath}.tsx`
+    );
+  }
+
   const dependencyCommand = `npm i ${dependencies!}`;
   const cliCommand = cli;
 
@@ -35,6 +56,8 @@ export default function ComponentInstall({
           <TabsTrigger value="cli">CLI</TabsTrigger>
           <TabsTrigger value="component">Component</TabsTrigger>
           {routeFilePath && <TabsTrigger value="route">API route</TabsTrigger>}
+          {globalCssPath && <TabsTrigger value="css">CSS</TabsTrigger>}
+          {wrapperFilePath && <TabsTrigger value="wrapper">Wrapper</TabsTrigger>}
         </TabsList>
         <TabsContent value="cli" className="rounded-xl">
           <CodePreview code={cliCommand}>
@@ -82,6 +105,41 @@ export default function ComponentInstall({
 
                 <CodePreview code={routeFileContent}>
                   <CodeRenderer code={routeFileContent} lang="tsx" />
+                </CodePreview>
+              </div>
+            </div>
+          </TabsContent>
+        )}
+        {globalCssPath && (
+          <TabsContent value="css" className="border-0 border-l">
+            <div>
+              <div className="border-l-[6px] border-white pl-6 mb-5">
+                <div>Add these CSS styles to your global CSS file.</div>
+              </div>
+
+              <div className="flex flex-col space-y-6 ml-7 border-zinc-800">
+                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">app/global.css</code>
+
+                <CodePreview code={cssContent}>
+                  <CodeRenderer code={cssContent} lang="css" />
+                </CodePreview>
+              </div>
+            </div>
+          </TabsContent>
+        )}
+        {wrapperFilePath && (
+          <TabsContent value="wrapper" className="border-0 border-l">
+            <div>
+              <div className="border-l-[6px] border-white pl-6 mb-5">
+                <div>Copy the wrapper component into your project.</div>
+                <div><span className="underline">Wrap your layout.tsx</span> file with it to load the component styles.</div>
+              </div>
+
+              <div className="flex flex-col space-y-6 ml-7 border-zinc-800">
+                <code className="bg-zinc-200 text-black dark:bg-zinc-700 dark:text-white px-1 max-w-fit rounded-xl overflow-x-auto">{`components/${wrapperFilePath}.tsx`}</code>
+
+                <CodePreview code={wrapperFileContent}>
+                  <CodeRenderer code={wrapperFileContent} lang="tsx" />
                 </CodePreview>
               </div>
             </div>

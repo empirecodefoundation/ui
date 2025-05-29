@@ -1,0 +1,29 @@
+import { WavyBackgroundExample } from "@/components/examples/WavyBackgroundExample";
+import ComponentCodePreview from "@/components/component-code-preview";
+import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+
+<Breadcrumbs title={"Background"} />
+
+# Wavy Background
+
+---
+The **Wavy Background** component is a visually appealing background effect that adds dynamic wave-like animations to your application. It is perfect for enhancing the aesthetic appeal of your UI, creating a modern and engaging user experience.
+
+<ComponentCodePreview
+  component={  <div className="absolute top-0 left-0 w-full h-full">
+          <WavyBackgroundExample />
+        </div>}
+  filePath="examples/WavyBackgroundExample"
+/>
+
+
+## Installation
+
+---
+
+<ComponentInstall
+  dependencies={"lucide-react framer-motion ogl"}
+  componentFilePath={"core/wavy-background"}
+  cli={"npx empire@latest add wavy-background"}
+/>

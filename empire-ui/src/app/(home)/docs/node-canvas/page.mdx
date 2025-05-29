@@ -1,0 +1,652 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ComponentCodePreview from "@/components/component-code-preview";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+/* import { CH } from "@code-hike/mdx/components"; */
+
+<Breadcrumbs title={"Node Canvas"} />
+
+# Node Canvas
+
+The Node Canvas component provides an interactive, draggable canvas for creating node-based workflows and visual programming interfaces. Perfect for AI pipeline design, data processing workflows, or visual coding environments.
+
+## Introduction
+
+Visual programming interfaces allow users to create complex workflows by connecting nodes that represent different operations or data transformations. The Node Canvas component makes it easy to implement these interfaces in your React applications.
+
+With Node Canvas, you can create intuitive drag-and-drop experiences for various use cases:
+
+- AI model pipelines and workflows
+- Data transformation and ETL processes
+- Business logic visualization
+- Event-driven architectures
+- No-code/low-code application builders
+
+## Features
+
+- **Interactive Nodes**: Draggable, resizable nodes with customizable content
+- **Connection System**: Create connections between nodes with path visualization
+- **Zooming & Panning**: Navigate large workflows with ease
+- **Context Menus**: Right-click context menus for nodes and canvas
+- **Minimap**: Optional overview map of the entire canvas
+- **Selection & Multi-select**: Select and move multiple nodes simultaneously
+- **Undo/Redo**: History management for actions on the canvas
+- **Customizable Appearance**: Change colors, styles, and node appearances
+- **Performance Optimized**: Efficiently handles hundreds of nodes and connections
+- **TypeScript Support**: Full type definitions for all features
+- **Accessibility**: Keyboard navigation and ARIA attributes
+
+## Usage
+
+<ComponentCodePreview name="NodeCanvas" component="NodeCanvas" />
+
+## Basic Example
+
+<CH.Section>
+
+```tsx
+import { NodeCanvas, NodeType } from '@empireui/components';
+import { useState } from 'react';
+
+// Define basic node types
+const nodeTypes: NodeType[] = [
+  {
+    id: 'input',
+    label: 'Input',
+    color: '#3b82f6',
+    inputs: [],
+    outputs: ['data'],
+  },
+  {
+    id: 'process',
+    label: 'Process',
+    color: '#10b981',
+    inputs: ['data'],
+    outputs: ['result'],
+  },
+  {
+    id: 'output',
+    label: 'Output',
+    color: '#ef4444',
+    inputs: ['result'],
+    outputs: [],
+  },
+];
+
+// Initial nodes on the canvas
+const initialNodes = [
+  {
+    id: 'node-1',
+    type: 'input',
+    position: { x: 100, y: 200 },
+    data: { label: 'Image Input' },
+  },
+  {
+    id: 'node-2',
+    type: 'process',
+    position: { x: 400, y: 200 },
+    data: { label: 'Image Processing' },
+  },
+  {
+    id: 'node-3',
+    type: 'output',
+    position: { x: 700, y: 200 },
+    data: { label: 'Result Output' },
+  },
+];
+
+// Initial connections
+const initialEdges = [
+  {
+    id: 'edge-1-2',
+    source: 'node-1',
+    sourceHandle: 'data',
+    target: 'node-2',
+    targetHandle: 'data',
+  },
+  {
+    id: 'edge-2-3',
+    source: 'node-2',
+    sourceHandle: 'result',
+    target: 'node-3',
+    targetHandle: 'result',
+  },
+];
+
+export default function BasicNodeCanvas() {
+  const [nodes, setNodes] = useState(initialNodes);
+  const [edges, setEdges] = useState(initialEdges);
+
+  return (
+    <div className="h-[600px] border rounded-lg overflow-hidden">
+      <NodeCanvas
+        nodeTypes={nodeTypes}
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={setNodes}
+        onEdgesChange={setEdges}
+        showMinimap={true}
+      />
+    </div>
+  );
+}
+```
+
+</CH.Section>
+
+## AI Workflow Example
+
+<CH.Section>
+
+```tsx
+import { NodeCanvas, NodeType } from '@empireui/components';
+import { useState } from 'react';
+
+// Define AI workflow node types
+const aiNodeTypes: NodeType[] = [
+  {
+    id: 'data-source',
+    label: 'Data Source',
+    color: '#3b82f6',
+    inputs: [],
+    outputs: ['data'],
+    configFields: [
+      { name: 'source', label: 'Source', type: 'select', options: ['CSV', 'API', 'Database'] },
+      { name: 'location', label: 'Location', type: 'text' },
+    ],
+  },
+  {
+    id: 'data-processing',
+    label: 'Processing',
+    color: '#10b981',
+    inputs: ['data'],
+    outputs: ['processed'],
+    configFields: [
+      { name: 'operation', label: 'Operation', type: 'select', options: ['Filter', 'Transform', 'Aggregate'] },
+      { name: 'parameters', label: 'Parameters', type: 'json' },
+    ],
+  },
+  {
+    id: 'ml-model',
+    label: 'ML Model',
+    color: '#8b5cf6',
+    inputs: ['processed'],
+    outputs: ['prediction'],
+    configFields: [
+      { name: 'model', label: 'Model', type: 'select', options: ['Classification', 'Regression', 'Clustering'] },
+      { name: 'parameters', label: 'Parameters', type: 'json' },
+    ],
+  },
+  {
+    id: 'output',
+    label: 'Output',
+    color: '#ef4444',
+    inputs: ['prediction'],
+    outputs: [],
+    configFields: [
+      { name: 'destination', label: 'Destination', type: 'select', options: ['API', 'File', 'Database'] },
+      { name: 'format', label: 'Format', type: 'select', options: ['JSON', 'CSV', 'XML'] },
+    ],
+  },
+];
+
+export default function AIWorkflowCanvas() {
+  const [nodes, setNodes] = useState([
+    {
+      id: 'source-1',
+      type: 'data-source',
+      position: { x: 100, y: 200 },
+      data: { 
+        label: 'Customer Data',
+        config: { source: 'CSV', location: '/data/customers.csv' } 
+      },
+    },
+    {
+      id: 'process-1',
+      type: 'data-processing',
+      position: { x: 400, y: 100 },
+      data: { 
+        label: 'Data Cleaning',
+        config: { 
+          operation: 'Transform', 
+          parameters: { removeNulls: true, normalize: true } 
+        } 
+      },
+    },
+    {
+      id: 'process-2',
+      type: 'data-processing',
+      position: { x: 400, y: 300 },
+      data: { 
+        label: 'Feature Extraction',
+        config: { 
+          operation: 'Transform', 
+          parameters: { extractFeatures: ['age', 'purchase_history', 'location'] } 
+        } 
+      },
+    },
+    {
+      id: 'model-1',
+      type: 'ml-model',
+      position: { x: 700, y: 200 },
+      data: { 
+        label: 'Prediction Model',
+        config: { 
+          model: 'Classification', 
+          parameters: { algorithm: 'RandomForest', max_depth: 10 } 
+        } 
+      },
+    },
+    {
+      id: 'output-1',
+      type: 'output',
+      position: { x: 1000, y: 200 },
+      data: { 
+        label: 'API Output',
+        config: { destination: 'API', format: 'JSON' } 
+      },
+    },
+  ]);
+
+  const [edges, setEdges] = useState([
+    {
+      id: 'edge-source-process1',
+      source: 'source-1',
+      sourceHandle: 'data',
+      target: 'process-1',
+      targetHandle: 'data',
+    },
+    {
+      id: 'edge-source-process2',
+      source: 'source-1',
+      sourceHandle: 'data',
+      target: 'process-2',
+      targetHandle: 'data',
+    },
+    {
+      id: 'edge-process1-model',
+      source: 'process-1',
+      sourceHandle: 'processed',
+      target: 'model-1',
+      targetHandle: 'processed',
+    },
+    {
+      id: 'edge-process2-model',
+      source: 'process-2',
+      sourceHandle: 'processed',
+      target: 'model-1',
+      targetHandle: 'processed',
+    },
+    {
+      id: 'edge-model-output',
+      source: 'model-1',
+      sourceHandle: 'prediction',
+      target: 'output-1',
+      targetHandle: 'prediction',
+    },
+  ]);
+
+  const handleNodesChange = (newNodes) => {
+    setNodes(newNodes);
+  };
+
+  const handleEdgesChange = (newEdges) => {
+    setEdges(newEdges);
+  };
+
+  return (
+    <div className="h-[700px] border rounded-lg overflow-hidden">
+      <NodeCanvas
+        nodeTypes={aiNodeTypes}
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={handleNodesChange}
+        onEdgesChange={handleEdgesChange}
+        showMinimap={true}
+        showControls={true}
+        snapToGrid={true}
+        theme="dark"
+      />
+    </div>
+  );
+}
+```
+
+</CH.Section>
+
+## Implementing Custom Node Renderers
+
+You can customize how nodes look by providing custom React components:
+
+<CH.Section>
+
+```tsx
+import { NodeCanvas, NodeType, NodeComponentProps } from '@empireui/components';
+
+// Custom node component
+const CustomNode = ({ node, onNodeClick, onOutputConnect }: NodeComponentProps) => {
+  return (
+    <div 
+      className="bg-white p-4 rounded-lg shadow-lg border-2 border-blue-500"
+      style={{ width: node.width || 200, height: node.height || 100 }}
+      onClick={() => onNodeClick(node.id)}
+    >
+      <h3 className="text-lg font-bold mb-2">{node.data.label}</h3>
+      <p className="text-sm text-gray-500">{node.type}</p>
+      
+      {/* Render input ports */}
+      <div className="absolute -left-3 top-1/2 transform -translate-y-1/2 space-y-2">
+        {node.inputs?.map(input => (
+          <div 
+            key={input} 
+            className="w-6 h-6 bg-blue-500 rounded-full"
+            data-handle={input}
+          />
+        ))}
+      </div>
+      
+      {/* Render output ports */}
+      <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 space-y-2">
+        {node.outputs?.map(output => (
+          <div 
+            key={output} 
+            className="w-6 h-6 bg-green-500 rounded-full cursor-pointer"
+            data-handle={output}
+            onClick={(e) => {
+              e.stopPropagation();
+              onOutputConnect(node.id, output);
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Define node types with custom components
+const customNodeTypes: NodeType[] = [
+  {
+    id: 'custom',
+    label: 'Custom Node',
+    color: '#3b82f6',
+    inputs: ['in1', 'in2'],
+    outputs: ['out1', 'out2'],
+    customComponent: CustomNode,
+  },
+];
+```
+
+</CH.Section>
+
+## Connection Validation
+
+You can control which connections are allowed by providing a validation function:
+
+<CH.Section>
+
+```tsx
+import { NodeCanvas } from '@empireui/components';
+
+export default function ValidationExample() {
+  // Only allow connections between compatible ports
+  const validateConnection = (connection) => {
+    const { source, sourceHandle, target, targetHandle } = connection;
+    
+    // Prevent connecting a node to itself
+    if (source === target) {
+      return false;
+    }
+    
+    // Only allow connecting certain types (example logic)
+    const sourceNode = nodes.find(n => n.id === source);
+    const targetNode = nodes.find(n => n.id === target);
+    
+    if (sourceNode.type === 'data-source' && targetNode.type !== 'data-processing') {
+      return false;
+    }
+    
+    return true;
+  };
+  
+  return (
+    <NodeCanvas
+      // ... other props
+      validateConnection={validateConnection}
+    />
+  );
+}
+```
+
+</CH.Section>
+
+## Handling Node Events
+
+You can respond to various events on the canvas:
+
+<CH.Section>
+
+```tsx
+import { NodeCanvas } from '@empireui/components';
+
+export default function EventHandlingExample() {
+  const handleNodeClick = (nodeId) => {
+    console.log(`Node clicked: ${nodeId}`);
+    // Update selected node state, show properties panel, etc.
+  };
+  
+  const handleNodeDrag = (nodeId, position) => {
+    console.log(`Node ${nodeId} moved to ${position.x}, ${position.y}`);
+    // Update node position in state, sync with backend, etc.
+  };
+  
+  const handleConnectionCreate = (connection) => {
+    console.log('New connection created:', connection);
+    // Add the new connection to your state, sync with backend, etc.
+  };
+  
+  const handleCanvasClick = (event) => {
+    console.log('Canvas clicked at:', event.clientX, event.clientY);
+    // Deselect nodes, show context menu, etc.
+  };
+
+  return (
+    <NodeCanvas
+      // ... other props
+      onNodeClick={handleNodeClick}
+      onNodeDrag={handleNodeDrag}
+      onConnect={handleConnectionCreate}
+      onCanvasClick={handleCanvasClick}
+    />
+  );
+}
+```
+
+</CH.Section>
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `nodeTypes` | `NodeType[]` | Required | Array of node type definitions |
+| `nodes` | `Node[]` | `[]` | Current nodes on the canvas |
+| `edges` | `Edge[]` | `[]` | Current connections between nodes |
+| `initialNodes` | `Node[]` | `[]` | Initial nodes to display (uncontrolled mode) |
+| `initialEdges` | `Edge[]` | `[]` | Initial edges to display (uncontrolled mode) |
+| `onNodesChange` | `(nodes: Node[]) => void` | - | Callback when nodes change |
+| `onEdgesChange` | `(edges: Edge[]) => void` | - | Callback when edges change |
+| `onConnect` | `(connection: Connection) => void` | - | Callback when a new connection is created |
+| `showMinimap` | `boolean` | `false` | Whether to show the minimap |
+| `showControls` | `boolean` | `false` | Whether to show zoom controls |
+| `snapToGrid` | `boolean` | `false` | Whether nodes should snap to grid when moved |
+| `gridSize` | `number` | `20` | Size of the grid when snapToGrid is enabled |
+| `theme` | `"light" \| "dark" \| "system"` | `"system"` | UI theme for the canvas |
+| `readOnly` | `boolean` | `false` | Whether the canvas is in read-only mode |
+| `zoomOnScroll` | `boolean` | `true` | Whether to zoom the canvas on scroll |
+| `panOnDrag` | `boolean` | `true` | Whether to pan the canvas on drag |
+| `connectionLineStyle` | `object` | - | Custom style for connection lines |
+| `nodesDraggable` | `boolean` | `true` | Whether nodes can be dragged |
+| `nodesConnectable` | `boolean` | `true` | Whether nodes can be connected |
+| `elementsSelectable` | `boolean` | `true` | Whether elements can be selected |
+| `validateConnection` | `(connection: Connection) => boolean` | - | Function to validate new connections |
+| `onNodeClick` | `(nodeId: string) => void` | - | Callback when a node is clicked |
+| `onNodeDrag` | `(nodeId: string, position: Position) => void` | - | Callback when a node is dragged |
+| `onCanvasClick` | `(event: React.MouseEvent) => void` | - | Callback when the canvas is clicked |
+| `onPaneReady` | `() => void` | - | Callback when the canvas is ready |
+
+## Node Type Interface
+
+```tsx
+type NodeType = {
+  id: string;
+  label: string;
+  color: string;
+  inputs: string[];
+  outputs: string[];
+  configFields?: Array<{
+    name: string;
+    label: string;
+    type: 'text' | 'number' | 'select' | 'checkbox' | 'json';
+    options?: string[];
+    default?: any;
+  }>;
+  width?: number;
+  height?: number;
+  customComponent?: React.ComponentType<NodeComponentProps>;
+};
+```
+
+## Node Interface
+
+```tsx
+type Node = {
+  id: string;
+  type: string;
+  position: { x: number; y: number };
+  data: {
+    label: string;
+    config?: Record<string, any>;
+    [key: string]: any;
+  };
+  selected?: boolean;
+  dragging?: boolean;
+  width?: number;
+  height?: number;
+};
+```
+
+## Edge Interface
+
+```tsx
+type Edge = {
+  id: string;
+  source: string;
+  sourceHandle: string;
+  target: string;
+  targetHandle: string;
+  label?: string;
+  style?: object;
+  animated?: boolean;
+  selected?: boolean;
+};
+```
+
+## Common Use Cases
+
+### AI Pipeline Designer
+
+Create visual interfaces for designing AI model pipelines, where users can connect data sources, preprocessing steps, models, and output sinks.
+
+### Data Transformation Workflows
+
+Build ETL (Extract, Transform, Load) visual interfaces where users can design complex data transformation processes.
+
+### Visual Programming Environments
+
+Create a visual programming environment where nodes represent functions or code blocks, and connections represent data flow.
+
+### Business Process Modeling
+
+Design business process workflows with decision points, tasks, and conditions.
+
+### IoT Device Management
+
+Create interfaces for configuring IoT device interactions, where nodes represent devices and connections represent communication paths.
+
+## Saving and Loading Workflows
+
+To persist workflows, you can:
+
+1. Serialize nodes and edges to JSON
+2. Save in localStorage, a database, or through an API
+3. Load the saved state when initializing the component
+
+<CH.Section>
+
+```tsx
+import { NodeCanvas } from '@empireui/components';
+import { useState, useEffect } from 'react';
+
+export default function PersistentWorkflow() {
+  const [nodes, setNodes] = useState([]);
+  const [edges, setEdges] = useState([]);
+  
+  // Load saved workflow on mount
+  useEffect(() => {
+    const savedWorkflow = localStorage.getItem('myWorkflow');
+    if (savedWorkflow) {
+      const { nodes, edges } = JSON.parse(savedWorkflow);
+      setNodes(nodes);
+      setEdges(edges);
+    }
+  }, []);
+  
+  // Save workflow when it changes
+  const handleNodesChange = (newNodes) => {
+    setNodes(newNodes);
+    saveWorkflow(newNodes, edges);
+  };
+  
+  const handleEdgesChange = (newEdges) => {
+    setEdges(newEdges);
+    saveWorkflow(nodes, newEdges);
+  };
+  
+  const saveWorkflow = (nodes, edges) => {
+    localStorage.setItem('myWorkflow', JSON.stringify({ nodes, edges }));
+  };
+  
+  return (
+    <NodeCanvas
+      nodes={nodes}
+      edges={edges}
+      onNodesChange={handleNodesChange}
+      onEdgesChange={handleEdgesChange}
+      // ... other props
+    />
+  );
+}
+```
+
+</CH.Section>
+
+## Accessibility
+
+- All interactive elements are keyboard navigable
+- ARIA attributes for nodes and connections
+- Screen reader support for canvas elements
+- Keyboard shortcuts for common operations
+
+## Performance Considerations
+
+- For best performance, limit the number of nodes on a single canvas to under 1000
+- Use memoization for components that don't need to re-render frequently
+- Consider using virtualization for very large workflows
+- Limit the frequency of state updates during node drag operations
+
+## Notes
+
+- Custom node renderers can be provided for specialized visualization
+- Connection validation functions can be provided to restrict certain connections
+- The canvas supports touch interactions for mobile devices
+- For complex validation logic, consider implementing a node/edge validation scheme
+
+For more examples and advanced use cases, visit our [GitHub repository](https://github.com/empirecodefoundation/ui). 
