@@ -1,13 +1,11 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
-import { GeistMono, GeistSans } from "@/lib/fonts";
-import { SiteHeader } from "@/components/common/header";
+import { GeistMono, GeistSans, MinecartLCD } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/core/providers";
-import Footer from "@/components/common/Footer";
 
 export const metadata: Metadata = {
-  title: "EmpireUI",
+  title: "Empire UI",
   description:
     "Empire-UI is a project showcasing AI-powered components built with Tailwind CSS. This repository offers a curated collection of reusable components designed to enhance your next AI SaaS website with intelligent, dynamic features and seamless integration.",
 };
@@ -29,7 +27,7 @@ export default function RootLayout({
         />
       ) : null}
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} bg-zinc-950 dark:bg-zinc-950`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${MinecartLCD.variable} bg-[#202020] m-0 p-0 overflow-hidden`}
       >
         <ThemeProvider
           attribute="class"
@@ -37,9 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SiteHeader />
-          <div className="isolate min-h-screen">{children}</div>
-          <Footer />
+          {children}
         </ThemeProvider>
       </body>
     </html>

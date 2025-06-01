@@ -1,24 +1,15 @@
 import { cn } from "@/lib/utils";
-import { Bebas_Neue, Afacad } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
-
-const bebas_neue = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const press_start_2p = Afacad({
-  weight: "400",
-  subsets: ["latin"],
-});
+import { MinecartLCD } from "@/lib/fonts";
+import { Button } from "@/components/ui/button";
 
 export const HeroSection = () => {
   const [isSoundOn, setIsSoundOn] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null); // Create a ref for the audio object
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Initialize audio when the component mounts
   useEffect(() => {
-    audioRef.current = new Audio("/EmpireSound2.mp3"); // Assign audio to the ref
+    audioRef.current = new Audio("/EmpireSound2.mp3");
 
     return () => {
       if (audioRef.current) {
@@ -32,7 +23,7 @@ export const HeroSection = () => {
       if (audioRef.current) {
         if (prev) {
           audioRef.current.pause();
-          audioRef.current.currentTime = 0; // Reset sound when toggling off
+          audioRef.current.currentTime = 0;
         } else {
           audioRef.current.play();
         }
@@ -42,199 +33,91 @@ export const HeroSection = () => {
   };
 
   return (
-    <section
-      className="section_hero relative z-[2] md:block overflow-hidden mt-16"
-      style={{
-        transform:
-          "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
-        opacity: 1,
-        transformStyle: "preserve-3d",
-      }}
-      onClick={toggleSound}
-    >
-      {/* <div> sound section </div> */}
-      <div
-        className="flex z-10 justify-center items-center absolute inset-x-0 top-2 bottom-auto cursor-pointer"
-        style={{
-          transform:
-            "translate3d(0vw, 0vw, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
-          transformStyle: "preserve-3d",
-        }}
-      >
-        <a
-          href="#"
-          className={`sound-wrapper absolute clip-sound flex items-center justify-center mt-0 ml-[0.1vw] h-[3.47vh] w-[12.7%] ${
-            isSoundOn ? "bg-[#fd8a46]" : "bg-[#643b23]"
-          }`}
+    <section className="relative z-[2] h-screen overflow-hidden cyber-grid">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 bg-digital-black opacity-90 z-[-1]"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('/backdrop.svg')] opacity-10 z-[-1]"></div>
+      
+      {/* Sound toggle button */}
+      <div className="absolute top-6 right-6 z-10">
+        <button 
+          onClick={toggleSound}
+          className={`px-4 py-2 border ${isSoundOn ? 'border-neon-blue text-neon-blue neon-glow' : 'border-gray-600 text-gray-500'} bg-black bg-opacity-50 transition-all duration-300`}
         >
-          <div className="h-[1vw] overflow-hidden text-xs">
-            <div
-              className={`static transform transition-transform duration-500 ${
-                isSoundOn ? "translate-y-[-1vw]" : "translate-y-0"
-              } leading-[1vw]`}
-            >
-              [ACTIVATE SOUND]
-            </div>
-            <div
-              className={`static transform transition-transform duration-500 text-center ${
-                isSoundOn ? "translate-y-[-1vw]" : "translate-y-0"
-              } leading-[1vw]`}
-            >
-              [SOUND ON]
-            </div>
-          </div>
-        </a>
+          <span className={cn("text-sm tracking-wider", MinecartLCD.className)}>
+            {isSoundOn ? "SOUND ON" : "ACTIVATE SOUND"}
+          </span>
+        </button>
       </div>
 
-      <div className="wrapper-container relative md:block w-full h-screen box-border">
-        <div
-          className="flex z-[2] justify-center items-center absolute inset-x-0 bottom-[120px]"
-          style={{
-            transform:
-              "translate3d(0vw, 0vw, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
-            transformStyle: "preserve-3d",
-          }}
-        >
-          <div className="static">
-            <div>dummy text</div>
+      {/* Main content container */}
+      <div className="container mx-auto h-full flex flex-col items-center justify-center px-4">
+        {/* Empire logo with glow effect */}
+        <div className="w-40 h-40 md:w-48 md:h-48 mb-8 relative">
+          <img 
+            src="/empire-logo.png" 
+            alt="Empire UI Logo" 
+            className="w-full h-full object-contain neon-glow"
+          />
+        </div>
+        
+        {/* Main heading with glitch effect */}
+        <div className="text-center mb-12 digital-scan">
+          <h1 className={cn(
+            "text-6xl md:text-8xl lg:text-9xl tracking-tight font-bold cyber-glitch text-white mb-4",
+            MinecartLCD.className
+          )}>
+            EMPIRE<span className="text-neon-blue">UI</span>
+          </h1>
+          <h2 className={cn(
+            "text-3xl md:text-4xl tracking-wide text-cyber-yellow uppercase mt-2",
+            MinecartLCD.className
+          )}>
+            AI-POWERED COMPONENT LIBRARY
+          </h2>
+        </div>
+        
+        {/* Description with terminal style */}
+        <div className="max-w-3xl w-full bg-black bg-opacity-80 border border-neon-blue p-6 mb-12">
+          <div className={cn("text-neon-blue text-lg space-y-2", MinecartLCD.className)}>
+            <p className="text-white flex">
+              <span className="text-neon-purple mr-2">&gt;</span> 
+              Building the <span className="text-neon-purple mx-1">future</span> of AI interfaces
+            </p>
+            <p className="text-white flex">
+              <span className="text-neon-purple mr-2">&gt;</span> 
+              Modern. Responsive. <span className="text-neon-purple mx-1">Intelligent.</span>
+            </p>
+            <p className="text-white flex">
+              <span className="text-neon-purple mr-2">&gt;</span> 
+              <span className="animate-pulse">_</span>
+            </p>
           </div>
         </div>
-
-        <div
-          className="flex z-[2] absolute justify-center items-center -ml-10 inset-[42%_-1.5%_60%_auto]"
-          style={{
-            transform:
-              "translate3d(0vw, 0vw, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(90deg) skew(0deg, 0deg)",
-            transformStyle: "preserve-3d",
-          }}
-        >
-          <div className="static">
-            <div>dummy text</div>
-          </div>
+        
+        {/* CTA Buttons */}
+        <div className="flex flex-col md:flex-row gap-4">
+          <Button className={cn(
+            "bg-neon-blue hover:bg-blue-700 text-white px-8 py-6 text-lg border-2 border-neon-blue neon-glow",
+            MinecartLCD.className
+          )}>
+            GET STARTED
+          </Button>
+          <Button variant="outline" className={cn(
+            "bg-transparent hover:bg-neon-purple/20 text-neon-purple border-2 border-neon-purple px-8 py-6 text-lg neon-purple-glow",
+            MinecartLCD.className
+          )}>
+            EXPLORE DOCS
+          </Button>
         </div>
-
-        <div
-          className="flex z-[2] absolute justify-center items-center -ml-10 inset-[42%_auto_60%_1.5%]"
-          style={{
-            transform:
-              "translate3d(0vw, 0vw, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-90deg) skew(0deg, 0deg)",
-            transformStyle: "preserve-3d",
-          }}
-        >
-          <div className="static">
-            <div>dummy text</div>
-          </div>
-        </div>
-
-        <section
-          className={`wrapper-content hidden md:block absolute z-0 clip-polygon bg-[linear-gradient(#00000052,#00000052),url('/hero-section-1.webp')] bg-[#20202047] object-cover bg-center bg-[length:100%_100%] h-5/6 w-full`}
-        ></section>
-        <section className="wrapper-content-overlay hidden md:block absolute z-0 clip-polygon bg-[linear-gradient(#fbf6c0,#fbf6c0_3px,transparent_0,transparent_9px)] bg-[length:100%_7px] opacity-[0.05] object-cover h-5/6 w-full animate-scan-overlay"></section>
-        <section
-          className={
-            "wrapper-container-mobile block md:hidden absolute z-0 clip-polygon-mobile bg-[linear-gradient(#00000052,#00000052),url('/hero-section-1.webp')] bg-[#20202047] object-cover bg-center bg-[length:150%_100%] h-5/6 w-full"
-          }
-        ></section>
-        <section className="wrapper-content-overlay block md:hidden absolute z-0 clip-polygon-mobile bg-[linear-gradient(#fbf6c0,#fbf6c0_3px,transparent_0,transparent_9px)] bg-[length:100%_7px] opacity-[0.05] object-cover h-5/6 w-full animate-scan-overlay"></section>
-      </div>
-      <div className="flex justify-center">
-        <div className="wrapper-heading absolute top-[35%] md:top-[45%] md:left-[6vw] transform -translate-y-1/2 flex flex-col items-center md:items-start space-y-1">
-          <div className="block w-32 h-32 md:hidden my-6">
-            <img src="/empire-logo.png" alt="empire logo"></img>
-          </div>
-          <div className="heading-content flex justify-center">
-            <h2
-              className={cn(
-                "tracking-[.001em] uppercase font-bold text-6xl md:text-8xl lg:text-9xl text-[#f3edd8] transform scale-y-[1.4]",
-                bebas_neue.className
-              )}
-            >
-              AI POWERED
-            </h2>
-          </div>
-          <div className="heading-content flex items-center">
-            <h2
-              className={cn(
-                "tracking-[.001em] uppercase font-bold text-6xl md:text-8xl lg:text-9xl text-[#f3edd8] transform scale-y-[1.4]",
-                bebas_neue.className
-              )}
-            >
-              COMPONENT
-            </h2>
-          </div>
-          <div className="heading-content flex items-center">
-            <h2
-              className={cn(
-                "tracking-[.001em] uppercase font-bold text-6xl md:text-8xl lg:text-9xl text-[#f3edd8] transform scale-y-[1.4]",
-                bebas_neue.className
-              )}
-            >
-              LIBRARY
-            </h2>
-          </div>
-          <div className="wrapper-description z-[1] flex flex-col pt-10 text-center md:text-left text-lg -space-y-2 text-[#f3edd8]">
-            {/* <div className=""> {gif} </div> */}
-            <p>The AI-powered component library</p>
-            <p>that adapts to your design needs.</p>
-            <p>Build beautiful, responsive interfaces.</p>
-          </div>
-        </div>
-        <div className="wrapper-card-container hidden absolute md:flex md:justify-center md:items-center w-[25vw] lg:w-[17vw] bottom-[25vw] lg:bottom-[15vw] right-[5vw] backdrop-blur-[4px] bg-gradient-to-b from-[#f3edd81a] to-[#f3edd81a] border border-[#f3edd852] rounded-[1px]">
-          <div className="wrapper-card-inner relative backdrop-blur-[27px] w-full h-full">
-            <div className="card-inner-corner-wrapper z-[2] w-full h-full absolute inset-0">
-              <div className="top-left-corner absolute -top-[0.5vw] -left-[0.45vw] inset-x-auto inset-y-auto opacity-100 transform translate-x-0 translate-y-0 translate-z-0 scale-100 rotate-x-0 rotate-y-0 rotate-z-0 skew-x-0 skew-y-0 transform-style-preserve-3d">
-                <img
-                  loading="lazy"
-                  className="w-full block"
-                  src="https://cdn.prod.website-files.com/6654d3c17b8020f4b7ba121d/666301b9565bc943edac3106_corner-path.svg"
-                />
-              </div>
-              <div className="bottom-left-corner absolute -bottom-[0.5vw] -left-[0.45vw] inset-x-auto inset-y-auto opacity-100 transform translate-x-0 translate-y-0 translate-z-0 scale-100 rotate-x-0 rotate-y-0 rotate-z-0 skew-x-0 skew-y-0 transform-style-preserve-3d">
-                <img
-                  loading="lazy"
-                  className="w-full block"
-                  src="https://cdn.prod.website-files.com/6654d3c17b8020f4b7ba121d/6663035dc75e4face043c32e_corner-path-b-l.svg"
-                />
-              </div>
-              <div className="bottom-left-corner absolute -bottom-[0.5vw] -right-[0.45vw] inset-x-auto inset-y-auto opacity-100 transform translate-x-0 translate-y-0 translate-z-0 scale-100 rotate-x-0 rotate-y-0 rotate-z-0 skew-x-0 skew-y-0 transform-style-preserve-3d">
-                <img
-                  loading="lazy"
-                  className="w-full block"
-                  src="https://cdn.prod.website-files.com/6654d3c17b8020f4b7ba121d/6663035dcdcc515bf5ac7a30_corner-path-b-r.svg"
-                />
-              </div>
-              <div className="bottom-left-corner absolute -top-[0.5vw] -right-[0.45vw] inset-x-auto inset-y-auto opacity-100 transform translate-x-0 translate-y-0 translate-z-0 scale-100 rotate-x-0 rotate-y-0 rotate-z-0 skew-x-0 skew-y-0 transform-style-preserve-3d">
-                <img
-                  loading="lazy"
-                  className="w-full block"
-                  src="https://cdn.prod.website-files.com/6654d3c17b8020f4b7ba121d/6663035da9df92c312bca5fd_corner-path-r.svg"
-                />
-              </div>
-            </div>
-            <div
-              className={cn(
-                "card-text relative flex justify-center items-center p-6 text-md text-[#f3edd8]",
-                press_start_2p.className
-              )}
-            >
-              <div className="flex flex-col">
-                <div className="text-row flex items-center justify-start">
-                  <p>// WELCOME TO EMPIRE UI</p>
-                </div>
-                <div className="text-row flex items-center justify-start">
-                  <p>LET JOURNEYBEGIN = TRUE;</p>
-                </div>
-                <div className="text-row flex items-center justify-start">
-                  <p>NPX EMPIREUI@LATEST INIT</p>
-                </div>
-                <div className="text-row flex items-center justify-start">
-                  <p>RETHINK AI DESIGN</p>
-                </div>
-                <div className="text-row flex items-center justify-start">
-                  <p>{"}"}</p>
-                </div>
-              </div>
-            </div>
+        
+        {/* Code snippet floating element */}
+        <div className="absolute bottom-20 right-10 hidden lg:block max-w-md w-full bg-black bg-opacity-90 border border-neon-purple p-4 transform rotate-3 neon-purple-glow">
+          <div className={cn("text-sm", MinecartLCD.className)}>
+            <p className="text-gray-400">// Initialize Empire UI</p>
+            <p className="text-white">npx <span className="text-neon-blue">@empireui/empire-ui</span> init</p>
+            <p className="text-white">import {'{'} <span className="text-neon-purple">AIChatbox</span> {'}'} from <span className="text-cyber-yellow">'@empireui/empire-ui'</span>;</p>
+            <p className="text-gray-400">// AI-powered interface is ready!</p>
           </div>
         </div>
       </div>
