@@ -153,3 +153,7 @@ pnpm add @empire-ui/core
 - Enhanced UI with improved segment heights
 - Optimized image positioning for better display
 - Refined styling for better visual appeal
+- Improved vertical positioning of UI segments
+
+## Contributors
+- [AKR4PC](https://github.com/AKR4PC)
