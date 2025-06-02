@@ -41,7 +41,7 @@ export const ProductShowcase = () => {
           </div>
           
           {/* Bottom section - split into two */}
-          <div className="mt-auto flex flex-col md:flex-row justify-between">
+          <div className="mt-auto flex flex-col md:flex-row justify-between pb-10">
             {/* Left - Empty space for the button below */}
             <div className="md:w-1/3">
             </div>
@@ -63,7 +63,7 @@ export const ProductShowcase = () => {
       </div>
       
       {/* Explore Segments button positioned at bottom left */}
-      <div className="absolute bottom-[10%] left-10 z-20">
+      <div className="absolute bottom-[8%] left-10 z-20">
         <a href="#" className="explore-button text-center">
           EXPLORE SEGMENTS
         </a>
