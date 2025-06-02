@@ -15,12 +15,13 @@ export const NewComponentsCard = () => {
           alt="Component Device" 
           fill
           className="object-cover object-center opacity-90"
+          style={{ objectPosition: 'center 40%' }}
           priority
         />
       </div>
       
       {/* Content overlay */}
-      <div className="relative z-10 p-6 h-full flex flex-col">
+      <div className="relative z-10 p-5 h-full flex flex-col">
         <div className="mb-auto">
           <h3 className={cn("text-xl text-white font-bold tracking-wide", MinecartLCD.className)}>
             NEW<br />
@@ -49,13 +50,13 @@ export const WavyColoursCard = () => {
           alt="Wavy Component" 
           fill
           className="object-cover object-center scale-110 opacity-90"
-          style={{ objectPosition: 'center 30%' }}
+          style={{ objectPosition: 'center 25%' }}
           priority
         />
       </div>
       
       {/* Content overlay */}
-      <div className="relative z-10 p-6 h-full flex flex-col">
+      <div className="relative z-10 p-5 h-full flex flex-col">
         <div className="mb-auto">
           <h3 className={cn("text-xl text-white font-bold tracking-wide", MinecartLCD.className)}>
             EMPIRE UI<br />

@@ -11,14 +11,14 @@ const HomePage = () => {
       <Navbar />
       
       {/* Main content */}
-      <div className="w-[1450px] max-w-[95%] mx-auto mt-6 grid grid-cols-[3fr_0.8fr] gap-4">
+      <div className="w-[1450px] max-w-[95%] mx-auto mt-2 grid grid-cols-[3fr_0.8fr] gap-4">
         {/* Left column - Main product */}
         <div className="h-full">
           <ProductShowcase />
         </div>
         
         {/* Right column - Features */}
-        <div className="feature-cards-container h-full mt-2">
+        <div className="feature-cards-container h-full mt-0">
           <div className="h-[40%] mb-4">
             <NewComponentsCard />
           </div>

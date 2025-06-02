@@ -6,7 +6,7 @@ import img1 from '@/images/img1.png';
 
 export const ProductShowcase = () => {
   return (
-    <div className="relative h-full mt-2">
+    <div className="relative h-full mt-0">
       {/* Main content card with notch */}
       <div className="product-card flex flex-col h-full relative overflow-hidden">
         {/* Background image */}
@@ -16,13 +16,13 @@ export const ProductShowcase = () => {
             alt="Radio Device" 
             fill
             className="object-cover opacity-90"
-            style={{ objectPosition: 'center 40%' }}
+            style={{ objectPosition: 'center 35%' }}
             priority
           />
         </div>
         
         {/* Content overlay */}
-        <div className="relative z-10 p-10 flex flex-col h-full pt-24">
+        <div className="relative z-10 p-10 flex flex-col h-full pt-16">
           {/* Main content */}
           <div className="flex flex-col md:flex-row flex-1">
             {/* Left side - Hero text */}
