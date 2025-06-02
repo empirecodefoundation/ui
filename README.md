@@ -146,3 +146,10 @@ npm install @empire-ui/core
 yarn add @empire-ui/core
 # or
 pnpm add @empire-ui/core
+
+```
+
+## Latest Updates
+- Enhanced UI with improved segment heights
+- Optimized image positioning for better display
+- Refined styling for better visual appeal
