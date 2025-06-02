@@ -154,6 +154,7 @@ pnpm add @empire-ui/core
 - Optimized image positioning for better display
 - Refined styling for better visual appeal
 - Improved vertical positioning of UI segments
+- Fixed Empire UI title placement in header notch
 
 ## Contributors
 - [AKR4PC](https://github.com/AKR4PC)
