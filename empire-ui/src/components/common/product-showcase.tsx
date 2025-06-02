@@ -71,7 +71,7 @@ export const ProductShowcase = () => {
       
       {/* Empire UI title - using the class from globals.css instead of inline styles */}
       <div className="empire-ui-title">
-        <h1 className={cn("text-white text-3xl font-black tracking-wide", MinecartLCD.className)}>
+        <h1 className={cn("text-white text-3xl font-black tracking-wide leading-none", MinecartLCD.className)}>
           Empire UI
         </h1>
       </div>

@@ -581,7 +581,7 @@ html body[data-scroll-locked] {
 /* Empire UI title container */
 .empire-ui-title {
   position: absolute;
-  top: 1px;
+  top: -12px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 50;
