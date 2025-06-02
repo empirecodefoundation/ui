@@ -7,20 +7,20 @@ import img3 from '@/images/img3.png';
 
 export const NewComponentsCard = () => {
   return (
-    <div className="feature-card relative overflow-hidden">
+    <div className="feature-card h-full relative overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image 
           src={img2}
           alt="Component Device" 
           fill
-          className="object-cover opacity-90"
+          className="object-cover object-center opacity-90"
           priority
         />
       </div>
       
       {/* Content overlay */}
-      <div className="relative z-10 p-5 h-full flex flex-col">
+      <div className="relative z-10 p-6 h-full flex flex-col">
         <div className="mb-auto">
           <h3 className={cn("text-xl text-white font-bold tracking-wide", MinecartLCD.className)}>
             NEW<br />
@@ -41,20 +41,21 @@ export const NewComponentsCard = () => {
 
 export const WavyColoursCard = () => {
   return (
-    <div className="feature-card relative overflow-hidden">
+    <div className="feature-card h-full relative overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image 
           src={img3}
           alt="Wavy Component" 
           fill
-          className="object-cover opacity-90"
+          className="object-cover object-center scale-110 opacity-90"
+          style={{ objectPosition: 'center 30%' }}
           priority
         />
       </div>
       
       {/* Content overlay */}
-      <div className="relative z-10 p-5 h-full flex flex-col">
+      <div className="relative z-10 p-6 h-full flex flex-col">
         <div className="mb-auto">
           <h3 className={cn("text-xl text-white font-bold tracking-wide", MinecartLCD.className)}>
             EMPIRE UI<br />

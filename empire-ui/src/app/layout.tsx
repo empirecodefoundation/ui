@@ -18,7 +18,19 @@ export default function RootLayout({
   const isDev = process.env.NODE_ENV === "development";
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden m-0 p-0">
+      <head>
+        <style>{`
+          html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow-x: hidden;
+          }
+          body {
+            margin-top: -15px !important;
+          }
+        `}</style>
+      </head>
       {!isDev ? (
         <Script
           async
@@ -27,7 +39,8 @@ export default function RootLayout({
         />
       ) : null}
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${MinecartLCD.variable} bg-[#202020] m-0 p-0 overflow-hidden`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${MinecartLCD.variable} bg-[#202020] min-h-screen w-full m-0 p-0`}
+        style={{ margin: 0, padding: 0 }}
       >
         <ThemeProvider
           attribute="class"

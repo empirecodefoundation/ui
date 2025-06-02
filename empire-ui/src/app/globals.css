@@ -4,8 +4,9 @@
 
 /* Reset default margins and padding */
 html, body {
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
 }
 
 @layer base {
@@ -239,12 +240,16 @@ html body[data-scroll-locked] {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  padding-top: 10px;
-  padding-bottom: 20px;
-  margin: 0;
+  padding: 0;
+  margin: -20px 0 0 0;
   position: relative;
   display: flex;
   flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-top: 0;
+  outline: none;
 }
 
 /* Logo header strip */
@@ -267,10 +272,12 @@ html body[data-scroll-locked] {
   padding: 0 30px;
   width: 1450px;
   height: 65px;
-  max-width: 100%;
+  max-width: 95%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
+  z-index: 60;
+  position: relative;
 }
 
 .nav-link {
@@ -334,31 +341,11 @@ html body[data-scroll-locked] {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
-.main-container {
-  max-width: 1400px;
-  width: 95%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 16px;
-  padding-bottom: 20px;
-}
-
-/* Specifications section */
-.specs-section {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  text-align: right;
-  padding: 1rem;
-}
-
 /* Sizing adjustments for feature cards */
 .feature-cards-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  height: auto;
+  height: 100%;
   overflow-y: visible;
 }
 
@@ -419,10 +406,6 @@ html body[data-scroll-locked] {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .main-container {
-    grid-template-columns: 1fr;
-  }
-  
   .product-card {
     margin-bottom: 12px;
   }
@@ -445,30 +428,365 @@ html body[data-scroll-locked] {
 /* Product card with cut corners */
 .product-card {
   background-color: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 50px;
   overflow: hidden;
   position: relative;
-  height: auto;
-  min-height: 550px;
+  height: 100%;
+  /* Create a clip path with a trapezoid notch at the top center and clean bottom left cut */
   clip-path: polygon(
-    0% 0%,
-    100% 0%,
-    100% 100%,
-    15% 100%,
-    0% 85%
+    0% 0%,                  /* top left */
+    calc(50% - 140px) 0%,   /* top left before notch */
+    calc(50% - 114px) 30px, /* bottom left of trapezoid notch */
+    calc(50% + 114px) 30px, /* bottom right of trapezoid notch */
+    calc(50% + 140px) 0%,   /* top right after notch */
+    100% 0%,                /* top right */
+    100% 100%,              /* bottom right */
+    15% 100%,               /* bottom right before cut */
+    0% 85%                  /* bottom left after diagonal cut */
   );
+}
+
+/* Explore segments button styling */
+.explore-button {
+  background-color: white;
+  color: black;
+  border-radius: 9999px;
+  padding: 12px 30px;
+  font-weight: bold;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: var(--font-minecart-lcd);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.explore-button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Wave hover animation for explore button */
+.explore-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.4), 
+    transparent
+  );
+  transform: skewX(-15deg);
+  transition: 0.5s;
+}
+
+.explore-button:hover::after {
+  left: 100%;
+  transition: 0.7s ease-in-out;
+}
+
+/* Hero text realistic flickering */
+.hero-text-line-1, .hero-text-line-2, .hero-text-line-3 {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  animation-fill-mode: forwards;
+}
+
+.hero-text-line-1 {
+  animation: initialTextReveal 1.2s steps(16, end) 0.2s forwards;
+}
+
+.hero-text-line-2 {
+  animation: initialTextReveal 1.2s steps(16, end) 0.5s forwards;
+}
+
+.hero-text-line-3 {
+  animation: initialTextReveal 1.2s steps(16, end) 0.8s forwards;
+}
+
+@keyframes initialTextReveal {
+  0% { 
+    color: transparent; 
+    text-shadow: none;
+    opacity: 0;
+  }
+  8% { 
+    color: rgba(255, 255, 255, 0.2); 
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
+    opacity: 0.3;
+  }
+  16% { 
+    color: rgba(255, 255, 255, 0.5); 
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    opacity: 0.5;
+  }
+  24% { 
+    color: rgba(255, 255, 255, 0.1); 
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
+    opacity: 0.2;
+  }
+  32% { 
+    color: rgba(255, 255, 255, 0.8); 
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    opacity: 0.8;
+  }
+  40% { 
+    color: rgba(255, 255, 255, 0.3); 
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
+    opacity: 0.4;
+  }
+  48% { 
+    color: rgba(255, 255, 255, 0.9); 
+    text-shadow: 0 0 7px rgba(255, 255, 255, 0.4);
+    opacity: 0.9;
+  }
+  56% { 
+    color: rgba(255, 255, 255, 0.6); 
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+    opacity: 0.7;
+  }
+  64% { 
+    color: rgba(255, 255, 255, 0.8); 
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+    opacity: 0.9;
+  }
+  72% { 
+    color: rgba(255, 255, 255, 0.3); 
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
+    opacity: 0.4;
+  }
+  80% { 
+    color: rgba(255, 255, 255, 0.9); 
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    opacity: 0.9;
+  }
+  88% { 
+    color: rgba(255, 255, 255, 0.5); 
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+    opacity: 0.6;
+  }
+  100% { 
+    color: rgba(255, 255, 255, 1); 
+    text-shadow: none;
+    opacity: 1;
+  }
+}
+
+/* Empire UI title container */
+.empire-ui-title {
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  background-color: transparent;
+  padding: 0;
+  width: 228px;
+  text-align: center;
+}
+
+/* Empire UI text style */
+.empire-title-text {
+  font-weight: 800;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.empire-title-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 1px;
+  text-shadow: -1px 0 1px rgba(255, 255, 255, 0.3);
+  top: 0;
+  color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+.empire-title-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -1px;
+  text-shadow: 1px 0 1px rgba(255, 255, 255, 0.3);
+  top: 0;
+  color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
+
+.empire-title-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 1px;
+  text-shadow: -1px 0 1px rgba(255, 255, 255, 0.3);
+  top: 0;
+  color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+.empire-title-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -1px;
+  text-shadow: 1px 0 1px rgba(255, 255, 255, 0.3);
+  top: 0;
+  color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim {
+  0% {
+    clip: rect(2px, 9999px, 10px, 0);
+  }
+  5% {
+    clip: rect(89px, 9999px, 75px, 0);
+  }
+  10% {
+    clip: rect(58px, 9999px, 19px, 0);
+  }
+  15% {
+    clip: rect(21px, 9999px, 1px, 0);
+  }
+  20% {
+    clip: rect(64px, 9999px, 63px, 0);
+  }
+  25% {
+    clip: rect(6px, 9999px, 30px, 0);
+  }
+  30% {
+    clip: rect(40px, 9999px, 92px, 0);
+  }
+  35% {
+    clip: rect(5px, 9999px, 65px, 0);
+  }
+  40% {
+    clip: rect(69px, 9999px, 60px, 0);
+  }
+  45% {
+    clip: rect(26px, 9999px, 56px, 0);
+  }
+  50% {
+    clip: rect(4px, 9999px, 5px, 0);
+  }
+  55% {
+    clip: rect(20px, 9999px, 99px, 0);
+  }
+  60% {
+    clip: rect(2px, 9999px, 68px, 0);
+  }
+  65% {
+    clip: rect(40px, 9999px, 31px, 0);
+  }
+  70% {
+    clip: rect(94px, 9999px, 25px, 0);
+  }
+  75% {
+    clip: rect(57px, 9999px, 94px, 0);
+  }
+  80% {
+    clip: rect(88px, 9999px, 8px, 0);
+  }
+  85% {
+    clip: rect(82px, 9999px, 82px, 0);
+  }
+  90% {
+    clip: rect(40px, 9999px, 63px, 0);
+  }
+  95% {
+    clip: rect(88px, 9999px, 8px, 0);
+  }
+  100% {
+    clip: rect(86px, 9999px, 15px, 0);
+  }
+}
+
+@keyframes noise-anim-2 {
+  0% {
+    clip: rect(87px, 9999px, 59px, 0);
+  }
+  5% {
+    clip: rect(68px, 9999px, 4px, 0);
+  }
+  10% {
+    clip: rect(94px, 9999px, 65px, 0);
+  }
+  15% {
+    clip: rect(41px, 9999px, 87px, 0);
+  }
+  20% {
+    clip: rect(75px, 9999px, 61px, 0);
+  }
+  25% {
+    clip: rect(73px, 9999px, 23px, 0);
+  }
+  30% {
+    clip: rect(19px, 9999px, 35px, 0);
+  }
+  35% {
+    clip: rect(30px, 9999px, 46px, 0);
+  }
+  40% {
+    clip: rect(13px, 9999px, 76px, 0);
+  }
+  45% {
+    clip: rect(79px, 9999px, 67px, 0);
+  }
+  50% {
+    clip: rect(3px, 9999px, 57px, 0);
+  }
+  55% {
+    clip: rect(62px, 9999px, 19px, 0);
+  }
+  60% {
+    clip: rect(49px, 9999px, 87px, 0);
+  }
+  65% {
+    clip: rect(9px, 9999px, 17px, 0);
+  }
+  70% {
+    clip: rect(53px, 9999px, 70px, 0);
+  }
+  75% {
+    clip: rect(4px, 9999px, 39px, 0);
+  }
+  80% {
+    clip: rect(98px, 9999px, 6px, 0);
+  }
+  85% {
+    clip: rect(88px, 9999px, 95px, 0);
+  }
+  90% {
+    clip: rect(78px, 9999px, 11px, 0);
+  }
+  95% {
+    clip: rect(31px, 9999px, 45px, 0);
+  }
+  100% {
+    clip: rect(29px, 9999px, 48px, 0);
+  }
 }
 
 /* Feature cards with cut corners */
 .feature-card {
   background-color: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 50px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 200px;
-  height: auto;
-  margin-bottom: 0;
+  height: 100%;
   position: relative;
 }
 

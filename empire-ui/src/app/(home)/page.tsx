@@ -6,22 +6,25 @@ import { NewComponentsCard, WavyColoursCard } from "@/components/common/feature-
 
 const HomePage = () => {
   return (
-    <main className="industrial-layout">
+    <main className="industrial-layout mt-0 pt-0" style={{ marginTop: '-15px' }}>
       {/* Navigation */}
       <Navbar />
       
       {/* Main content */}
-      <div className="main-container mt-4">
+      <div className="w-[1450px] max-w-[95%] mx-auto mt-6 grid grid-cols-[3fr_0.8fr] gap-4">
         {/* Left column - Main product */}
         <div className="h-full">
           <ProductShowcase />
         </div>
         
         {/* Right column - Features */}
-        <div className="feature-cards-container">
-          <NewComponentsCard />
-          <div className="my-4"></div>
-          <WavyColoursCard />
+        <div className="feature-cards-container h-full mt-2">
+          <div className="h-[40%] mb-4">
+            <NewComponentsCard />
+          </div>
+          <div className="h-[60%]">
+            <WavyColoursCard />
+          </div>
         </div>
       </div>
     </main>
