@@ -432,7 +432,7 @@ html body[data-scroll-locked] {
   overflow: hidden;
   position: relative;
   height: 100%;
-  /* Create a clip path with a trapezoid notch at the top center and clean bottom left cut */
+  /* Create a clip path with a trapezoid notch at the top center and rounded corners */
   clip-path: polygon(
     0% 0%,                  /* top left */
     calc(50% - 140px) 0%,   /* top left before notch */
@@ -441,8 +441,7 @@ html body[data-scroll-locked] {
     calc(50% + 140px) 0%,   /* top right after notch */
     100% 0%,                /* top right */
     100% 100%,              /* bottom right */
-    15% 100%,               /* bottom right before cut */
-    0% 85%                  /* bottom left after diagonal cut */
+    0% 100%                 /* bottom left */
   );
 }
 
@@ -779,7 +778,7 @@ html body[data-scroll-locked] {
   }
 }
 
-/* Feature cards with cut corners */
+/* Feature cards with consistent border radius */
 .feature-card {
   background-color: var(--card-bg);
   border-radius: 50px;
@@ -792,39 +791,23 @@ html body[data-scroll-locked] {
 
 /* First feature card */
 .feature-card-1 {
-  clip-path: polygon(
-    0% 0%,
-    100% 0%,
-    100% 100%,
-    0% 100%
-  );
+  /* No clip path - use border-radius instead */
+  border-radius: 50px;
 }
 
 /* Second feature card */
 .feature-card-2 {
-  clip-path: polygon(
-    0% 0%,
-    100% 0%,
-    100% 85%,
-    85% 100%,
-    0% 100%
-  );
+  /* No clip path - use border-radius instead */
+  border-radius: 50px;
 }
 
 /* Signal hub card */
 .signal-hub-card {
   background-color: var(--card-bg);
-  border-radius: 0;
+  border-radius: 50px;
   overflow: hidden;
   position: relative;
   padding: 1rem;
-  clip-path: polygon(
-    0% 0%,
-    100% 0%,
-    100% 100%,
-    15% 100%,
-    0% 85%
-  );
 }
 
 /* Circle button in signal hub */
