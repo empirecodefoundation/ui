@@ -40,15 +40,8 @@ export const ProductShowcase = () => {
             <div className="w-full md:w-3/5"></div>
           </div>
           
-          {/* Bottom section - specifications and button */}
-          <div className="mt-auto flex flex-row justify-between items-end pb-10">
-            {/* Left - Explore Segments button */}
-            <div>
-              <a href="#" className={cn("explore-button text-center", MinecartLCD.className)}>
-                EXPLORE SEGMENTS
-              </a>
-            </div>
-            
+          {/* Bottom section - specifications */}
+          <div className="mt-auto flex justify-end pb-10">
             {/* Right - Device Specifications */}
             <div className="text-right">
               <h3 className={cn("text-white text-2xl md:text-3xl font-bold tracking-wide", MinecartLCD.className)}>
@@ -63,6 +56,13 @@ export const ProductShowcase = () => {
             </div>
           </div>
         </div>
+      </div>
+      
+      {/* Explore Segments button positioned at bottom left */}
+      <div className="absolute bottom-8 left-10 z-20">
+        <a href="#" className={cn("explore-button text-center", MinecartLCD.className)}>
+          EXPLORE SEGMENTS
+        </a>
       </div>
       
       {/* Empire UI title - using the class from globals.css instead of inline styles */}
