@@ -40,14 +40,17 @@ export const ProductShowcase = () => {
             <div className="w-full md:w-3/5"></div>
           </div>
           
-          {/* Bottom section - split into two */}
-          <div className="mt-auto flex flex-col md:flex-row justify-between pb-10">
-            {/* Left - Empty space for the button below */}
-            <div className="md:w-1/3">
+          {/* Bottom section - specifications and button */}
+          <div className="mt-auto flex flex-row justify-between items-end pb-10">
+            {/* Left - Explore Segments button */}
+            <div>
+              <a href="#" className={cn("explore-button text-center", MinecartLCD.className)}>
+                EXPLORE SEGMENTS
+              </a>
             </div>
             
             {/* Right - Device Specifications */}
-            <div className="md:w-1/3 md:text-right mt-4 md:mt-0">
+            <div className="text-right">
               <h3 className={cn("text-white text-2xl md:text-3xl font-bold tracking-wide", MinecartLCD.className)}>
                 DEVICE<br />
                 SPECIFICATIONS
@@ -60,13 +63,6 @@ export const ProductShowcase = () => {
             </div>
           </div>
         </div>
-      </div>
-      
-      {/* Explore Segments button positioned at bottom left */}
-      <div className="absolute bottom-[8%] left-10 z-20">
-        <a href="#" className="explore-button text-center">
-          EXPLORE SEGMENTS
-        </a>
       </div>
       
       {/* Empire UI title - using the class from globals.css instead of inline styles */}
