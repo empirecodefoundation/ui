@@ -3,6 +3,10 @@ import React from "react";
 import { Navbar } from "@/components/common/navbar";
 import { ProductShowcase } from "@/components/common/product-showcase";
 import { NewComponentsCard, WavyColoursCard } from "@/components/common/feature-cards";
+import { FeaturesSection } from "@/components/common/features-section";
+import { ProductHighlights } from "@/components/common/product-highlights";
+import { WhyEmpireUI } from "@/components/common/why-empire-ui";
+import { EmpireFooter } from "@/components/common/empire-footer";
 
 const HomePage = () => {
   return (
@@ -27,6 +31,18 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      
+      {/* Features Section - Full width below main content */}
+      <FeaturesSection />
+      
+      {/* Product Highlights Section */}
+      <ProductHighlights />
+      
+      {/* Why Empire UI Section */}
+      <WhyEmpireUI />
+      
+      {/* Empire Footer */}
+      <EmpireFooter />
     </main>
   );
 };

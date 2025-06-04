@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import img2 from '@/images/img2.png';
 import img3 from '@/images/img3.png';
+import { AnimatedArrowDynamic } from '@/components/ui/animated-arrow';
 
 export const NewComponentsCard = () => {
   return (
@@ -98,8 +99,14 @@ export const SignalHubCard = () => {
       </div>
       
       <div className="mt-3">
-        <a href="#" className={cn("button-primary py-1.5 px-3 text-xs", MinecartLCD.className)}>
+        <a href="#" className={cn("button-primary py-1.5 px-3 text-xs inline-flex items-center hover:bg-white hover:text-black group", MinecartLCD.className)}>
           EXPLORE SEGMENTS
+          <span className="flex-grow"></span>
+          <AnimatedArrowDynamic 
+            size={16} 
+            strokeWidth={2}
+            className="animated-arrow ml-2"
+          />
         </a>
       </div>
     </div>

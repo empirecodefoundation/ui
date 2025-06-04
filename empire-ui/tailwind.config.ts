@@ -17,6 +17,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderWidth: {
+        '3': '3px',
+      },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],

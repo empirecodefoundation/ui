@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { GeistMono, GeistSans, MinecartLCD } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/core/providers";
+import { LoadingProvider } from "@/components/core/loading-provider";
 
 export const metadata: Metadata = {
   title: "Empire UI",
@@ -48,7 +49,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <LoadingProvider>
+            {children}
+          </LoadingProvider>
         </ThemeProvider>
       </body>
     </html>

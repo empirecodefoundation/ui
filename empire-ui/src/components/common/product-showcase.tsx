@@ -3,10 +3,11 @@ import { MinecartLCD } from "@/lib/fonts";
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import img1 from '@/images/img1.png';
+import { AnimatedArrowDynamic } from '@/components/ui/animated-arrow';
 
 export const ProductShowcase = () => {
   return (
-    <div className="relative h-full mt-0">
+    <div className="relative h-[80vh] mt-0">
       {/* Main content card with notch */}
       <div className="product-card flex flex-col h-full relative overflow-hidden">
         {/* Background image */}
@@ -28,9 +29,9 @@ export const ProductShowcase = () => {
             {/* Left side - Hero text */}
             <div className="w-full md:w-2/5 flex flex-col justify-center">
               <div className="mb-8">
-                <h2 className={cn("text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-[2.5rem] tracking-wider", MinecartLCD.className)}>
+                <h2 className={cn("text-white text-5xl md:text-5xl lg:text-7xl xl:text-7xl font-bold leading-[2.5rem] tracking-wider", MinecartLCD.className)}>
                   <span className="hero-text-line-1" data-text="EXPERIENCE">EXPERIENCE</span><br />
-                  <span className="hero-text-line-2" data-text="NEXT-GEN">NEXT-GEN</span><br />
+                  <span className="hero-text-line-2 whitespace-nowrap" data-text="NEXT - GEN">NEXT - GEN</span><br />
                   <span className="hero-text-line-3" data-text="TECH TODAY">TECH TODAY</span>
                 </h2>
               </div>
@@ -60,8 +61,14 @@ export const ProductShowcase = () => {
       
       {/* Explore Segments button positioned at bottom left */}
       <div className="absolute bottom-8 left-10 z-20">
-        <a href="#" className={cn("explore-button text-center", MinecartLCD.className)}>
+        <a href="#" className={cn("explore-button text-center inline-flex items-center hover:bg-white hover:text-black group", MinecartLCD.className)}>
           EXPLORE SEGMENTS
+          <span className="flex-grow"></span>
+          <AnimatedArrowDynamic 
+            size={22} 
+            strokeWidth={2.5}
+            className="animated-arrow ml-2"
+          />
         </a>
       </div>
       
