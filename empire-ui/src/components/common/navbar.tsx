@@ -1,40 +1,55 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { MinecartLCD } from "@/lib/fonts";
 import { cn } from '@/lib/utils';
-import { ShoppingCart, Search, User } from 'lucide-react';
+import { Search, User } from 'lucide-react';
 
 export const Navbar = () => {
   return (
     <nav className="nav-container">
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center">
-          <Link href="/" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
-            HOME
-          </Link>
-          <Link href="/products" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
-            PRODUCTS
-          </Link>
-          <Link href="/features" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
-            FEATURES
-          </Link>
-          <Link href="/blog" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
-            BLOG
-          </Link>
-          <Link href="/about" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
-            ABOUT
-          </Link>
-          <Link href="/contact" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
-            CONTACT
-          </Link>
+          {/* Logo */}
+          <div className="-ml-1 mr-10 mt-1.5 w-[50px] h-[50px] overflow-hidden rounded-[50px]">
+            <Image 
+              src="/EMUI.png" 
+              alt="Empire UI Logo" 
+              width={50} 
+              height={50}
+              className="object-cover scale-125 rounded-[50px]"
+            />
+          </div>
+          
+          {/* Navigation Links */}
+          <div className="ml-8">
+            <Link href="/" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
+              HOME
+            </Link>
+            <Link href="/docs" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
+              COMPONENTS
+            </Link>
+            <Link href="/templates" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
+              TEMPLATES
+            </Link>
+            <Link href="/contact" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
+              CONTACT
+            </Link>
+          </div>
         </div>
+        
         <div className="flex items-center">
-          <button className="nav-icon-button">
-            <Search size={22} />
-          </button>
-          <button className="nav-icon-button">
-            <ShoppingCart size={22} />
-          </button>
+          {/* Search Box */}
+          <div className="nav-search-box flex items-center">
+            <Search size={18} className="text-gray-400 mr-2" />
+            <input 
+              type="text" 
+              placeholder="Search Documentation" 
+              className={cn("bg-transparent text-white text-sm placeholder-gray-400 outline-none w-50", MinecartLCD.className)}
+            />
+          </div>
+          
+          {/* User Icon */}
           <button className="nav-icon-button">
             <User size={22} />
           </button>

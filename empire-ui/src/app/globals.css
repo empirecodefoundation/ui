@@ -281,7 +281,7 @@ html body[data-scroll-locked] {
 }
 
 .nav-link {
-  margin-right: 112px;
+  margin-right: 80px;
   position: relative;
   transition: color 0.2s ease;
 }
@@ -339,6 +339,33 @@ html body[data-scroll-locked] {
 
 .nav-icon-button:hover {
   background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Search box styling */
+.nav-search-box {
+  background-color: #202020;
+  border: 1px solid rgba(107, 114, 128, 0.3);
+  border-radius: 50px;
+  padding: 8px 16px;
+  margin-right: 16px;
+  transition: all 0.1s ease;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="3" fill="white" stroke="black" stroke-width="1"/><circle cx="8" cy="8" r="1.5" fill="black"/></svg>') 8 8, auto;
+}
+
+.nav-search-box:hover {
+  background-color: #2a2a2a;
+  border-color: rgba(107, 114, 128, 0.5);
+}
+
+.nav-search-box:focus-within {
+  background-color: #303030;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Custom dotted cursor for input field */
+.nav-search-box input {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="3" fill="white" stroke="black" stroke-width="1"/><circle cx="8" cy="8" r="1.5" fill="black"/></svg>') 8 8, text;
 }
 
 /* Sizing adjustments for feature cards */

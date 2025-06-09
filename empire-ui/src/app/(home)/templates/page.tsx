@@ -2,12 +2,15 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Search, ExternalLink, Calendar, BarChart3, FileCode, Layout, Layers, Shield, Zap } from "lucide-react";
+import { Search, ExternalLink, Calendar, BarChart3, FileCode, Layout, Layers, Shield, Zap, MessageSquare } from "lucide-react";
+import { Navbar } from "@/components/common/navbar";
+import { EmpireFooter } from "@/components/common/empire-footer";
+import { MinecartLCD } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 
 const templates = [
   {
@@ -15,17 +18,17 @@ const templates = [
     title: "Landing Page",
     description: "A modern landing page with animations, pricing tables, and testimonials sections for AI-powered products.",
     image: "/assets/images/landing-template.jpg",
-    icon: <Layout className="w-10 h-10 text-indigo-500" />,
+    icon: <Layout className="w-10 h-10 text-white" />,
     category: "Marketing",
     tags: ["Featured", "UI/UX"],
     href: "/templates/landing"
   },
   {
     id: "dashboard",
-    title: "AI Dashboard",
+    title: "AI Dashboard", 
     description: "A comprehensive analytics dashboard for monitoring AI models, usage stats, and performance metrics.",
     image: "/assets/images/dashboard-template.jpg",
-    icon: <BarChart3 className="w-10 h-10 text-blue-500" />,
+    icon: <BarChart3 className="w-10 h-10 text-white" />,
     category: "Admin",
     tags: ["Popular", "Analytics"],
     href: "/templates/dashboard"
@@ -34,8 +37,8 @@ const templates = [
     id: "ocr",
     title: "OCR Application",
     description: "Image text extraction app with AI-powered analysis for processing documents and images.",
-    image: "/assets/images/ocr-template.jpg",
-    icon: <FileCode className="w-10 h-10 text-purple-500" />,
+    image: "/assets/images/ocr-template.jpg", 
+    icon: <FileCode className="w-10 h-10 text-white" />,
     category: "Tool",
     tags: ["Utility"],
     href: "/templates/ocr"
@@ -45,8 +48,8 @@ const templates = [
     title: "AI Interface",
     description: "A clean, modern interface for interacting with AI assistants and large language models.",
     image: "/assets/images/ai-interface-template.jpg",
-    icon: <MessageSquare className="w-10 h-10 text-green-500" />,
-    category: "AI",
+    icon: <MessageSquare className="w-10 h-10 text-white" />,
+    category: "AI", 
     tags: ["Featured", "Chat"],
     href: "/templates/ai-interface"
   },
@@ -55,17 +58,17 @@ const templates = [
     title: "Analytics Platform",
     description: "Data visualization and analytics platform for monitoring AI model performance and user engagement.",
     image: "/assets/images/analytics-template.jpg",
-    icon: <Layers className="w-10 h-10 text-yellow-500" />,
+    icon: <Layers className="w-10 h-10 text-white" />,
     category: "Analytics",
     tags: ["Data", "Charts"],
     href: "/templates/analytics"
   },
   {
     id: "startup",
-    title: "Startup Launch",
+    title: "Startup Launch", 
     description: "Beautiful startup landing page with subscription forms, feature highlights, and responsive design.",
     image: "/assets/images/startup-template.jpg",
-    icon: <Zap className="w-10 h-10 text-red-500" />,
+    icon: <Zap className="w-10 h-10 text-white" />,
     category: "Marketing",
     tags: ["New", "Features"],
     href: "/templates/startup"
@@ -75,7 +78,7 @@ const templates = [
     title: "Admin Portal",
     description: "Comprehensive admin interface for managing users, content, and settings for AI applications.",
     image: "/assets/images/admin-template.jpg",
-    icon: <Shield className="w-10 h-10 text-emerald-500" />,
+    icon: <Shield className="w-10 h-10 text-white" />,
     category: "Admin",
     tags: ["Management", "Settings"],
     href: "/templates/admin"
@@ -85,7 +88,7 @@ const templates = [
     title: "AI Calendar",
     description: "Smart calendar application with AI scheduling assistant and intuitive event management.",
     image: "/assets/images/calendar-template.jpg",
-    icon: <Calendar className="w-10 h-10 text-orange-500" />,
+    icon: <Calendar className="w-10 h-10 text-white" />,
     category: "Tool",
     tags: ["Productivity", "New"],
     href: "/templates/calendar"
@@ -95,27 +98,22 @@ const templates = [
 // For placeholder images when real ones aren't available
 function getPlaceholderGradient(id: string): string {
   const gradients = [
-    "from-slate-800 to-slate-900",
-    "from-gray-900 to-blue-950",
-    "from-slate-900 to-zinc-900",
-    "from-zinc-900 to-neutral-900",
-    "from-neutral-900 to-stone-900",
-    "from-stone-900 to-gray-900",
-    "from-gray-900 to-slate-950",
-    "from-slate-950 to-zinc-950"
+    "from-indigo-900/40 via-indigo-800/30 to-purple-900/40",
+    "from-blue-900/40 via-blue-800/30 to-cyan-900/40", 
+    "from-purple-900/40 via-purple-800/30 to-pink-900/40",
+    "from-green-900/40 via-green-800/30 to-emerald-900/40",
+    "from-yellow-900/40 via-yellow-800/30 to-orange-900/40",
+    "from-red-900/40 via-red-800/30 to-pink-900/40",
+    "from-emerald-900/40 via-emerald-800/30 to-teal-900/40",
+    "from-orange-900/40 via-orange-800/30 to-red-900/40"
   ];
   
   return gradients[templates.findIndex(t => t.id === id) % gradients.length];
 }
 
-// Tag colors - using more subtle space-themed colors
+// Tag colors - Black and white only
 function getTagColor(tag: string): string {
-  switch(tag) {
-    case "Featured": return "bg-indigo-900/60 text-indigo-300 dark:bg-indigo-950 dark:text-indigo-300";
-    case "Popular": return "bg-purple-900/60 text-purple-300 dark:bg-purple-950 dark:text-purple-300";
-    case "New": return "bg-blue-900/60 text-blue-300 dark:bg-blue-950 dark:text-blue-300";
-    default: return "bg-gray-800/60 text-gray-300 dark:bg-gray-900 dark:text-gray-300";
-  }
+  return "bg-white text-black border border-dotted border-white";
 }
 
 export default function TemplatesPage() {
@@ -138,11 +136,15 @@ export default function TemplatesPage() {
   });
   
   return (
-    <div className="min-h-screen bg-black py-16 px-4 sm:px-6 lg:px-8 background-stars">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-[#202020]" style={{ marginTop: '-15px' }}>
+      {/* Navigation */}
+      <Navbar />
+      
+      <div className="container mx-auto px-6 py-16 max-w-7xl">
+        {/* Header Section */}
         <div className="text-center mb-16">
           <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-6 text-white"
+            className={cn("text-5xl md:text-6xl font-bold mb-6 text-white", MinecartLCD.className)}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -150,37 +152,51 @@ export default function TemplatesPage() {
             Ready-to-Use Templates
           </motion.h1>
           <motion.p 
-            className="text-xl text-gray-400 max-w-3xl mx-auto"
+            className={cn("text-xl text-white max-w-4xl mx-auto leading-relaxed", MinecartLCD.className)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Jump-start your next project with our beautiful, responsive templates
-            powered by Empire UI components.
+            Jump-start your next project with our beautiful, responsive templates powered by Empire UI components.
           </motion.p>
         </div>
         
         {/* Search and Filters */}
-        <div className="flex flex-col md:flex-row justify-between gap-4 mb-12">
-          <div className="relative w-full md:w-96">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={18} />
+        <div className="flex flex-col lg:flex-row justify-between gap-6 mb-16">
+          <div className="relative w-full lg:w-96">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white" size={20} />
             <input
               type="text"
               placeholder="Search templates..."
-              className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-800 focus:ring-2 focus:ring-indigo-600 bg-gray-900 text-white"
+              className={cn(
+                "w-full pl-12 pr-4 py-3 rounded-none bg-black text-white placeholder-white transition-all",
+                MinecartLCD.className
+              )}
+              style={{
+                border: '4px dotted white'
+              }}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
           
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3">
             {categories.map(category => (
               <Button
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedCategory(category)}
-                className={selectedCategory === category ? "bg-indigo-900 hover:bg-indigo-800 text-white" : "border-gray-700 text-gray-400 hover:text-white"}
+                className={cn(
+                  selectedCategory === category 
+                    ? "bg-white text-black" 
+                    : "bg-black text-white hover:bg-white hover:text-black",
+                  "px-4 py-2 rounded-none transition-all",
+                  MinecartLCD.className
+                )}
+                style={{
+                  border: '2px dotted white'
+                }}
               >
                 {category}
               </Button>
@@ -188,56 +204,82 @@ export default function TemplatesPage() {
           </div>
         </div>
         
-        {/* Templates Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        {/* Templates Grid - Responsive 4 columns on large screens, 3 on medium, 2 on small, 1 on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20">
           {filteredTemplates.map((template, index) => (
             <motion.div
               key={template.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group"
             >
-              <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300 bg-gray-900 border-gray-800 hover:border-gray-700">
+              <Card 
+                className="h-full overflow-hidden bg-black transition-all duration-300 group-hover:transform group-hover:scale-[1.02]"
+                style={{
+                  border: '4px dotted white',
+                  borderRadius: '0px'
+                }}
+              >
                 <CardContent className="p-0">
-                  <div className="relative h-48 w-full overflow-hidden">
-                    {/* Replace with actual images when available */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${getPlaceholderGradient(template.id)}`}></div>
-                    <div className="absolute inset-0 flex items-center justify-center text-white opacity-50">
+                  {/* Template Preview Image */}
+                  <div className="relative h-52 w-full overflow-hidden bg-black">
+                    <div className="absolute inset-0 flex items-center justify-center">
                       {template.icon}
                     </div>
-                  </div>
-                  
-                  <div className="p-5">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-xl font-bold text-white">{template.title}</h3>
-                      <span className="text-xs text-gray-500 px-2 py-1 bg-gray-800 rounded-full ml-2">
+                    <div className="absolute top-3 right-3">
+                      <span 
+                        className={cn("text-xs px-2 py-1 bg-white text-black rounded-none", MinecartLCD.className)}
+                        style={{
+                          border: '2px dotted white'
+                        }}
+                      >
                         {template.category}
                       </span>
                     </div>
+                  </div>
+                  
+                  {/* Template Info */}
+                  <div className="p-6">
+                    <h3 className={cn("text-xl font-bold text-white mb-3 group-hover:text-white transition-colors", MinecartLCD.className)}>
+                      {template.title}
+                    </h3>
                     
-                    <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+                    <p className={cn("text-white text-sm mb-4 leading-relaxed line-clamp-3", MinecartLCD.className)}>
                       {template.description}
                     </p>
                     
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-5">
                       {template.tags.map(tag => (
                         <span 
                           key={tag} 
-                          className={`text-xs px-2 py-1 rounded-full ${getTagColor(tag)}`}
+                          className={cn("text-xs px-3 py-1 rounded-none bg-white text-black", MinecartLCD.className)}
+                          style={{
+                            border: '2px dotted white'
+                          }}
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
                     
-                    <div className="flex justify-between items-center">
-                      <Link href={template.href} passHref>
-                        <Button variant="default" className="bg-gray-800 hover:bg-gray-700 text-white">
-                          View Template
-                          <ExternalLink className="ml-2 h-4 w-4" />
-                        </Button>
-                      </Link>
-                    </div>
+                    {/* View Template Button */}
+                    <Link href={template.href} passHref>
+                      <Button 
+                        variant="default" 
+                        className={cn(
+                          "w-full bg-black text-white hover:bg-white hover:text-black transition-all rounded-none",
+                          MinecartLCD.className
+                        )}
+                        style={{
+                          border: '2px dotted white'
+                        }}
+                      >
+                        View Template
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
@@ -248,11 +290,13 @@ export default function TemplatesPage() {
         {/* No Results */}
         {filteredTemplates.length === 0 && (
           <div className="text-center py-20">
-            <div className="text-gray-600 mb-4">
-              <SearchX className="mx-auto h-12 w-12" />
+            <div className="text-white mb-6">
+              <Search className="mx-auto h-16 w-16" />
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-white">No templates found</h3>
-            <p className="text-gray-500 mb-4">
+            <h3 className={cn("text-2xl font-bold mb-4 text-white", MinecartLCD.className)}>
+              No templates found
+            </h3>
+            <p className={cn("text-white mb-6 max-w-md mx-auto", MinecartLCD.className)}>
               Try adjusting your search or filter to find what you're looking for.
             </p>
             <Button 
@@ -261,103 +305,57 @@ export default function TemplatesPage() {
                 setSearchQuery("");
                 setSelectedCategory("All");
               }}
-              className="border-gray-700 text-gray-400 hover:text-white"
+              className={cn("bg-black text-white hover:bg-white hover:text-black rounded-none", MinecartLCD.className)}
+              style={{
+                border: '2px dotted white'
+              }}
             >
               Clear Filters
             </Button>
           </div>
         )}
         
-        {/* Call to Action */}
-        <div className="mt-20 bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 md:p-12 text-white border border-gray-800">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">Create Your Own Template</h2>
-              <p className="text-gray-400 max-w-lg">
-                Have an idea for a new template? We welcome contributions from the community.
+        {/* Create Your Own Template Section */}
+        <motion.div 
+          className="mt-24 bg-black p-8 md:p-12 rounded-none"
+          style={{
+            border: '6px dotted white'
+          }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="flex-1">
+              <h2 className={cn("text-3xl md:text-4xl font-bold mb-4 text-white", MinecartLCD.className)}>
+                Create Your Own Template
+              </h2>
+              <p className={cn("text-white text-lg leading-relaxed max-w-2xl", MinecartLCD.className)}>
+                Have an idea for a new template? We welcome contributions from the community. 
                 Build your own template using Empire UI components and share it with others.
               </p>
             </div>
-            <Button 
-              variant="secondary" 
-              size="lg" 
-              className="bg-indigo-900 hover:bg-indigo-800 text-white py-6 px-8 border-none"
-            >
-              Get Started
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <div className="flex-shrink-0">
+              <Button 
+                size="lg" 
+                className={cn(
+                  "bg-white text-black hover:bg-black hover:text-white py-4 px-8 text-lg rounded-none transition-all",
+                  MinecartLCD.className
+                )}
+                style={{
+                  border: '3px dotted white'
+                }}
+              >
+                Get Started
+                <ExternalLink className="ml-3 h-5 w-5" />
+              </Button>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
+      
+      {/* Footer */}
+      <EmpireFooter />
     </div>
   );
 }
-
-// Missing components
-function MessageSquare(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-    </svg>
-  );
-}
-
-function SearchX(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-      <line x1="8" y1="11" x2="14" y2="11" />
-    </svg>
-  );
-}
-
-function ArrowRight(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <line x1="5" y1="12" x2="19" y2="12" />
-      <polyline points="12 5 19 12 12 19" />
-    </svg>
-  );
-}
-
-/* Add CSS for space background */
-const styles = `
-  .background-stars {
-    background-color: #000;
-    background-image: 
-      radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-      radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-      radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
-      radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
-    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-  }
-`;

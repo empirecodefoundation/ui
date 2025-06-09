@@ -21,8 +21,8 @@ import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import * as THREE from "three";
 
 // Import assets - these can be customized
-import cardGLB from "/public/assets/lanyard/card.glb";
-import lanyardTexture from "/public/assets/lanyard/lanyard.png";
+const cardGLB = "/assets/lanyard/card.glb";
+const lanyardTexture = "/assets/lanyard/lanyard.png";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 

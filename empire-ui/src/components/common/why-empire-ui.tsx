@@ -4,6 +4,8 @@ import { MinecartLCD } from "@/lib/fonts";
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { AnimatedArrowDynamic } from '@/components/ui/animated-arrow';
+import BulgeText from '@/components/ui/bulge-text';
+import ScrambledText from '@/components/ui/scrambled-text';
 import img10 from '@/images/img10.png';
 
 export const WhyEmpireUI = () => {
@@ -19,28 +21,34 @@ export const WhyEmpireUI = () => {
         }}>
           
           {/* Top Section - Empire UI Heading */}
-          <div className="mb-8">
+          <div className="mb-8 relative z-30">
             <h1 className={cn("text-white text-6xl md:text-7xl font-bold leading-tight", MinecartLCD.className)}>
               Why Empire UI
             </h1>
           </div>
           
-          {/* Subtext Section */}
-          <div className="mb-16">
-            <p className={cn("text-white text-xl leading-relaxed max-w-4xl", MinecartLCD.className)}>
+          {/* Subtext Section with Scrambled Text Effect - Higher z-index */}
+          <div className="mb-16 relative z-30">
+            <ScrambledText
+              className={cn("text-white text-xl leading-relaxed max-w-4xl", MinecartLCD.className)}
+              sectionWidth={200}
+              duration={0.3}
+              speed={1.5}
+              scrambleChars=".:!@#$%^&*()_+-=[]{}|;:,.<>?"
+            >
               At Empire UI, We Don't Just Build Tech — We Craft Experiences. Every 
               Device Is Engineered With Precision, Purpose, And A Deep Understanding 
               Of How Technology Fits Into Your Life. Our Mission Is Simple: Empower The 
               Next Generation With Tools That Look Great, Perform Better, And Last 
               Longer.
-            </p>
+            </ScrambledText>
           </div>
           
           {/* Middle Section - Robot positioned at bottom, Empire UI text overlaying */}
           <div className="relative flex-1 mb-16">
             
-            {/* Robot Image - Positioned at bottom of container */}
-            <div className="absolute -bottom-64 -right-8 w-4/5 z-10" style={{ height: '700px' }}>
+            {/* Robot Image - Lower z-index, positioned at bottom of container */}
+            <div className="absolute -bottom-64 -right-8 w-4/5 z-10" style={{ height: '660px' }}>
               <div className="relative h-full">
                 <Image
                   src={img10}
@@ -52,18 +60,23 @@ export const WhyEmpireUI = () => {
               </div>
             </div>
             
-            {/* Large Empire UI Text - Overlaying the robot */}
-            <div className="relative z-20 w-full -mt-8">
-              <h2 className={cn("text-white text-[10rem] md:text-[12rem] font-bold leading-none w-full", MinecartLCD.className)} style={{ 
-                letterSpacing: '0.06em'
-              }}>
+            {/* Large Empire UI Text - Higher z-index, overlaying the robot */}
+            <div className="relative z-40 w-full -mt-8 pointer-events-none">
+              <BulgeText
+                className={cn("text-white text-[10rem] md:text-[12rem] font-bold leading-none w-full", MinecartLCD.className)}
+                style={{ 
+                  letterSpacing: '0.06em'
+                }}
+                bulgeRadius={100}
+                bulgeStrength={1.6}
+              >
                 Empire UI
-              </h2>
+              </BulgeText>
             </div>
           </div>
           
-          {/* Bottom Left - Community Section */}
-          <div className="absolute bottom-8 left-8">
+          {/* Bottom Left - Community Section - Higher z-index */}
+          <div className="absolute bottom-8 left-8 z-30">
             <h3 className={cn("text-white text-2xl font-bold mb-2", MinecartLCD.className)}>
               Join Our Community
             </h3>

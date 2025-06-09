@@ -4,6 +4,7 @@ import { MinecartLCD } from "@/lib/fonts";
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { AnimatedArrowDynamic } from '@/components/ui/animated-arrow';
+import PixelCard from '@/components/ui/pixel-card';
 
 // Import images
 import img5 from '@/images/img5.png';
@@ -12,7 +13,7 @@ import img7 from '@/images/img7.png';
 import img8 from '@/images/img8.png';
 import img9 from '@/images/img9.png';
 
-// Simple product card component without animations
+// Product card component with pixel animation
 const ProductCard = ({ 
   title, 
   image, 
@@ -25,40 +26,48 @@ const ProductCard = ({
   showArrow?: boolean;
 }) => {
   return (
-    <div className={cn("relative overflow-hidden bg-black group cursor-pointer", className)}>
-      {/* Background Image */}
-      <div className="absolute inset-0">
+    <div className={cn("relative rounded-[50px] overflow-hidden cursor-pointer", className)}>
+      {/* Image Container */}
+      <div className="absolute inset-0 w-full h-full">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover"
+          className="object-cover rounded-[50px]"
           priority
         />
       </div>
-
-      {/* Content */}
-      <div className="relative z-10 p-8 h-full flex flex-col justify-between">
-        {/* Arrow Button */}
-        {showArrow && (
-          <div className="flex justify-end">
-            <div className="w-14 h-14 rounded-full border border-white/50 flex items-center justify-center bg-transparent hover:bg-white transition-colors duration-300 group/arrow text-white hover:text-black">
-              <AnimatedArrowDynamic 
-                size={20} 
-                strokeWidth={2.5}
-                className=""
-              />
+      
+      {/* Pixel Animation Wrapper */}
+      <PixelCard 
+        variant="white"
+        gap={4}
+        speed={25}
+        className="w-full h-full"
+      >
+        {/* Content */}
+        <div className="relative p-8 h-full flex flex-col justify-between" style={{ zIndex: 110 }}>
+          {/* Arrow Button */}
+          {showArrow && (
+            <div className="flex justify-end">
+              <div className="w-14 h-14 rounded-full border border-white/50 flex items-center justify-center bg-transparent hover:bg-white transition-colors duration-300 group/arrow text-white hover:text-black">
+                <AnimatedArrowDynamic 
+                  size={20} 
+                  strokeWidth={2.5}
+                  className=""
+                />
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Title */}
-        <div>
-          <h3 className={cn("text-white text-xl md:text-2xl font-bold uppercase tracking-wider", MinecartLCD.className)}>
-            {title}
-          </h3>
+          {/* Title */}
+          <div>
+            <h3 className={cn("text-white text-xl md:text-2xl font-bold uppercase tracking-wider", MinecartLCD.className)}>
+              {title}
+            </h3>
+          </div>
         </div>
-      </div>
+      </PixelCard>
     </div>
   );
 };

@@ -4,6 +4,8 @@ import Script from "next/script";
 import { GeistMono, GeistSans, MinecartLCD } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/core/providers";
 import { LoadingProvider } from "@/components/core/loading-provider";
+import PageTransition from "@/components/core/page-transition";
+import GlobalClickAnimation from "@/components/ui/global-click-animation";
 
 export const metadata: Metadata = {
   title: "Empire UI",
@@ -50,7 +52,17 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LoadingProvider>
-            {children}
+            <PageTransition>
+              {children}
+            </PageTransition>
+            {/* Global click animation for all pages */}
+            <GlobalClickAnimation 
+              sparkColor="#ffffff"
+              sparkSize={3}
+              sparkRadius={25}
+              sparkCount={8}
+              duration={200}
+            />
           </LoadingProvider>
         </ThemeProvider>
       </body>
