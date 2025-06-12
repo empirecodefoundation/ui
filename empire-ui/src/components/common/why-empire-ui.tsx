@@ -10,7 +10,7 @@ import img10 from '@/images/img10.png';
 
 export const WhyEmpireUI = () => {
   return (
-    <div className="relative bg-[#202020] py-16">
+    <div className="relative py-16">
       {/* Content Container - Narrower with more margins */}
       <div className="w-[1350px] max-w-[95%] mx-auto"> 
         

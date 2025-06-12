@@ -1,7 +1,7 @@
 "use client";
 
-import React, { createContext, useContext, useState } from 'react';
-import { Lanyard } from './lanyard';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { PageLoader } from '@/components/ui/page-loader';
 
 interface LoadingContextType {
   isLoading: boolean;
@@ -21,33 +21,41 @@ export const useLoading = () => {
 
 interface LoadingProviderProps {
   children: React.ReactNode;
-  color?: string;
-  size?: 'sm' | 'md' | 'lg';
-  thickness?: 'thin' | 'normal' | 'thick';
 }
 
 export const LoadingProvider = ({
   children,
-  color = "#00aaff", // Using the neon-blue color from your globals.css
-  size = "md",
-  thickness = "normal",
 }: LoadingProviderProps) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Start with loading true for initial load
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   const startLoading = () => setIsLoading(true);
-  const stopLoading = () => setIsLoading(false);
+  const stopLoading = () => {
+    setIsLoading(false);
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+    }
+  };
+
+  // Handle initial page load
+  useEffect(() => {
+    if (isInitialLoad) {
+      // Simulate initial load completion after a short delay
+      const timer = setTimeout(() => {
+        // The PageLoader component will handle the 1.5s duration
+        // We just need to ensure it starts
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isInitialLoad]);
 
   return (
     <LoadingContext.Provider value={{ isLoading, startLoading, stopLoading }}>
-      {children}
-      {isLoading && (
-        <Lanyard 
-          fullScreen
-          color={color}
-          size={size} 
-          thickness={thickness} 
-        />
-      )}
+      <div className={isLoading ? "opacity-0 pointer-events-none" : "opacity-100 transition-opacity duration-300"}>
+        {children}
+      </div>
+      <PageLoader isLoading={isLoading} onComplete={stopLoading} />
     </LoadingContext.Provider>
   );
 };

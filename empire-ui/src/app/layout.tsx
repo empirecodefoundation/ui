@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/core/providers";
 import { LoadingProvider } from "@/components/core/loading-provider";
 import PageTransition from "@/components/core/page-transition";
 import GlobalClickAnimation from "@/components/ui/global-click-animation";
+import { ParticlesBackground } from "@/components/ui/particles-background";
 
 export const metadata: Metadata = {
   title: "Empire UI",
@@ -42,7 +43,7 @@ export default function RootLayout({
         />
       ) : null}
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${MinecartLCD.variable} bg-[#202020] min-h-screen w-full m-0 p-0`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${MinecartLCD.variable} min-h-screen w-full m-0 p-0`}
         style={{ margin: 0, padding: 0 }}
       >
         <ThemeProvider
@@ -52,17 +53,19 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LoadingProvider>
-            <PageTransition>
-              {children}
-            </PageTransition>
-            {/* Global click animation for all pages */}
-            <GlobalClickAnimation 
-              sparkColor="#ffffff"
-              sparkSize={3}
-              sparkRadius={25}
-              sparkCount={8}
-              duration={200}
-            />
+            <ParticlesBackground>
+              <PageTransition>
+                {children}
+              </PageTransition>
+              {/* Global click animation for all pages */}
+              <GlobalClickAnimation 
+                sparkColor="#ffffff"
+                sparkSize={3}
+                sparkRadius={25}
+                sparkCount={8}
+                duration={200}
+              />
+            </ParticlesBackground>
           </LoadingProvider>
         </ThemeProvider>
       </body>

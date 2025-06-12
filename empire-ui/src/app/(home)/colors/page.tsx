@@ -404,7 +404,7 @@ export default function ColorsPage() {
   }, []);
   
   return (
-    <div className="min-h-screen bg-gray-950 text-white pt-16 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen text-white pt-16 pb-12 px-4 sm:px-6 lg:px-8">
       <Toaster position="top-center" />
       
       <div className="container mx-auto py-10 px-4 md:px-6">

@@ -36,7 +36,7 @@ export const PageLayout = ({
         <Navbar />
         
         {/* Page Content */}
-        <div className="min-h-screen bg-[#202020]">
+        <div className="min-h-screen">
           {children}
         </div>
         

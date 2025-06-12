@@ -1,9 +1,11 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { MinecartLCD } from "@/lib/fonts";
 import { cn } from '@/lib/utils';
 import { Search, User } from 'lucide-react';
+import { LoadingLink } from '@/components/ui/loading-link';
 
 export const Navbar = () => {
   return (
@@ -23,18 +25,18 @@ export const Navbar = () => {
           
           {/* Navigation Links */}
           <div className="ml-8">
-            <Link href="/" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
+            <LoadingLink href="/" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
               HOME
-            </Link>
-            <Link href="/docs" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
+            </LoadingLink>
+            <LoadingLink href="/components" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
               COMPONENTS
-            </Link>
-            <Link href="/templates" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
+            </LoadingLink>
+            <LoadingLink href="/templates" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
               TEMPLATES
-            </Link>
-            <Link href="/contact" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
+            </LoadingLink>
+            <LoadingLink href="/contact" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
               CONTACT
-            </Link>
+            </LoadingLink>
           </div>
         </div>
         

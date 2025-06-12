@@ -11,6 +11,21 @@ import { Navbar } from "@/components/common/navbar";
 import { EmpireFooter } from "@/components/common/empire-footer";
 import { MinecartLCD } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import PixelTransition from "@/components/ui/PixelTransition";
+
+// Import illustrations
+import img1 from "@/illustrations/img1.png";
+import img2 from "@/illustrations/img2.png";
+import img3 from "@/illustrations/img3.png";
+import img4 from "@/illustrations/img4.png";
+import img5 from "@/illustrations/img5.png";
+import img6 from "@/illustrations/img6.png";
+import img7 from "@/illustrations/img7.png";
+import img8 from "@/illustrations/img8.png";
+
+// Import hello.jpg for the pixel transition effect
+import helloImage from "@/images/hello.jpg";
 
 const templates = [
   {
@@ -18,7 +33,7 @@ const templates = [
     title: "Landing Page",
     description: "A modern landing page with animations, pricing tables, and testimonials sections for AI-powered products.",
     image: "/assets/images/landing-template.jpg",
-    icon: <Layout className="w-10 h-10 text-white" />,
+    icon: <Image src={img1} alt="Landing Page" width={180} height={180} className="object-contain" />,
     category: "Marketing",
     tags: ["Featured", "UI/UX"],
     href: "/templates/landing"
@@ -28,7 +43,7 @@ const templates = [
     title: "AI Dashboard", 
     description: "A comprehensive analytics dashboard for monitoring AI models, usage stats, and performance metrics.",
     image: "/assets/images/dashboard-template.jpg",
-    icon: <BarChart3 className="w-10 h-10 text-white" />,
+    icon: <Image src={img2} alt="AI Dashboard" width={180} height={180} className="object-contain" />,
     category: "Admin",
     tags: ["Popular", "Analytics"],
     href: "/templates/dashboard"
@@ -38,7 +53,7 @@ const templates = [
     title: "OCR Application",
     description: "Image text extraction app with AI-powered analysis for processing documents and images.",
     image: "/assets/images/ocr-template.jpg", 
-    icon: <FileCode className="w-10 h-10 text-white" />,
+    icon: <Image src={img3} alt="OCR Application" width={180} height={180} className="object-contain" />,
     category: "Tool",
     tags: ["Utility"],
     href: "/templates/ocr"
@@ -48,7 +63,7 @@ const templates = [
     title: "AI Interface",
     description: "A clean, modern interface for interacting with AI assistants and large language models.",
     image: "/assets/images/ai-interface-template.jpg",
-    icon: <MessageSquare className="w-10 h-10 text-white" />,
+    icon: <Image src={img4} alt="AI Interface" width={180} height={180} className="object-contain" />,
     category: "AI", 
     tags: ["Featured", "Chat"],
     href: "/templates/ai-interface"
@@ -58,7 +73,7 @@ const templates = [
     title: "Analytics Platform",
     description: "Data visualization and analytics platform for monitoring AI model performance and user engagement.",
     image: "/assets/images/analytics-template.jpg",
-    icon: <Layers className="w-10 h-10 text-white" />,
+    icon: <Image src={img5} alt="Analytics Platform" width={180} height={180} className="object-contain" />,
     category: "Analytics",
     tags: ["Data", "Charts"],
     href: "/templates/analytics"
@@ -68,7 +83,7 @@ const templates = [
     title: "Startup Launch", 
     description: "Beautiful startup landing page with subscription forms, feature highlights, and responsive design.",
     image: "/assets/images/startup-template.jpg",
-    icon: <Zap className="w-10 h-10 text-white" />,
+    icon: <Image src={img6} alt="Startup Launch" width={180} height={180} className="object-contain" />,
     category: "Marketing",
     tags: ["New", "Features"],
     href: "/templates/startup"
@@ -78,7 +93,7 @@ const templates = [
     title: "Admin Portal",
     description: "Comprehensive admin interface for managing users, content, and settings for AI applications.",
     image: "/assets/images/admin-template.jpg",
-    icon: <Shield className="w-10 h-10 text-white" />,
+    icon: <Image src={img7} alt="Admin Portal" width={180} height={180} className="object-contain" />,
     category: "Admin",
     tags: ["Management", "Settings"],
     href: "/templates/admin"
@@ -88,7 +103,7 @@ const templates = [
     title: "AI Calendar",
     description: "Smart calendar application with AI scheduling assistant and intuitive event management.",
     image: "/assets/images/calendar-template.jpg",
-    icon: <Calendar className="w-10 h-10 text-white" />,
+    icon: <Image src={img8} alt="AI Calendar" width={180} height={180} className="object-contain" />,
     category: "Tool",
     tags: ["Productivity", "New"],
     href: "/templates/calendar"
@@ -136,7 +151,7 @@ export default function TemplatesPage() {
   });
   
   return (
-    <div className="min-h-screen bg-[#202020]" style={{ marginTop: '-15px' }}>
+          <div className="min-h-screen" style={{ marginTop: '-15px' }}>
       {/* Navigation */}
       <Navbar />
       
@@ -214,75 +229,107 @@ export default function TemplatesPage() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group"
             >
-              <Card 
-                className="h-full overflow-hidden bg-black transition-all duration-300 group-hover:transform group-hover:scale-[1.02]"
-                style={{
-                  border: '4px dotted white',
-                  borderRadius: '0px'
-                }}
-              >
-                <CardContent className="p-0">
-                  {/* Template Preview Image */}
-                  <div className="relative h-52 w-full overflow-hidden bg-black">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      {template.icon}
-                    </div>
-                    <div className="absolute top-3 right-3">
-                      <span 
-                        className={cn("text-xs px-2 py-1 bg-white text-black rounded-none", MinecartLCD.className)}
-                        style={{
-                          border: '2px dotted white'
-                        }}
-                      >
-                        {template.category}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  {/* Template Info */}
-                  <div className="p-6">
-                    <h3 className={cn("text-xl font-bold text-white mb-3 group-hover:text-white transition-colors", MinecartLCD.className)}>
-                      {template.title}
-                    </h3>
-                    
-                    <p className={cn("text-white text-sm mb-4 leading-relaxed line-clamp-3", MinecartLCD.className)}>
-                      {template.description}
-                    </p>
-                    
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-5">
-                      {template.tags.map(tag => (
-                        <span 
-                          key={tag} 
-                          className={cn("text-xs px-3 py-1 rounded-none bg-white text-black", MinecartLCD.className)}
+              <PixelTransition
+                firstContent={
+                  <Card 
+                    className="h-full overflow-hidden bg-black transition-all duration-300 group-hover:transform group-hover:scale-[1.02] border-4 border-dotted border-white hover:border-solid rounded-none"
+                  >
+                    <CardContent className="p-0">
+                      {/* Template Preview Image */}
+                      <div className="relative h-52 w-full overflow-hidden bg-black">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          {template.icon}
+                        </div>
+                        <div className="absolute top-3 right-3">
+                          <span 
+                            className={cn("text-xs px-2 py-1 bg-white text-black rounded-none", MinecartLCD.className)}
+                            style={{
+                              border: '2px dotted white'
+                            }}
+                          >
+                            {template.category}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      {/* Template Info */}
+                      <div className="p-6">
+                        <h3 className={cn("text-xl font-bold text-white mb-3 group-hover:text-white transition-colors", MinecartLCD.className)}>
+                          {template.title}
+                        </h3>
+                        
+                        <p className={cn("text-white text-sm mb-4 leading-relaxed line-clamp-3", MinecartLCD.className)}>
+                          {template.description}
+                        </p>
+                        
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-2 mb-5">
+                          {template.tags.map(tag => (
+                            <span 
+                              key={tag} 
+                              className={cn("text-xs px-3 py-1 rounded-none bg-white text-black", MinecartLCD.className)}
+                              style={{
+                                border: '2px dotted white'
+                              }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        
+                        {/* View Template Button */}
+                        <Link href={template.href} passHref>
+                          <Button 
+                            variant="default" 
+                            className={cn(
+                              "w-full bg-black text-white hover:bg-white hover:text-black transition-all rounded-none",
+                              MinecartLCD.className
+                            )}
+                            style={{
+                              border: '2px dotted white'
+                            }}
+                          >
+                            View Template
+                            <ExternalLink className="ml-2 h-4 w-4" />
+                          </Button>
+                        </Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                }
+                secondContent={
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <Image
+                      src={helloImage}
+                      alt="Template Preview"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                      <Link href={template.href} passHref>
+                        <Button 
+                          variant="default" 
+                          className={cn(
+                            "bg-white text-black hover:bg-gray-200 hover:scale-105 hover:shadow-lg transition-all duration-300 rounded-none px-6 py-3 text-lg font-bold group",
+                            MinecartLCD.className
+                          )}
                           style={{
-                            border: '2px dotted white'
+                            border: '2px solid white'
                           }}
                         >
-                          {tag}
-                        </span>
-                      ))}
+                          VIEW TEMPLATE
+                          <ExternalLink className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                        </Button>
+                      </Link>
                     </div>
-                    
-                    {/* View Template Button */}
-                    <Link href={template.href} passHref>
-                      <Button 
-                        variant="default" 
-                        className={cn(
-                          "w-full bg-black text-white hover:bg-white hover:text-black transition-all rounded-none",
-                          MinecartLCD.className
-                        )}
-                        style={{
-                          border: '2px dotted white'
-                        }}
-                      >
-                        View Template
-                        <ExternalLink className="ml-2 h-4 w-4" />
-                      </Button>
-                    </Link>
                   </div>
-                </CardContent>
-              </Card>
+                }
+                gridSize={12}
+                pixelColor="#ffffff"
+                animationStepDuration={0.4}
+                className="w-full h-full"
+                style={{ width: "100%", height: "100%" }}
+              />
             </motion.div>
           ))}
         </div>
