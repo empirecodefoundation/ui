@@ -4,8 +4,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { MinecartLCD } from "@/lib/fonts";
 import { cn } from '@/lib/utils';
-import { Search, User } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { LoadingLink } from '@/components/ui/loading-link';
+import gitLogo from '@/images/git.png';
 
 export const Navbar = () => {
   return (
@@ -51,10 +52,21 @@ export const Navbar = () => {
             />
           </div>
           
-          {/* User Icon */}
-          <button className="nav-icon-button">
-            <User size={22} />
-          </button>
+          {/* GitHub Logo */}
+          <a 
+            href="https://github.com/empirecodefoundation/ui" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="nav-icon-button ml-2"
+          >
+            <Image 
+              src={gitLogo}
+              alt="GitHub Repository" 
+              width={35} 
+              height={35}
+              className="object-contain"
+            />
+          </a>
         </div>
       </div>
     </nav>
