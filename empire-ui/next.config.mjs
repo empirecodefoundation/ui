@@ -1,8 +1,16 @@
 import remarkGfm from "remark-gfm";
 import createMDX from "@next/mdx";
-import { remarkCodeHike } from "@code-hike/mdx";
+import { remarkCodeHike, recmaCodeHike } from "codehike/mdx";
 import nextra from "nextra";
 import path from "path";
+
+/** @type {import('codehike/mdx').CodeHikeConfig} */
+const chConfig = {
+  components: { code: "Code" },
+  syntaxHighlighting: {
+    theme: "github-dark",
+  },
+};
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -42,7 +50,9 @@ const withNextra = nextra({
 const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkGfm, [remarkCodeHike, { theme: "github-dark" }]],
+    remarkPlugins: [remarkGfm, [remarkCodeHike, chConfig]],
+    recmaPlugins: [[recmaCodeHike, chConfig]],
+    jsx: true,
   },
 });
 

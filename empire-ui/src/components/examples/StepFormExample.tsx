@@ -10,7 +10,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { User, Mail, Lock, Brush } from "lucide-react";
+import { User, Mail, Lock, Brush, LucideIcon } from "lucide-react";
 
 const StepContent = ({
   icon: Icon,
@@ -18,7 +18,7 @@ const StepContent = ({
   description,
   children,
 }: {
-  icon: React.ElementType;
+  icon: LucideIcon;
   title: string;
   description: string;
   children: React.ReactNode;

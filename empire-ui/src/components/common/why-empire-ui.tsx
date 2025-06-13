@@ -48,7 +48,7 @@ export const WhyEmpireUI = () => {
           <div className="relative flex-1 mb-16">
             
             {/* Robot Image - Lower z-index, positioned at bottom of container */}
-            <div className="absolute -bottom-64 -right-8 w-4/5 z-10" style={{ height: '660px' }}>
+            <div className="absolute -bottom-72 -right-8 w-4/5 z-10" style={{ height: '660px' }}>
               <div className="relative h-full">
                 <Image
                   src={img10}

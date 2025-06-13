@@ -29,7 +29,6 @@
   "dependencies": {
     "@ai-sdk/openai": "^0.0.58",
     "@codaworks/react-glow": "^1.0.6",
-    "@code-hike/mdx": "^0.9.0",
     "@fontsource/afacad": "^5.2.7",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
@@ -64,6 +63,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "codehike": "^1.0.7",
     "framer-motion": "^11.11.7",
     "geist": "^1.3.1",
     "gl-matrix": "^3.4.3",

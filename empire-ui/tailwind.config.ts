@@ -34,8 +34,18 @@ const config: Config = {
           "0%": { backgroundPosition: "0% 100%" },
           "100%": { backgroundPosition: "0% 0%" },
         },
-        'glitch': 'glitch 1s infinite alternate-reverse',
-        'digital-scan': 'digital-scan 3s linear infinite',
+        "glitch": {
+          "0%": { transform: "translate(0)" },
+          "20%": { transform: "translate(-2px, 2px)" },
+          "40%": { transform: "translate(-2px, -2px)" },
+          "60%": { transform: "translate(2px, 2px)" },
+          "80%": { transform: "translate(2px, -2px)" },
+          "100%": { transform: "translate(0)" },
+        },
+        "digital-scan": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(100vh)" },
+        },
       },
       animation: {
         "caret-blink": "caret-blink 1.25s ease-out infinite",

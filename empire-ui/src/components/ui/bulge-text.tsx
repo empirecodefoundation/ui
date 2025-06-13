@@ -38,13 +38,13 @@ export default function BulgeText({
     setIsHovering(false);
   }, []);
 
-  const getCharStyle = useCallback((charIndex: number, char: string) => {
+  const getCharStyle = useCallback((charIndex: number, char: string): React.CSSProperties => {
     if (!isHovering || !textRef.current) return {
       transform: 'scale(1) translateY(0px)',
       transition: 'transform 0.3s ease-out',
       display: 'inline-block',
       transformOrigin: 'center bottom',
-      position: 'relative'
+      position: 'relative' as const
     };
     
     // Calculate approximate character position
@@ -78,7 +78,7 @@ export default function BulgeText({
         display: 'inline-block',
         transformOrigin: 'center bottom',
         zIndex: Math.floor(easedInfluence * 30) + 1,
-        position: 'relative'
+        position: 'relative' as const
       };
     }
     
@@ -87,7 +87,7 @@ export default function BulgeText({
       transition: 'transform 0.2s ease-out',
       display: 'inline-block',
       transformOrigin: 'center bottom',
-      position: 'relative'
+      position: 'relative' as const
     };
   }, [isHovering, mousePos.x, mousePos.y, children.length, bulgeRadius, bulgeStrength]);
 
