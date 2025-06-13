@@ -146,3 +146,15 @@ npm install @empire-ui/core
 yarn add @empire-ui/core
 # or
 pnpm add @empire-ui/core
+
+```
+
+## Latest Updates
+- Enhanced UI with improved segment heights
+- Optimized image positioning for better display
+- Refined styling for better visual appeal
+- Improved vertical positioning of UI segments
+- Fixed Empire UI title placement in header notch
+
+## Contributors
+- [AKR4PC](https://github.com/AKR4PC)

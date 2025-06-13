@@ -23,6 +23,15 @@ const nextConfig = {
     // No experimental options needed at this time
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  webpack: (config) => {
+    // Handle .glb files
+    config.module.rules.push({
+      test: /\.(glb|gltf)$/,
+      type: 'asset/resource',
+    });
+    
+    return config;
+  },
 };
 
 const withNextra = nextra({

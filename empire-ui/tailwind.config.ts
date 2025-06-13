@@ -17,9 +17,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderWidth: {
+        '3': '3px',
+      },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
+        minecart: ['var(--font-minecart-lcd)'],
       },
       keyframes: {
         "caret-blink": {
@@ -30,10 +34,14 @@ const config: Config = {
           "0%": { backgroundPosition: "0% 100%" },
           "100%": { backgroundPosition: "0% 0%" },
         },
+        'glitch': 'glitch 1s infinite alternate-reverse',
+        'digital-scan': 'digital-scan 3s linear infinite',
       },
       animation: {
         "caret-blink": "caret-blink 1.25s ease-out infinite",
         "scan-overlay": "scan-overlay 16s linear infinite",
+        'glitch': 'glitch 1s infinite alternate-reverse',
+        'digital-scan': 'digital-scan 3s linear infinite',
       },
       fontSize: {
         "heading-random": "calc(8vw + 8vh)",
@@ -93,6 +101,10 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        'neon-blue': '#00aaff',
+        'neon-purple': '#ff00ff',
+        'cyber-yellow': '#ffd700',
+        'digital-black': '#0c0c0c',
       },
     },
   },
