@@ -31,12 +31,36 @@ const nextConfig = {
     // No experimental options needed at this time
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
     // Handle .glb files
     config.module.rules.push({
       test: /\.(glb|gltf)$/,
       type: 'asset/resource',
     });
+    
+    // Fix for Windows permission issues - exclude system directories
+    if (process.platform === 'win32') {
+      config.watchOptions = {
+        ...config.watchOptions,
+        ignored: [
+          '**/node_modules/**',
+          '**/.git/**',
+          '**/.next/**',
+          '**/C:/Users/*/AppData/Local/Temp/**',
+          '**/C:/Windows/**',
+          '**/C:/System Volume Information/**',
+          '**/C:/pagefile.sys',
+          '**/C:/hiberfil.sys',
+          '**/WinSAT/**',
+          '**/*WinSAT*/**',
+        ]
+      };
+      
+      // Also exclude these directories from file-watching
+      config.infrastructureLogging = {
+        level: 'error',
+      };
+    }
     
     return config;
   },
