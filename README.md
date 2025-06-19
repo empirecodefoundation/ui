@@ -149,149 +149,190 @@ pnpm add @empire-ui/core
 
 ```
 
-# AuraTheme - Dynamic Theme Generator
+# AuraTheme - AI-Powered Theme Generator
 
-AuraTheme is a powerful React component that generates and applies adaptive themes for websites using AI. It leverages Google's Gemini AI to create beautiful, context-aware color schemes and patterns based on user prompts.
+AuraTheme is a modern web application that uses AI to generate beautiful color themes based on your descriptions. Built with Next.js, TypeScript, and Google's Gemini AI.
 
-## 🌟 Features
+## Features
 
-### AI-Powered Theme Generation
-- Generate themes using Gemini 2.0 Flash AI
-- Context-aware color palette generation
-- Intelligent pattern suggestions
-- Fallback themes for reliability
-
-### Theme Customization
-- Custom color picker integration
-- Pattern upload support
-- Predefined theme options
+- AI-powered theme generation using Google's Gemini AI
 - Real-time theme preview
+- Color palette visualization
+- Responsive design
+- Easy-to-use interface
 
-### User Interface
-- Floating action button design
-- Modal-based theme customization
-- Intuitive color selection
-- Responsive layout
+## Getting Started
 
-### Theme Application
-- CSS variable-based theming
-- Global theme application
-- Smooth theme transitions
-- Pattern overlay support
+### Prerequisites
 
-## 🛠️ Installation
+- Node.js 18+ 
+- npm or yarn
+- Google Gemini API key
 
-1. Install the required dependencies:
+### Installation
+
+1. Clone the repository:
 ```bash
-npm install @google/generative-ai react-color
+git clone https://github.com/yourusername/auratheme.git
+cd auratheme
 ```
 
-2. Create a `.env` file in your project root:
-```
-VITE_GEMINI_API_KEY=your_gemini_api_key_here
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
 ```
 
-## 📦 Component Structure
+3. Create a `.env.local` file in the root directory and add your Gemini API key:
+```
+NEXT_PUBLIC_GEMINI_API_KEY=your_api_key_here
+```
+
+4. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Usage
+
+1. Enter a description of your desired theme in the input field
+2. Click "Generate Theme"
+3. View the generated color palette
+4. The theme will be automatically applied to the preview
+
+## Project Structure
 
 ```
 src/
-├── components/
-│   └── ai/
-│       └── AuraTheme/
-│           ├── AuraTheme.tsx      # Main component
-│           └── useAuraTheme.ts    # Custom hook
-├── lib/
-│   └── gemini.ts                  # Gemini AI integration
-└── env.d.ts                       # Type declarations
+├── app/                 # Next.js app directory
+├── components/          # React components
+│   ├── ui/             # UI components
+│   └── ThemeGenerator.tsx  # Main theme generator component
+├── lib/                # Utility functions
+└── styles/             # Global styles
 ```
 
-## 🎨 Usage
+## Technologies Used
 
-```tsx
-import { AuraTheme } from '@/components/ai/AuraTheme/AuraTheme';
+- Next.js 14
+- TypeScript
+- Google Gemini AI
+- Tailwind CSS
+- React
 
-function App() {
-  return (
-    <div>
-      <AuraTheme />
-      {/* Your app content */}
-    </div>
-  );
-}
-```
-
-## 🔧 Configuration
-
-### Theme Generation
-The component supports three theme generation modes:
-1. **AI Generation**: Uses Gemini AI to generate themes based on prompts
-2. **Custom Colors**: Manual color selection with color picker
-3. **Predefined Themes**: Quick selection from preset themes
-
-### CSS Variables
-The generated theme is applied using CSS variables:
-```css
-:root {
-  --aura-primary: #color;
-  --aura-secondary: #color;
-  --aura-background: #color;
-  --aura-text: #color;
-  --aura-pattern: pattern-name;
-}
-```
-
-## 🤖 AI Integration
-
-The component uses Gemini 2.0 Flash AI to generate themes. The AI considers:
-- Primary color for attention-grabbing elements
-- Secondary color for complementary elements
-- Background color for subtle contrast
-- Text color for readability
-- Pattern suggestions for visual interest
-
-## 🎯 Features in Detail
-
-### Theme Generation
-- **AI-Powered**: Uses Gemini AI to generate context-aware themes
-- **Custom Colors**: Manual color selection with color picker
-- **Pattern Upload**: Support for custom pattern uploads
-- **Predefined Themes**: Quick selection from preset themes
-
-### User Interface
-- **Floating Button**: Easy access to theme customization
-- **Modal Interface**: Clean, organized theme options
-- **Color Picker**: Intuitive color selection
-- **Pattern Preview**: Visual pattern selection
-
-### Theme Application
-- **Global Theming**: Applies theme to entire application
-- **CSS Variables**: Easy theme customization
-- **Smooth Transitions**: Animated theme changes
-- **Pattern Overlay**: Background pattern support
-
-## 🔒 Security
-
-- API key stored in environment variables
-- Secure API communication
-- No client-side API key exposure
-
-## 🚀 Performance
-
-- Optimized theme generation
-- Efficient CSS variable updates
-- Smooth theme transitions
-- Minimal bundle size
-
-## 📝 License
-
-MIT License - feel free to use in your projects!
-
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
 - Google Gemini AI for theme generation
 - React Color for color picker integration
 - Vite for build tooling
+
+## 🎨 Using Gemini-Generated Theme Colors
+
+When you receive a theme from Gemini AI, it returns a JSON object with the following structure:
+
+```json
+{
+  "primary": "hex color",
+  "secondary": "hex color",
+  "background": "hex color",
+  "text": "hex color"
+}
+```
+
+### CSS Variables Usage
+
+To use these colors in your project, add the following CSS variables to your root styles:
+
+```css
+:root {
+  --primary-color: var(--primary);
+  --secondary-color: var(--secondary);
+  --background-color: var(--background);
+  --text-color: var(--text);
+}
+```
+
+### Example Usage in CSS
+
+```css
+/* Primary color usage */
+.button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+/* Secondary color usage */
+.card {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
+}
+
+/* Background color usage */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+```
+
+### JavaScript Usage
+
+To apply the theme programmatically:
+
+```javascript
+function applyTheme(themeData) {
+  document.documentElement.style.setProperty('--primary-color', themeData.primary);
+  document.documentElement.style.setProperty('--secondary-color', themeData.secondary);
+  document.documentElement.style.setProperty('--background-color', themeData.background);
+  document.documentElement.style.setProperty('--text-color', themeData.text);
+}
+```
+
+### Tailwind CSS Usage
+
+If you're using Tailwind CSS, you can extend your theme in `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: 'var(--primary-color)',
+        secondary: 'var(--secondary-color)',
+        background: 'var(--background-color)',
+        text: 'var(--text-color)',
+      },
+    },
+  },
+}
+```
+
+Then use these colors in your Tailwind classes:
+
+```html
+<div class="bg-primary text-text">
+  <button class="bg-secondary hover:bg-primary">
+    Click me
+  </button>
+</div>
+```
+
+### Best Practices
+
+1. Always provide fallback colors in case the theme generation fails
+2. Use CSS variables for easy theme switching
+3. Consider adding transition effects for smooth theme changes
+4. Test color contrast ratios for accessibility
+5. Implement dark mode variations of the theme
