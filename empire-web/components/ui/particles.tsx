@@ -115,7 +115,7 @@ const Particles: React.FC<ParticlesProps> = ({
     const renderer = new Renderer({ depth: false, alpha: true });
     const gl = renderer.gl;
     container.appendChild(gl.canvas);
-    gl.clearColor(0.1, 0.1, 0.1, 1.0); // Light dull black background
+    gl.clearColor(0, 0, 0, 0);
 
     const camera = new Camera(gl, { fov: 15 });
     camera.position.set(0, 0, cameraDistance);
@@ -220,7 +220,7 @@ const Particles: React.FC<ParticlesProps> = ({
         container.removeEventListener("mousemove", handleMouseMove);
       }
       cancelAnimationFrame(animationFrameId);
-      if (container.contains(gl.canvas)) {
+      if (container && gl.canvas && container.contains(gl.canvas)) {
         container.removeChild(gl.canvas);
       }
     };
@@ -240,7 +240,8 @@ const Particles: React.FC<ParticlesProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`particles-container ${className}`}
+      className={`particles-container ${className || ''}`}
+      style={{ width: '100%', height: '100%' }}
     />
   );
 };

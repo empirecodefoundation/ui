@@ -2,22 +2,25 @@ import React from 'react';
 import { MinecartLCD } from "@/lib/fonts";
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import img2 from '@/images/img2.png';
 import img3 from '@/images/img3.png';
 import { AnimatedArrowDynamic } from '@/components/ui/animated-arrow';
+import Threads from '@/components/ui/Threads';
+import Beams from '@/components/ui/Beams';
 
 export const NewComponentsCard = () => {
   return (
     <div className="feature-card h-full relative overflow-hidden">
-      {/* Background image */}
+      {/* Beams background effect */}
       <div className="absolute inset-0 z-0">
-        <Image 
-          src={img2}
-          alt="Component Device" 
-          fill
-          className="object-cover object-center opacity-90"
-          style={{ objectPosition: 'center 40%' }}
-          priority
+        <Beams
+          beamWidth={2}
+          beamHeight={15}
+          beamNumber={12}
+          lightColor="#ffffff"
+          speed={5}
+          noiseIntensity={1.75}
+          scale={0.2}
+          rotation={135}
         />
       </div>
       
@@ -44,15 +47,13 @@ export const NewComponentsCard = () => {
 export const WavyColoursCard = () => {
   return (
     <div className="feature-card h-full relative overflow-hidden">
-      {/* Background image */}
+      {/* Threads background effect */}
       <div className="absolute inset-0 z-0">
-        <Image 
-          src={img3}
-          alt="Wavy Component" 
-          fill
-          className="object-cover object-center scale-110 opacity-90"
-          style={{ objectPosition: 'center 25%' }}
-          priority
+        <Threads
+          amplitude={3}
+          distance={0}
+          enableMouseInteraction={true}
+          color={[1, 1, 1]}
         />
       </div>
       
@@ -66,10 +67,8 @@ export const WavyColoursCard = () => {
         </div>
         
         <div className="mt-auto">
-          <p className={cn("text-gray-300 text-xs tracking-wide", MinecartLCD.className)}>
-            ULTRA-FAST USB-C CHARGING<br />
-            WITH INTELLIGENT POWER<br />
-            MODULATION
+          <p className={cn("text-gray-300 text-xs tracking-wide uppercase", MinecartLCD.className)}>
+            Explore More
           </p>
         </div>
       </div>

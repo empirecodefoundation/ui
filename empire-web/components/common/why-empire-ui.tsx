@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { AnimatedArrowDynamic } from '@/components/ui/animated-arrow';
 import BulgeText from '@/components/ui/bulge-text';
 import ScrambledText from '@/components/ui/scrambled-text';
+import Ballpit from '@/components/ui/Ballpit';
 import img10 from '@/images/img10.png';
 
 export const WhyEmpireUI = () => {
@@ -19,6 +20,27 @@ export const WhyEmpireUI = () => {
           border: '12px dotted white',
           borderRadius: '0px'
         }}>
+          
+          {/* Ballpit Background Effect - Contained within dotted border */}
+          <div className="absolute z-0" style={{
+            position: 'absolute',
+            overflow: 'hidden',
+            minHeight: 'calc(800px - 40px)',
+            maxHeight: 'calc(800px - 40px)',
+            width: 'calc(100% - 24px)',
+            top: '12px',
+            left: '12px',
+            right: '12px',
+            bottom: '28px'
+          }}>
+            <Ballpit
+              count={70}
+              gravity={2}
+              friction={0.8}
+              wallBounce={0.95}
+              followCursor={true}
+            />
+          </div>
           
           {/* Top Section - Empire UI Heading */}
           <div className="mb-8 relative z-30">
@@ -48,7 +70,7 @@ export const WhyEmpireUI = () => {
           <div className="relative flex-1 mb-16">
             
             {/* Robot Image - Lower z-index, positioned at bottom of container */}
-            <div className="absolute -bottom-72 -right-8 w-4/5 z-10" style={{ height: '660px' }}>
+            <div className="absolute -bottom-64 -right-8 w-4/5 z-10" style={{ height: '660px' }}>
               <div className="relative h-full">
                 <Image
                   src={img10}

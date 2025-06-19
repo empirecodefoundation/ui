@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import img4 from '@/images/img4.png';
 import { AnimatedArrowDynamic } from '@/components/ui/animated-arrow';
-import { LiquidChrome } from '@/components/ui/LiquidChrome';
+import Balatro from '@/components/ui/Balatro';
 
 export const FeaturesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -48,15 +48,13 @@ export const FeaturesSection = () => {
           className="relative w-full h-[660px] rounded-[50px] overflow-hidden bg-black group border-2 border-white"
         >
           
-          {/* LiquidChrome Background Effect */}
+          {/* Balatro Background Effect */}
           <div className="absolute inset-0 z-0 overflow-hidden" style={{ borderRadius: '50px' }}>
-            <LiquidChrome
-              baseColor={[0.1, 0.1, 0.1]}
-              speed={0.5}
-              amplitude={0.3}
-              frequencyX={2.5}
-              frequencyY={2.5}
-              interactive={true}
+            <Balatro
+              isRotate={true}
+              spinSpeed={3}
+              mouseInteraction={false}
+              pixelFilter={700}
               style={{ width: '100%', height: '100%' }}
             />
           </div>

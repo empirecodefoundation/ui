@@ -13,6 +13,9 @@ import { MinecartLCD } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import PixelTransition from "@/components/ui/PixelTransition";
+import Particles from "@/components/ui/particles";
+import { ResponsiveWrapper } from "@/components/common/responsive-wrapper";
+import Dither from "@/components/ui/Dither";
 
 // Import illustrations
 import img1 from "@/illustrations/img1.png";
@@ -151,11 +154,27 @@ export default function TemplatesPage() {
   });
   
   return (
-          <div className="min-h-screen" style={{ marginTop: '-15px' }}>
-      {/* Navigation */}
-      <Navbar />
+    <ResponsiveWrapper>
+      <div className="min-h-screen relative" style={{ marginTop: '-15px' }}>
+        {/* Particles Background - Fixed position behind everything */}
+        <div className="fixed inset-0 w-full h-full z-[-1]">
+          <Particles
+            particleColors={['#ffffff', '#ffffff']}
+            particleCount={200}
+            particleSpread={10}
+            speed={0.1}
+            particleBaseSize={100}
+            moveParticlesOnHover={true}
+            alphaParticles={false}
+            disableRotation={false}
+            className="w-full h-full"
+          />
+        </div>
+        
+        {/* Navigation */}
+        <Navbar />
       
-      <div className="container mx-auto px-6 py-16 max-w-7xl">
+      <div className="container mx-auto px-6 py-16 max-w-7xl relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16">
           <motion.h1 
@@ -232,7 +251,7 @@ export default function TemplatesPage() {
               <PixelTransition
                 firstContent={
                   <Card 
-                    className="h-full overflow-hidden bg-black transition-all duration-300 group-hover:transform group-hover:scale-[1.02] border-4 border-dotted border-white hover:border-solid rounded-none"
+                    className="template-card h-full overflow-hidden bg-black border-4 border-dotted border-white rounded-none"
                   >
                     <CardContent className="p-0">
                       {/* Template Preview Image */}
@@ -299,13 +318,19 @@ export default function TemplatesPage() {
                 }
                 secondContent={
                   <div className="relative w-full h-full flex items-center justify-center">
-                    <Image
-                      src={helloImage}
-                      alt="Template Preview"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="absolute inset-0">
+                      <Dither
+                        waveColor={[0.3, 0.3, 0.3]}
+                        disableAnimation={false}
+                        enableMouseInteraction={true}
+                        mouseRadius={0.3}
+                        colorNum={4}
+                        waveAmplitude={0.3}
+                        waveFrequency={3}
+                        waveSpeed={0.05}
+                      />
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center z-10">
                       <Link href={template.href} passHref>
                         <Button 
                           variant="default" 
@@ -403,6 +428,7 @@ export default function TemplatesPage() {
       
       {/* Footer */}
       <EmpireFooter />
-    </div>
+      </div>
+    </ResponsiveWrapper>
   );
 }

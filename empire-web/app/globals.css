@@ -1,5 +1,32 @@
 @import "tailwindcss";
 
+/* Full viewport coverage for background elements */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+  background-color: #000000;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+/* Ensure the body fills the viewport */
+body {
+  position: relative;
+  top: -10px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Webkit smooth scrolling */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
 @theme {
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -25,23 +52,6 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
-}
-
-/* Reset default margins and padding */
-html, body {
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Webkit smooth scrolling */
-* {
-  -webkit-overflow-scrolling: touch;
 }
 
 @layer base {
@@ -117,6 +127,7 @@ html {
     @apply bg-background text-foreground;
     margin: 0;
     padding: 0;
+    padding-top: 0;
   }
 }
 
@@ -303,7 +314,7 @@ html body[data-scroll-locked] {
 .nav-container {
   background-color: #000;
   border-radius: 50px;
-  margin: 0 auto 20px;
+  margin: 2px auto 20px;
   padding: 0 30px;
   width: 1450px;
   height: 65px;
@@ -313,17 +324,22 @@ html body[data-scroll-locked] {
   align-items: center;
   z-index: 60;
   position: relative;
+  border: 2px solid white;
 }
 
 .nav-link {
   margin-right: 80px;
   position: relative;
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 25px;
 }
 
 .nav-link:hover {
   animation: textFlicker 2s steps(1) forwards;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  border: 2px solid white;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 @keyframes textFlicker {
@@ -373,7 +389,8 @@ html body[data-scroll-locked] {
 }
 
 .nav-icon-button:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
 }
 
 /* Search box styling */
@@ -389,7 +406,7 @@ html body[data-scroll-locked] {
 
 .nav-search-box:hover {
   background-color: #2a2a2a;
-  border-color: rgba(107, 114, 128, 0.5);
+  border: 2px solid white;
 }
 
 .nav-search-box:focus-within {
@@ -473,6 +490,23 @@ html body[data-scroll-locked] {
 /* Enhanced hover effect for the arrow in button-primary */
 .button-primary:hover .animated-arrow {
   transform: translateX(4px);
+}
+
+/* Responsive scaling for larger screens */
+html {
+  overflow-x: hidden;
+}
+
+/* Ensure smooth scaling without content overflow */
+.responsive-scale-container {
+  transform-origin: top center;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbars during scaling */
+body:has(.responsive-scale-container) {
+  overflow-x: hidden !important;
 }
 
 /* Responsive adjustments */
@@ -597,15 +631,15 @@ html body[data-scroll-locked] {
 }
 
 .hero-text-line-1 {
-  animation: initialTextReveal 1.2s steps(16, end) 0.2s forwards;
+  animation: initialTextReveal 1.2s steps(16, end) 1.7s forwards;
 }
 
 .hero-text-line-2 {
-  animation: initialTextReveal 1.2s steps(16, end) 0.5s forwards;
+  animation: initialTextReveal 1.2s steps(16, end) 2.0s forwards;
 }
 
 .hero-text-line-3 {
-  animation: initialTextReveal 1.2s steps(16, end) 0.8s forwards;
+  animation: initialTextReveal 1.2s steps(16, end) 2.3s forwards;
 }
 
 @keyframes initialTextReveal {
@@ -919,4 +953,25 @@ html body[data-scroll-locked] {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Template card hover effects */
+.template-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.template-card:hover {
+  border: 4px solid white !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  transform: scale(1.02) translateY(-2px);
+}
+
+/* Enhanced glow effect for template cards */
+.group:hover .template-card {
+  border-style: solid !important;
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.3),
+    0 0 40px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
 }

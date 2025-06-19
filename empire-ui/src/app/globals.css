@@ -9,9 +9,22 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Smooth scrolling */
+/* Responsive scaling for larger screens */
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
+}
+
+/* Ensure smooth scaling without content overflow */
+.responsive-scale-container {
+  transform-origin: top center;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbars during scaling */
+body:has(.responsive-scale-container) {
+  overflow-x: hidden !important;
 }
 
 /* Webkit smooth scrolling */

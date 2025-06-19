@@ -7,7 +7,7 @@ import { AnimatedArrowDynamic } from '@/components/ui/animated-arrow';
 
 export const ProductShowcase = () => {
   return (
-    <div className="relative h-[80vh] mt-0">
+    <div className="relative h-[85vh] mt-0">
       {/* Main content card with notch */}
       <div className="product-card flex flex-col h-full relative overflow-hidden">
         {/* Background image */}
@@ -29,7 +29,7 @@ export const ProductShowcase = () => {
             {/* Left side - Hero text */}
             <div className="w-full md:w-2/5 flex flex-col justify-center">
               <div className="mb-8">
-                <h2 className={cn("text-white text-5xl md:text-5xl lg:text-7xl xl:text-7xl font-bold leading-[2.5rem] tracking-wider", MinecartLCD.className)}>
+                <h2 className={cn("text-white text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold leading-[5rem] tracking-wider", MinecartLCD.className)}>
                   <span className="hero-text-line-1" data-text="EXPERIENCE">EXPERIENCE</span><br />
                   <span className="hero-text-line-2 whitespace-nowrap" data-text="NEXT - GEN">NEXT - GEN</span><br />
                   <span className="hero-text-line-3" data-text="TECH TODAY">TECH TODAY</span>
@@ -42,17 +42,17 @@ export const ProductShowcase = () => {
           </div>
           
           {/* Bottom section - specifications */}
-          <div className="mt-auto flex justify-end pb-10">
+          <div className="mt-auto flex justify-end pb-16 pr-8">
             {/* Right - Device Specifications */}
             <div className="text-right">
-              <h3 className={cn("text-white text-2xl md:text-3xl font-bold tracking-wide", MinecartLCD.className)}>
+              <h3 className={cn("text-white text-xl md:text-2xl font-bold tracking-wide", MinecartLCD.className)}>
                 DEVICE<br />
                 SPECIFICATIONS
               </h3>
               <div className="mt-2 space-y-1">
-                <p className={cn("text-gray-300 text-sm md:text-base", MinecartLCD.className)}>5000mAh - Long Battery Life</p>
-                <p className={cn("text-gray-300 text-sm md:text-base", MinecartLCD.className)}>AM/FM + Emergency Radio</p>
-                <p className={cn("text-gray-300 text-sm md:text-base", MinecartLCD.className)}>Analog Tuning</p>
+                <p className={cn("text-gray-300 text-sm", MinecartLCD.className)}>5000mAh - Long Battery Life</p>
+                <p className={cn("text-gray-300 text-sm", MinecartLCD.className)}>AM/FM + Emergency Radio</p>
+                <p className={cn("text-gray-300 text-sm", MinecartLCD.className)}>Analog Tuning</p>
               </div>
             </div>
           </div>

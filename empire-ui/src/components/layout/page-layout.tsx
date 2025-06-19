@@ -3,6 +3,7 @@ import React from "react";
 import { Navbar } from "@/components/common/navbar";
 import { EmpireFooter } from "@/components/common/empire-footer";
 import ScrollProgressLine from "@/components/ui/scroll-progress-line";
+import { ResponsiveWrapper } from "@/components/common/responsive-wrapper";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -20,7 +21,7 @@ export const PageLayout = ({
   scrollProgressDotSpacing = 20
 }: PageLayoutProps) => {
   return (
-    <>
+    <ResponsiveWrapper>
       {/* Scroll Progress Line */}
       {showScrollProgress && (
         <ScrollProgressLine 
@@ -43,6 +44,6 @@ export const PageLayout = ({
         {/* Footer - Constant across all pages */}
         <EmpireFooter />
       </main>
-    </>
+    </ResponsiveWrapper>
   );
 }; 
