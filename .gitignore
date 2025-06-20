@@ -2,3 +2,26 @@
 /dist/
 dist/
 node_modules/
+
+# Next.js
+.next/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+
+# Build outputs
+*.local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
