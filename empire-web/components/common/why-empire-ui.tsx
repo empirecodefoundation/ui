@@ -34,10 +34,10 @@ export const WhyEmpireUI = () => {
             bottom: '28px'
           }}>
             <Ballpit
-              count={70}
-              gravity={2}
+              count={90}
+              gravity={2.3}
               friction={0.8}
-              wallBounce={0.95}
+              wallBounce={1}
               followCursor={true}
             />
           </div>
@@ -70,7 +70,7 @@ export const WhyEmpireUI = () => {
           <div className="relative flex-1 mb-16">
             
             {/* Robot Image - Lower z-index, positioned at bottom of container */}
-            <div className="absolute -bottom-64 -right-8 w-4/5 z-10" style={{ height: '660px' }}>
+            <div className="absolute -bottom-67 -right-8 w-4/5 z-10" style={{ height: '660px' }}>
               <div className="relative h-full">
                 <Image
                   src={img10}

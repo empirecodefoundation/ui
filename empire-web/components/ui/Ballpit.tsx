@@ -1,16 +1,3 @@
-/**
- * Ballpit Component - Interactive 3D Physics Simulation
- * 
- * A Three.js-based component that renders interactive balls with realistic physics.
- * Features include gravity simulation, collision detection, wall bouncing, and cursor interaction.
- * 
- * Component inspired by Kevin Levron:
- * https://x.com/soju22/status/1858925191671271801
- * 
- * @author akr4pc
- * @version 1.0.0
- */
-
 import React, { useRef, useEffect } from "react";
 import {
   Clock,
