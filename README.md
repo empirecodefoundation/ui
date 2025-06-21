@@ -213,8 +213,7 @@ pnpm add @empire-ui/core
 - Added comprehensive TypeScript support
 - Repository cleanup with proper .gitignore configuration
 
-## 👥 Contributors
-- [AKR4PC](https://github.com/AKR4PC)
+
 - [Empire Code Foundation](https://github.com/empirecodefoundation)
 
 ---
