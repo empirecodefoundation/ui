@@ -34,7 +34,7 @@ export const WhyEmpireUI = () => {
             bottom: '28px'
           }}>
             <Ballpit
-              count={90}
+              count={100}
               gravity={2.3}
               friction={0.8}
               wallBounce={1}
