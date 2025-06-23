@@ -24,6 +24,8 @@
     "@react-three/fiber": "^9.1.2",
     "@react-three/postprocessing": "^3.0.4",
     "@react-three/rapier": "^2.1.0",
+    "@splinetool/react-spline": "^4.0.0",
+    "@splinetool/runtime": "^1.10.13",
     "@types/three": "^0.177.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

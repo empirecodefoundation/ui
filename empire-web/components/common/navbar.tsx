@@ -35,7 +35,7 @@ export const Navbar = () => {
             <LoadingLink href="/templates" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
               TEMPLATES
             </LoadingLink>
-            <LoadingLink href="/colours" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
+            <LoadingLink href="/colors" className={cn("text-white font-bold text-lg tracking-wide nav-link", MinecartLCD.className)}>
               COLOURS
             </LoadingLink>
           </div>
