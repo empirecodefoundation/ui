@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { AnimatedArrowDynamic } from '@/components/ui/animated-arrow';
 import PixelCard from '@/components/ui/pixel-card';
+import { useRouter } from 'next/navigation';
 
 // Import images
 import img5 from '@/images/img5.png';
@@ -23,7 +24,8 @@ const ProductCard = ({
   onLeave,
   onMouseMove,
   isSpotlighted,
-  isDimmed
+  isDimmed,
+  onNavigationStart
 }: {
   title: string;
   image: any;
@@ -34,7 +36,17 @@ const ProductCard = ({
   onMouseMove?: (e: React.MouseEvent) => void;
   isSpotlighted?: boolean;
   isDimmed?: boolean;
+  onNavigationStart?: () => void;
 }) => {
+  const router = useRouter();
+
+  const handleCardClick = () => {
+    if (onNavigationStart) {
+      onNavigationStart();
+    }
+    router.push('/components');
+  };
+
   return (
     <div 
       className={cn(
@@ -46,6 +58,7 @@ const ProductCard = ({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
       onMouseMove={onMouseMove}
+      onClick={handleCardClick}
       style={{
         transitionProperty: 'opacity, transform, box-shadow',
         transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
@@ -100,6 +113,7 @@ export const ProductHighlights = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -206,8 +220,24 @@ export const ProductHighlights = () => {
     };
   };
 
+  const handleNavigationStart = () => {
+    setIsNavigating(true);
+  };
+
   return (
     <>
+      {/* Navigation Loading Overlay */}
+      {isNavigating && (
+        <div className="fixed inset-0 z-[100] bg-black bg-opacity-75 flex items-center justify-center">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+            <p className={cn("text-white text-lg", MinecartLCD.className)}>
+              Loading Components...
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Radial Dark Overlay that follows cursor */}
       <div 
         className={cn(
@@ -256,6 +286,7 @@ export const ProductHighlights = () => {
                 onMouseMove={handleMouseMove}
                 isSpotlighted={hoveredCard === "BACKGROUNDS"}
                 isDimmed={hoveredCard !== null && hoveredCard !== "BACKGROUNDS"}
+                onNavigationStart={handleNavigationStart}
               />
               
               {/* Bottom row - TEXTURES and COMPONENTS */}
@@ -269,6 +300,7 @@ export const ProductHighlights = () => {
                   onMouseMove={handleMouseMove}
                   isSpotlighted={hoveredCard === "TEXTURES"}
                   isDimmed={hoveredCard !== null && hoveredCard !== "TEXTURES"}
+                  onNavigationStart={handleNavigationStart}
                 />
                 <ProductCard
                   title="COMPONENTS"
@@ -279,6 +311,7 @@ export const ProductHighlights = () => {
                   onMouseMove={handleMouseMove}
                   isSpotlighted={hoveredCard === "COMPONENTS"}
                   isDimmed={hoveredCard !== null && hoveredCard !== "COMPONENTS"}
+                  onNavigationStart={handleNavigationStart}
                 />
               </div>
             </div>
@@ -295,6 +328,7 @@ export const ProductHighlights = () => {
                 onMouseMove={handleMouseMove}
                 isSpotlighted={hoveredCard === "NAVIGATION"}
                 isDimmed={hoveredCard !== null && hoveredCard !== "NAVIGATION"}
+                onNavigationStart={handleNavigationStart}
               />
               
               {/* CURSORS - Right half */}
@@ -307,6 +341,7 @@ export const ProductHighlights = () => {
                 onMouseMove={handleMouseMove}
                 isSpotlighted={hoveredCard === "CURSORS"}
                 isDimmed={hoveredCard !== null && hoveredCard !== "CURSORS"}
+                onNavigationStart={handleNavigationStart}
               />
             </div>
           </div>

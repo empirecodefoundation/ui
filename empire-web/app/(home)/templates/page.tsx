@@ -16,6 +16,7 @@ import PixelTransition from "@/components/ui/PixelTransition";
 import Particles from "@/components/ui/particles";
 import { ResponsiveWrapper } from "@/components/common/responsive-wrapper";
 import Dither from "@/components/ui/Dither";
+import { useNavigation } from "@/lib/hooks/use-navigation";
 
 // Import illustrations
 import img1 from "@/illustrations/img1.png";
@@ -44,7 +45,7 @@ const templates = [
   {
     id: "dashboard",
     title: "AI Dashboard", 
-    description: "A comprehensive analytics dashboard for monitoring AI models, usage stats, and performance metrics.",
+    description: "A comprehensive analytics dashboard for monitoring AI models, usage stats, and performance metrics with dark/light modes.",
     image: "/assets/images/dashboard-template.jpg",
     icon: <Image src={img2} alt="AI Dashboard" width={180} height={180} className="object-contain" />,
     category: "Admin",
@@ -52,64 +53,24 @@ const templates = [
     href: "/templates/dashboard"
   },
   {
-    id: "ocr",
-    title: "OCR Application",
-    description: "Image text extraction app with AI-powered analysis for processing documents and images.",
-    image: "/assets/images/ocr-template.jpg", 
-    icon: <Image src={img3} alt="OCR Application" width={180} height={180} className="object-contain" />,
-    category: "Tool",
-    tags: ["Utility"],
-    href: "/templates/ocr"
+    id: "portfolio",
+    title: "Portfolio",
+    description: "Collection of stunning portfolio website templates for developers, designers, and creatives.",
+    image: "/assets/images/portfolio-template.jpg", 
+    icon: <Image src={img3} alt="Portfolio" width={180} height={180} className="object-contain" />,
+    category: "Portfolio",
+    tags: ["Creative", "Professional"],
+    href: "/templates/portfolio"
   },
   {
-    id: "ai-interface",
-    title: "AI Interface",
-    description: "A clean, modern interface for interacting with AI assistants and large language models.",
-    image: "/assets/images/ai-interface-template.jpg",
-    icon: <Image src={img4} alt="AI Interface" width={180} height={180} className="object-contain" />,
-    category: "AI", 
-    tags: ["Featured", "Chat"],
-    href: "/templates/ai-interface"
-  },
-  {
-    id: "analytics",
-    title: "Analytics Platform",
-    description: "Data visualization and analytics platform for monitoring AI model performance and user engagement.",
-    image: "/assets/images/analytics-template.jpg",
-    icon: <Image src={img5} alt="Analytics Platform" width={180} height={180} className="object-contain" />,
-    category: "Analytics",
-    tags: ["Data", "Charts"],
-    href: "/templates/analytics"
-  },
-  {
-    id: "startup",
-    title: "Startup Launch", 
-    description: "Beautiful startup landing page with subscription forms, feature highlights, and responsive design.",
-    image: "/assets/images/startup-template.jpg",
-    icon: <Image src={img6} alt="Startup Launch" width={180} height={180} className="object-contain" />,
-    category: "Marketing",
-    tags: ["New", "Features"],
-    href: "/templates/startup"
-  },
-  {
-    id: "admin",
-    title: "Admin Portal",
-    description: "Comprehensive admin interface for managing users, content, and settings for AI applications.",
-    image: "/assets/images/admin-template.jpg",
-    icon: <Image src={img7} alt="Admin Portal" width={180} height={180} className="object-contain" />,
-    category: "Admin",
-    tags: ["Management", "Settings"],
-    href: "/templates/admin"
-  },
-  {
-    id: "calendar",
-    title: "AI Calendar",
-    description: "Smart calendar application with AI scheduling assistant and intuitive event management.",
-    image: "/assets/images/calendar-template.jpg",
-    icon: <Image src={img8} alt="AI Calendar" width={180} height={180} className="object-contain" />,
-    category: "Tool",
-    tags: ["Productivity", "New"],
-    href: "/templates/calendar"
+    id: "signup",
+    title: "Signup Page",
+    description: "Modern and elegant signup page with form validation, social login options, and responsive design.",
+    image: "/assets/images/signup-template.jpg",
+    icon: <Image src={img7} alt="Signup Page" width={180} height={180} className="object-contain" />,
+    category: "Auth",
+    tags: ["Authentication", "Forms"],
+    href: "/templates/signup"
   }
 ];
 
@@ -137,6 +98,7 @@ function getTagColor(tag: string): string {
 export default function TemplatesPage() {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [selectedCategory, setSelectedCategory] = React.useState("All");
+  const { navigateTo } = useNavigation();
   
   // Get unique categories
   const categories = ["All", ...Array.from(new Set(templates.map(template => template.category)))];
@@ -238,8 +200,8 @@ export default function TemplatesPage() {
           </div>
         </div>
         
-        {/* Templates Grid - Responsive 4 columns on large screens, 3 on medium, 2 on small, 1 on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20">
+        {/* Templates Grid - 4 cards in one row on large screens, responsive on smaller screens */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-20">
           {filteredTemplates.map((template, index) => (
             <motion.div
               key={template.id}
@@ -297,8 +259,8 @@ export default function TemplatesPage() {
                         </div>
                         
                         {/* View Template Button */}
-                        <Link href={template.href} passHref>
                           <Button 
+                          onClick={() => navigateTo(template.href)}
                             variant="default" 
                             className={cn(
                               "w-full bg-black text-white hover:bg-white hover:text-black transition-all rounded-none",
@@ -311,7 +273,6 @@ export default function TemplatesPage() {
                             View Template
                             <ExternalLink className="ml-2 h-4 w-4" />
                           </Button>
-                        </Link>
                       </div>
                     </CardContent>
                   </Card>
@@ -331,8 +292,8 @@ export default function TemplatesPage() {
                       />
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center z-10">
-                      <Link href={template.href} passHref>
                         <Button 
+                        onClick={() => navigateTo(template.href)}
                           variant="default" 
                           className={cn(
                             "bg-white text-black hover:bg-gray-200 hover:scale-105 hover:shadow-lg transition-all duration-300 rounded-none px-6 py-3 text-lg font-bold group",
@@ -345,7 +306,6 @@ export default function TemplatesPage() {
                           VIEW TEMPLATE
                           <ExternalLink className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                         </Button>
-                      </Link>
                     </div>
                   </div>
                 }

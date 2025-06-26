@@ -84,18 +84,23 @@ export const FeaturesSection = () => {
             </p>
           </div>
 
-          {/* GET UPDATES Button - Same horizontal level as Features title but higher */}
+          {/* EXPLORE Button - Same horizontal level as Features title but higher */}
           <div className="absolute top-[6%] right-[3%] z-20">
             <p className={cn("text-gray-400 text-sm mb-4 text-right", MinecartLCD.className)}>
               More Information
             </p>
-            <a href="#" className={cn("explore-button group hover:bg-white hover:text-black", MinecartLCD.className)}>
-              GET UPDATES
-              <span className="flex-grow"></span>
+            <a 
+              href="https://github.com/empirecodefoundation/ui.git" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={cn("bg-white text-black px-6 py-3 rounded-full border-2 border-white hover:bg-transparent hover:text-white transition-colors duration-300 flex items-center gap-3 group w-fit", MinecartLCD.className)}
+            >
+              <span className="text-xl group-hover:grayscale-0 grayscale transition-all duration-300 group-hover:animate-pulse">🔍</span>
+              EXPLORE
               <AnimatedArrowDynamic 
-                size={22} 
+                size={20} 
                 strokeWidth={2.5}
-                className="animated-arrow ml-2 group-hover:rotate-45 transition-transform duration-300"
+                className="group-hover:text-white transition-transform duration-300 group-hover:rotate-45"
               />
             </a>
           </div>
@@ -150,7 +155,12 @@ export const FeaturesSection = () => {
             <p className={cn("text-gray-400 text-sm mb-4", MinecartLCD.className)}>
               SEE IT IN ACTION
             </p>
-            <a href="#" className={cn("explore-button bg-transparent border-2 border-white text-white hover:bg-white hover:text-black group", MinecartLCD.className)}>
+            <a 
+              href="https://discord.gg/RdKBQbFH" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={cn("explore-button bg-transparent border-2 border-white text-white hover:bg-white hover:text-black group", MinecartLCD.className)}
+            >
               WATCH DEMO
               <span className="flex-grow"></span>
               <AnimatedArrowDynamic 

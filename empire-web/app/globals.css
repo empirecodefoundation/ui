@@ -975,3 +975,17 @@ body:has(.responsive-scale-container) {
     0 0 40px rgba(255, 255, 255, 0.1),
     inset 0 0 20px rgba(255, 255, 255, 0.05);
 }
+
+/* Flowing Menu Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}

@@ -53,10 +53,10 @@ export const WhyEmpireUI = () => {
           <div className="mb-16 relative z-30">
             <ScrambledText
               className={cn("text-white text-xl leading-relaxed max-w-4xl", MinecartLCD.className)}
-              sectionWidth={200}
-              duration={0.3}
-              speed={1.5}
-              scrambleChars=".:!@#$%^&*()_+-=[]{}|;:,.<>?"
+              radius={100}
+              duration={1.2}
+              speed={0.5}
+              scrambleChars=".:"
             >
               At Empire UI, We Don't Just Build Tech — We Craft Experiences. Every 
               Device Is Engineered With Precision, Purpose, And A Deep Understanding 
@@ -106,14 +106,15 @@ export const WhyEmpireUI = () => {
               For Latest Updates & Discounts
             </p>
             
-            <button className={cn("bg-white text-black px-8 py-4 rounded-full border-2 border-white hover:bg-transparent hover:text-white transition-colors duration-300 flex items-center gap-4 group", MinecartLCD.className)}>
+            <a href="https://discord.gg/RdKBQbFH" target="_blank" rel="noopener noreferrer" className={cn("bg-black text-white px-6 py-3 rounded-full border-2 border-white hover:bg-white hover:text-black transition-colors duration-300 flex items-center gap-3 group w-fit", MinecartLCD.className)}>
+              <span className="group-hover:animate-bounce">🚀</span>
               JOIN COMMUNITY
               <AnimatedArrowDynamic 
-                size={20} 
+                size={18} 
                 strokeWidth={2}
-                className="group-hover:text-white"
+                className="group-hover:text-black"
               />
-            </button>
+            </a>
           </div>
         </div>
       </div>
