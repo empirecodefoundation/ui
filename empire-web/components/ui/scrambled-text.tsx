@@ -6,19 +6,26 @@ import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 gsap.registerPlugin(SplitText, ScrambleTextPlugin);
 
 export interface ScrambledTextProps {
-  sectionWidth?: number; // Width of each vertical section
+  /** The radius around the mouse pointer within which characters will scramble */
+  radius?: number;
+  /** The duration of the scramble effect on a character */
   duration?: number;
+  /** The speed of the scramble animation */
   speed?: number;
+  /** The characters used for scrambling */
   scrambleChars?: string;
-  className?: string;
-  style?: React.CSSProperties;
+  /** The text content to be scrambled */
   children: React.ReactNode;
+  /** Additional CSS classes for the component */
+  className?: string;
+  /** Inline styles for the component */
+  style?: React.CSSProperties;
 }
 
 const ScrambledText: React.FC<ScrambledTextProps> = ({
-  sectionWidth = 150, // Default section width in pixels
-  duration = 0.4, // Shorter timeline
-  speed = 1.2, // Faster speed
+  radius = 100,
+  duration = 1.2,
+  speed = 0.5,
   scrambleChars = ".:",
   className = "",
   style = {},
@@ -48,17 +55,20 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
       
       const containerRect = rootRef.current.getBoundingClientRect();
       const mouseX = e.clientX - containerRect.left;
-      
-      // Calculate which vertical section the mouse is in
-      const currentSection = Math.floor(mouseX / sectionWidth);
+      const mouseY = e.clientY - containerRect.top;
       
       charsRef.current.forEach((c) => {
-        const { left, width } = c.getBoundingClientRect();
+        const { left, top, width, height } = c.getBoundingClientRect();
         const charX = left - containerRect.left + width / 2;
-        const charSection = Math.floor(charX / sectionWidth);
+        const charY = top - containerRect.top + height / 2;
         
-        // Only scramble characters in the same vertical section as the mouse
-        if (charSection === currentSection) {
+        // Calculate distance from mouse to character center
+        const distance = Math.sqrt(
+          Math.pow(mouseX - charX, 2) + Math.pow(mouseY - charY, 2)
+        );
+        
+        // Only scramble characters within the specified radius
+        if (distance <= radius) {
           gsap.to(c, {
             overwrite: true,
             duration: duration,
@@ -98,7 +108,7 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
       el.removeEventListener("pointerleave", handleLeave);
       split.revert();
     };
-  }, [sectionWidth, duration, speed, scrambleChars]);
+  }, [radius, duration, speed, scrambleChars]);
 
   return (
     <div ref={rootRef} className={`text-block ${className}`} style={style}>

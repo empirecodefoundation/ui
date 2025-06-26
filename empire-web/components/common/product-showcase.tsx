@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import img1 from '@/images/img1.png';
 import { AnimatedArrowDynamic } from '@/components/ui/animated-arrow';
+import { Heart } from 'lucide-react';
 
 export const ProductShowcase = () => {
   return (
@@ -43,31 +44,35 @@ export const ProductShowcase = () => {
           
           {/* Bottom section - specifications */}
           <div className="mt-auto flex justify-end pb-16 pr-8">
-            {/* Right - Device Specifications */}
+            {/* Right - Contributor Excellence */}
             <div className="text-right">
               <h3 className={cn("text-white text-xl md:text-2xl font-bold tracking-wide", MinecartLCD.className)}>
-                DEVICE<br />
-                SPECIFICATIONS
+                CONTRIBUTOR<br />
+                EXCELLENCE
               </h3>
               <div className="mt-2 space-y-1">
-                <p className={cn("text-gray-300 text-sm", MinecartLCD.className)}>5000mAh - Long Battery Life</p>
-                <p className={cn("text-gray-300 text-sm", MinecartLCD.className)}>AM/FM + Emergency Radio</p>
-                <p className={cn("text-gray-300 text-sm", MinecartLCD.className)}>Analog Tuning</p>
+                <p className={cn("text-gray-300 text-sm", MinecartLCD.className)}>Elite Open Source Ecosystem</p>
+                <p className={cn("text-gray-300 text-sm", MinecartLCD.className)}>Industry-Leading UI Framework</p>
+                <p className={cn("text-gray-300 text-sm", MinecartLCD.className)}>Revolutionary Impact Potential</p>
               </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Explore Segments button positioned at bottom left */}
+      {/* Contribute button positioned at bottom left */}
       <div className="absolute bottom-8 left-10 z-20">
-        <a href="#" className={cn("explore-button text-center inline-flex items-center hover:bg-white hover:text-black group", MinecartLCD.className)}>
-          EXPLORE SEGMENTS
+        <a 
+          href="https://github.com/empirecodefoundation/ui.git" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className={cn("explore-button text-center inline-flex items-center hover:bg-white hover:text-black group", MinecartLCD.className)}
+        >
+          CONTRIBUTE
           <span className="flex-grow"></span>
-          <AnimatedArrowDynamic 
+          <Heart 
             size={22} 
-            strokeWidth={2.5}
-            className="animated-arrow ml-2"
+            className="ml-2 group-hover:fill-red-500 group-hover:text-red-500 transition-colors duration-300"
           />
         </a>
       </div>

@@ -61,43 +61,9 @@ export const docsConfig: DocsConfig = {
               labelColor: "orange",
             },
             {
-              title: "Text Paraphraser Button",
-              href: "/docs/ai-paraphraser-button",
-              items: [],
-            },
-            {
-              title: "Text Summarizer Button",
-              href: "/docs/ai-summarizer-button",
-              items: [],
-            },
-            {
-              title: "Grammar Check Button",
-              href: "/docs/ai-grammar-button",
-              items: [],
-            },
-            {
               title: "Caption Generator Button",
               href: "/docs/ai-caption-generator-button",
               items: [],
-            },
-          ],
-        },
-        {
-          title: "Advanced AI Interfaces",
-          items: [
-            {
-              title: "MCP Interface",
-              href: "/docs/mcp-interface",
-              items: [],
-              label: "New",
-              labelColor: "blue",
-            },
-            {
-              title: "Node Canvas",
-              href: "/docs/node-canvas",
-              items: [],
-              label: "New",
-              labelColor: "blue",
             },
           ],
         },
@@ -159,13 +125,6 @@ export const docsConfig: DocsConfig = {
           title: "Backgrounds",
           items: [
             {
-              title: "Aurora Background",
-              href: "/docs/aurora-background",
-              items: [],
-              label: "Popular",
-              labelColor: "orange",
-            },
-            {
               title: "Wavy Background",
               href: "/docs/wavy-background",
               items: [],
@@ -175,11 +134,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Form Elements",
           items: [
-            {
-              title: "Step Form",
-              href: "/docs/step-form",
-              items: [],
-            },
             {
               title: "Toast Notifications",
               href: "/docs/toast-notification",
@@ -191,6 +145,13 @@ export const docsConfig: DocsConfig = {
               items: [],
               label: "Core",
               labelColor: "purple",
+            },
+            {
+              title: "Flowing Menu",
+              href: "/docs/flowing-menu",
+              items: [],
+              label: "New",
+              labelColor: "blue",
             },
           ]
         }
