@@ -16,8 +16,7 @@ import Link from "next/link";
 import { ResponsiveWrapper } from "@/components/common/responsive-wrapper";
 import Particles from "@/components/ui/particles";
 
-// Import placeholder image
-import img1 from "@/images/img1.png";
+// Import removed - using live iframe preview instead
 
 export default function LandingTemplatePage() {
   const [activeTab, setActiveTab] = useState("preview");
@@ -512,26 +511,33 @@ export function LandingPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="relative w-full h-[600px] bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-lg overflow-hidden">
-                    <Image 
-                      src={img1}
-                      alt="Landing Page Template Preview" 
-                      fill
-                      className="object-cover object-top"
-                      priority
+                  <div className="relative w-full h-[600px] bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-lg overflow-hidden border-2 border-purple-500/30">
+                    {/* Live Preview iframe */}
+                    <iframe 
+                      src="/templates/landing/demo"
+                      title="Landing Page Template Live Preview" 
+                      className="w-full h-full border-0 bg-white"
+                      style={{ 
+                        transform: 'scale(1)',
+                        transformOrigin: 'top left'
+                      }}
                     />
-                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                    
+                    {/* Live indicator overlay */}
+                    <div className="absolute top-4 right-4 z-10">
+                      <div className={cn("bg-green-500 text-white px-3 py-2 rounded flex items-center shadow-lg", MinecartLCD.className)}>
+                        <div className="w-2 h-2 bg-green-300 rounded-full mr-2 animate-pulse"></div>
+                        LIVE PREVIEW
+                      </div>
+                    </div>
+                    
+                    {/* Interactive overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
                       <div className="text-center">
-                        <h3 className={cn("text-white text-3xl font-bold mb-4", MinecartLCD.className)}>
-                          Landing Page Template
-                        </h3>
-                        <p className={cn("text-gray-200 text-lg mb-6", MinecartLCD.className)}>
-                          Modern • Responsive • AI-Ready
-                        </p>
                         <Link href="/templates/landing/demo">
-                          <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+                          <Button className={cn("bg-white/90 hover:bg-white text-gray-900 hover:scale-105 transition-all duration-300 shadow-xl", MinecartLCD.className)}>
                             <ExternalLink className="mr-2 h-4 w-4" />
-                            View Live Demo
+                            OPEN IN NEW TAB
                           </Button>
                         </Link>
                       </div>
